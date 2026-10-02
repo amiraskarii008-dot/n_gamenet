@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>چطور کار می‌کند — CafeLoop</title>
+<meta name="description" content="معماری محصول CafeLoop: حلقه‌ی بسته‌ی شناسایی مشتری، وفاداری، پروفایل رفتاری، Smart Return، کمپین بازگشت و اندازه‌گیری درآمد.">
+<meta name="theme-color" content="#150d0a">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="">
+      <span>CafeLoop<span class="brand__sub">مشتری رو برگردون</span></span>
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="index.html">خانه</a>
+      <a href="how-it-works.html">چطور کار می‌کند</a>
+      <a href="demo.html">دموی پنل</a>
+      <a href="customer.html">تجربه مشتری</a>
+      <a href="pricing.html">قیمت‌گذاری</a>
+      <a href="roadmap.html">نقشه ۷ روزه</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--sm btn--nav-cta" href="contact.html">درخواست دمو</a>
+      <button class="nav__toggle" aria-label="منو" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" style="padding-bottom:clamp(36px,5vw,64px)">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">محصول در یک نگاه</span>
+        <h1 class="h1" style="margin-top:18px">منو فقط دروازه است.<br>محصول واقعی، <span class="grad">سیستم بازگرداندن مشتری</span> است.</h1>
+        <p class="lead" style="margin-top:20px">
+          CafeLoop یک حلقه‌ی بسته می‌سازد: مشتری شناخته می‌شود، رفتارش ثبت می‌شود، ریزشش پیش‌بینی می‌شود،
+          برای بازگشتش اقدام می‌شود و نتیجه در فروش اندازه‌گیری می‌شود.
+          اگر فردا QR از دنیا برود، محصول ما هنوز کار می‌کند — چون ارزش اصلی در لایه‌ی رابطه با مشتری است.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOOP DETAIL -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid-4">
+        <article class="card reveal">
+          <div class="card__icon">①</div>
+          <h3>ورود</h3>
+          <p>QR روی میز → منوی وب → بدون نصب اپ. <b>نقش:</b> کاهش اصطکاک ورود به سیستم.</p>
+        </article>
+        <article class="card reveal" data-delay="70">
+          <div class="card__icon">②</div>
+          <h3>شناخت</h3>
+          <p>شماره موبایل یا عضویت یک‌کلیکی. <b>نقش:</b> تبدیل تراکنش ناشناس به پروفایل.</p>
+        </article>
+        <article class="card reveal" data-delay="140">
+          <div class="card__icon">③</div>
+          <h3>انگیزه</h3>
+          <p>امتیاز، پاداش، پیشرفت قابل مشاهده. <b>نقش:</b> دلیل روشن برای مراجعه‌ی بعدی.</p>
+        </article>
+        <article class="card reveal" data-delay="210">
+          <div class="card__icon">④</div>
+          <h3>بازگشت</h3>
+          <p>تشخیص ریزش + پیشنهاد شخصی + سنجش درآمد. <b>نقش:</b> تبدیل رابطه به پول.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SMART RETURN -->
+  <section class="section section--soft" id="smart-return">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">قلب محصول</span>
+        <h2 class="h2">Smart Return چطور فکر می‌کند؟</h2>
+        <p class="lead">
+          برای هر مشتری، سیستم یک «چرخه‌ی طبیعی مراجعه» محاسبه می‌کند. وقتی از آن چرخه بیرون بزند،
+          دیگر منتظر نمی‌مانیم تا برای همیشه برود.
+        </p>
+        <div class="grid grid-2" style="margin-top:22px">
+          <div class="panel">
+            <div class="tiny muted">ورودی‌ها</div>
+            <ul class="stack" style="margin-top:10px;font-size:0.9rem">
+              <li>• ساعت و تاریخ هر مراجعه</li>
+              <li>• میانگین فاصله‌ی مراجعه</li>
+              <li>• تعداد کل مراجعه و مجموع خرید</li>
+              <li>• محصول و ساعت محبوب</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <div class="tiny muted">خروجی‌ها</div>
+            <ul class="stack" style="margin-top:10px;font-size:0.9rem">
+              <li>• وضعیت: <span class="pill pill--ok">فعال</span> <span class="pill pill--warn">کم‌رنگ</span> <span class="pill pill--danger">در معرض ریزش</span></li>
+              <li>• اولویت تماس (Priority Score)</li>
+              <li>• پیشنهاد آفر متناسب با رفتار</li>
+              <li>• تخمین درآمد قابل بازیابی</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note" style="margin-top:20px">
+          مثال واقعی از نسخه‌ی دمو: صاحب کافه وارد می‌شود و می‌بیند
+          «۲۷ مشتری احتمالاً برنمی‌گردند» — با یک دکمه، برای ۲۱ نفر اول کمپین ساخته می‌شود.
+        </p>
+      </div>
+
+      <div class="reveal" data-delay="120">
+        <div class="card">
+          <h3 style="margin-bottom:14px">منطق تصمیم (نسخه ساده)</h3>
+          <pre class="code"><span class="d">// for each customer</span>
+avg_gap  = mean(days_between_visits)
+days_out = today - last_visit
+
+<span class="k">if</span> days_out &gt; 2 × avg_gap      <span class="d">→ AT_RISK</span>
+<span class="k">else if</span> days_out &gt; 1.5 × avg_gap  <span class="d">→ FADING</span>
+<span class="k">else</span>                            <span class="d">→ ACTIVE</span>
+
+value_at_risk = avg_ticket × visits_per_month
+priority      = value_at_risk × recency_factor</pre>
+          <p class="tiny faint" style="margin-top:12px">
+            مدل اول عمداً ساده است: شفاف، قابل توضیح برای صاحب کافه، و قابل اعتبارسنجی.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 MODULES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">ماژول‌ها</span>
+        <h2 class="h2">شش بخش، هرکدام با یک نقش مشخص</h2>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:34px">
+        <article class="card reveal">
+          <span class="pill pill--brand">۱. Digital Menu</span>
+          <h3 style="margin-top:12px">منوی وب، نه اپ</h3>
+          <p>سرعت، خوانایی، تصاویر. همان URL همیشه، بدون به‌روزرسانی اپ. نقشه‌ی راه: تغییر قیمت و موجودی در چند ثانیه.</p>
+        </article>
+        <article class="card reveal" data-delay="70">
+          <span class="pill pill--brand">۲. Customer Identity</span>
+          <h3 style="margin-top:12px">مشتری از ناشناس به شناخته‌شده</h3>
+          <p>عضویت با شماره موبایل + تأیید یک‌باره. بدون فرم طولانی، بدون رمز، بدون اپ. عضویت اختیاری است اما پاداش‌دار.</p>
+        </article>
+        <article class="card reveal" data-delay="140">
+          <span class="pill pill--brand">۳. Loyalty</span>
+          <h3 style="margin-top:12px">امتیاز و پاداش</h3>
+          <p>امتیاز روی هر خرید، پاداش در آستانه‌های مشخص، و نمایش «چقدر تا پاداش بعدی مانده» — همان چیزی که بازگشت را می‌سازد.</p>
+        </article>
+        <article class="card reveal" data-delay="210">
+          <span class="pill pill--brand">۴. Customer Analytics</span>
+          <h3 style="margin-top:12px">تحلیلی که مدیر کافه می‌فهمد</h3>
+          <p>نرخ بازگشت، فاصله‌ی مراجعه، ساعات پرتردد، محصولات محبوب، ارزش سبد. نه ۳۰ گزارش غیرقابل استفاده.</p>
+        </article>
+        <article class="card reveal" data-delay="280">
+          <span class="pill pill--brand">۵. Smart Return</span>
+          <h3 style="margin-top:12px">پیدا کردن مشتری در حال ریزش</h3>
+          <p>هشدار روزانه با لیست اولویت‌دار و تخمین درآمد قابل بازیابی. این بخش، دلیل اصلی پول‌دادن است.</p>
+        </article>
+        <article class="card reveal" data-delay="350">
+          <span class="pill pill--brand">۶. Campaign</span>
+          <h3 style="margin-top:12px">کمپین بازگشت با نتیجه‌ی قابل اندازه‌گیری</h3>
+          <p>انتخاب گروه → انتخاب پیام/آفر → ارسال → ثبت بازگشت → محاسبه‌ی درآمد ساخته‌شده. یک چرخه، نه یک ایمیل تبلیغاتی.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOAT -->
+  <section class="section section--dark is-dark" id="moat">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Moat</span>
+        <h2 class="h2">مزیت رقابتی، پنهان در داده‌ای است که جمع می‌شود</h2>
+        <p class="lead" style="color:rgba(247,239,232,.75)">
+          از روز اول ادعای «داده‌ی منحصربه‌فرد» نمی‌کنیم. اما اگر مسیر درست برود، هر کافه‌ی جدید
+          این حلقه را قوی‌تر می‌کند.
+        </p>
+      </div>
+
+      <div class="grid grid-4" style="margin-top:34px">
+        <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)">
+          <div class="card__icon" style="background:rgba(224,177,105,.16)">🏪</div>
+          <h3>۱۰۰ کافه</h3>
+          <p style="color:rgba(247,239,232,.7)">شبکه‌ای از کافه‌های متصل به یک موتور مشترک.</p>
+        </div>
+        <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)">
+          <div class="card__icon" style="background:rgba(224,177,105,.16)">👥</div>
+          <h3>۵۰۰,۰۰۰ مشتری</h3>
+          <p style="color:rgba(247,239,232,.7)">پروفایل رفتاری تجمیعی و بی‌نام‌شده برای الگوگیری.</p>
+        </div>
+        <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)">
+          <div class="card__icon" style="background:rgba(224,177,105,.16)">🧠</div>
+          <h3>موتور پیشنهاد</h3>
+          <p style="color:rgba(247,239,232,.7)">یاد می‌گیرد چه آفری برای چه رفتاری بهتر جواب می‌دهد.</p>
+        </div>
+        <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)">
+          <div class="card__icon" style="background:rgba(224,177,105,.16)">📈</div>
+          <h3>کمپین بهتر</h3>
+          <p style="color:rgba(247,239,232,.7)">نرخ بازگشت بالاتر → ارزش بیشتر برای کافه → حفظ مشتری بیشتر.</p>
+        </div>
+      </div>
+
+      <p class="note note--dark reveal" style="margin-top:26px;max-width:820px">
+        <b style="color:#e0b169">Cafe Intelligence Network (آینده، نه امروز):</b>
+        مثلاً کشف اینکه مشتریانی که «Latte + Cheesecake» می‌گیرند احتمال بیشتری برای بازگشت در ۷ روز دارند.
+        این مزیت را باید ساخت، نه اینکه از روز اول ادعا کرد.
+      </p>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">معماری</span>
+        <h2 class="h2">وب‌اپ، Multi-Tenant، بدون اپ و بدون POS</h2>
+        <p class="lead">ساده بماند تا سریع ساخته شود، سریع تغییر کند و پشتیبانی‌اش یک نفر را زمین نزند.</p>
+      </div>
+      <div class="reveal" style="margin-top:26px">
+        <pre class="code">                         <span class="c">CafeLoop</span>
+                            │
+             ┌──────────────┴──────────────┐
+             │                             │
+      <span class="k">CUSTOMER APP</span>                   <span class="k">CAFE DASHBOARD</span>
+      (Web / PWA)                     (Web)
+             │                             │
+          Menu                        Analytics
+             │                             │
+         Loyalty                          CRM
+             │                             │
+      Customer ID                    Campaigns
+             │                             │
+             └──────────┬──────────────────┘
+                        ▼
+                   <span class="c">DATA ENGINE</span>
+                        ▼
+                 <span class="c">AI / AUTOMATION</span>
+
+<span class="d">Stack پیشنهادی MVP:</span>  یک Backend مشترک  ·  یک دیتابیس Multi-Tenant
+                      ·  ارسال پیام با سرویس پیامک/واتس‌اپ  ·  داشبورد وب ساده</pre>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:26px">
+        <div class="card reveal">
+          <h3>V1 — الان</h3>
+          <ul class="stack small muted" style="margin-top:8px">
+            <li>✅ منوی وب + QR</li>
+            <li>✅ هویت مشتری</li>
+            <li>✅ وفاداری</li>
+            <li>✅ تحلیل رفتار</li>
+            <li>✅ Smart Return</li>
+            <li>✅ کمپین بازگشت</li>
+          </ul>
+        </div>
+        <div class="card reveal" data-delay="80">
+          <h3>V2 — بعد از اولین مشتری‌های پولی</h3>
+          <ul class="stack small muted" style="margin-top:8px">
+            <li>◻️ NFC به‌عنوان نقطه‌ی ورود دوم</li>
+            <li>◻️ سفارش‌گیری اختیاری (بدون پرداخت)</li>
+            <li>◻️ اتوماسیون بازاریابی</li>
+            <li>◻️ چندشعبه‌ای پیشرفته</li>
+          </ul>
+        </div>
+        <div class="card reveal" data-delay="160">
+          <h3>هرگز (قبل از اثبات مدل)</h3>
+          <ul class="stack small muted" style="margin-top:8px">
+            <li>❌ اپ Native</li>
+            <li>❌ کیف پول و پرداخت</li>
+            <li>❌ اتصال POS و آشپزخانه</li>
+            <li>❌ مارکت‌پلیس و Delivery</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATA & TRUST -->
+  <section class="section section--soft">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">اعتماد</span>
+        <h2 class="h2">داده‌ی مشتری = اعتماد کافه</h2>
+        <p class="lead">
+          بدون اعتماد، کافه شماره‌ی مشتری‌هایش را نمی‌دهد. پس از روز اول شفاف حرف می‌زنیم.
+        </p>
+      </div>
+      <div class="reveal" data-delay="100">
+        <div class="card">
+          <ul class="stack">
+            <li class="row">🔒 داده هر کافه در فضای جداگانه و غیرقابل مشاهده برای کافه‌های دیگر</li>
+            <li class="row">🏷️ مالکیت داده‌ی مشتری با خود کافه است، نه با ما</li>
+            <li class="row">🧹 مشتری می‌تواند درخواست حذف پروفایل بدهد (تک‌کلیک)</li>
+            <li class="row">📤 خروجی CSV در هر زمان — بدون قفل‌شدن کافه در سیستم ما</li>
+            <li class="row">🚫 بدون فروش یا اشتراک‌گذاری داده با شخص سوم</li>
+          </ul>
+          <p class="note" style="margin-top:18px">
+            این‌ها تعهدات محصول در نسخه‌ی اول‌اند؛ جزئیات فنی و حقوقی قبل از فروش نهایی تکمیل می‌شود.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAMPAIGN EXAMPLE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">یک کمپین، از صفر تا درآمد</span>
+        <h2 class="h2">نمونه‌ی واقعی از خروجی محصول</h2>
+      </div>
+
+      <div class="grid grid-4" style="margin-top:32px">
+        <div class="panel center reveal">
+          <div class="kpi__label" style="justify-content:center">هدف‌گذاری‌شده</div>
+          <div class="kpi__value">127</div>
+          <div class="tiny muted">مشتری در معرض ریزش</div>
+        </div>
+        <div class="panel center reveal" data-delay="70">
+          <div class="kpi__label" style="justify-content:center">پیام باز شد</div>
+          <div class="kpi__value">41</div>
+          <div class="tiny muted">نرخ باز شدن ۳۲٪</div>
+        </div>
+        <div class="panel center reveal" data-delay="140">
+          <div class="kpi__label" style="justify-content:center">بازگشت</div>
+          <div class="kpi__value" style="color:var(--mint-600)">19</div>
+          <div class="tiny muted">۱۵٪ از گروه هدف</div>
+        </div>
+        <div class="panel center reveal" data-delay="210">
+          <div class="kpi__label" style="justify-content:center">درآمد ساخته‌شده</div>
+          <div class="kpi__value" style="color:var(--mint-600)">3.4M</div>
+          <div class="tiny muted">۱۲ خرید ثبت‌شده</div>
+        </div>
+      </div>
+
+      <p class="note mx-auto reveal" style="margin-top:24px;max-width:760px;text-align:center">
+        همین چهار عدد، جمله‌ای است که اشتراک ماهانه را می‌فروشد:
+        «این هفته سیستم ما <b>۱۹</b> مشتری را برگرداند و <b class="mono">3.4M</b> تومان فروش ساخت.»
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="banner reveal">
+        <div>
+          <span class="eyebrow">بعدی</span>
+          <h2 style="margin-top:12px">دموی پنل را با داده‌ی نمونه ببین</h2>
+          <p>داشبورد، لیست مشتریان در معرض ریزش، سازنده‌ی کمپین و دستیار AI — همه در یک صفحه‌ی تعاملی.</p>
+        </div>
+        <div class="row">
+          <a class="btn btn--light btn--lg" href="demo.html">دموی زنده پنل</a>
+          <a class="btn btn--outline-light btn--lg" href="customer.html">تجربه مشتری</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="assets/img/logo.svg" alt="">
+          <span>CafeLoop<span class="brand__sub" style="color:#a99689">Turn one-time visitors into regulars.</span></span>
+        </a>
+        <p class="small" style="margin-top:14px;color:#a99689;max-width:34ch">
+          سیستمی که کافه را قادر می‌کند مشتری‌های یک‌بار مصرف را به مشتری‌های تکراری تبدیل کند — و درآمدش را اندازه بگیرد.
+        </p>
+      </div>
+      <div>
+        <h5>محصول</h5>
+        <a href="how-it-works.html">چطور کار می‌کند</a>
+        <a href="demo.html">دموی پنل کافه</a>
+        <a href="customer.html">تجربه مشتری</a>
+        <a href="pricing.html">قیمت‌گذاری</a>
+      </div>
+      <div>
+        <h5>شروع</h5>
+        <a href="roadmap.html">نقشه ۷ روزه</a>
+        <a href="roadmap.html#icp">بازار هدف و ICP</a>
+        <a href="how-it-works.html#moat">Moat و داده</a>
+        <a href="contact.html">درخواست دمو</a>
+      </div>
+      <div>
+        <h5>یادداشت</h5>
+        <p class="small" style="color:#a99689">
+          داده‌های این سایت نمونه است. CafeLoop هنوز در مرحله‌ی اعتبارسنجی است؛
+          اول بفروش، بعد بساز.
+        </p>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© <span data-year>2026</span> CafeLoop — کافه‌لوپ</span>
+      <span>ساخته‌شده با HTML و CSS و JavaScript خالص.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

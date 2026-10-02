@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تجربه مشتری — CafeLoop</title>
+<meta name="description" content="سمت مشتری CafeLoop: اسکن QR، منوی وب بدون نصب اپ، عضویت یک‌کلیکی، امتیاز وفاداری و پیشنهاد شخصی‌سازی‌شده.">
+<meta name="theme-color" content="#150d0a">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="">
+      <span>CafeLoop<span class="brand__sub">مشتری رو برگردون</span></span>
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="index.html">خانه</a>
+      <a href="how-it-works.html">چطور کار می‌کند</a>
+      <a href="demo.html">دموی پنل</a>
+      <a href="customer.html">تجربه مشتری</a>
+      <a href="pricing.html">قیمت‌گذاری</a>
+      <a href="roadmap.html">نقشه ۷ روزه</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--sm btn--nav-cta" href="contact.html">درخواست دمو</a>
+      <button class="nav__toggle" aria-label="منو" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" style="padding-bottom:clamp(30px,4vw,52px)">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">سمت مشتری</span>
+        <h1 class="h1" style="margin-top:18px">هیچ اپی نصب نمی‌شود.<br><span class="grad">فقط یک اسکن.</span></h1>
+        <p class="lead mx-auto" style="margin-top:18px;max-width:62ch">
+          هر مرحله‌ی اضافه در مسیر مشتری، یعنی از دست دادن بخشی از آن‌ها. پس مسیر را کوتاه نگه می‌داریم:
+          QR روی میز → منو → عضویت یک‌کلیکی → امتیاز → پیشنهاد → بازگشت.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE PHONE -->
+  <section class="section section--tight">
+    <div class="container grid grid-2" style="align-items:center">
+      <div class="reveal">
+        <span class="eyebrow">تعاملی</span>
+        <h2 class="h2" style="margin-top:14px">این موبایل را امتحان کن</h2>
+        <p class="lead" style="margin-top:14px">
+          این دقیقاً همان چیزی است که مشتری روی گوشی‌اش می‌بیند — وب‌اپ، بدون نصب.
+          تب‌ها را عوض کن، محصول اضافه کن، امتیاز بگیر و پیشنهاد را ببین.
+        </p>
+
+        <div class="flow" style="margin-top:24px">
+          <div class="flow__item">
+            <span class="flow__num">۱</span>
+            <div><h4>منو</h4><p>سریع، خوانا، با قیمت و دسته‌بندی. هدف اول: راضی کردن مشتری در همان لحظه.</p></div>
+          </div>
+          <div class="flow__item">
+            <span class="flow__num">۲</span>
+            <div><h4>عضویت اختیاری</h4><p>«می‌خواهی ۱۵٪ این سفارش را امتیاز بگیری؟» — عضویت با شماره، بدون رمز، بدون فرم.</p></div>
+          </div>
+          <div class="flow__item">
+            <span class="flow__num">۳</span>
+            <div><h4>امتیاز و پاداش</h4><p>مشتری می‌بیند چقدر تا پاداش بعدی مانده. همین، دلیل بازگشت بعدی است.</p></div>
+          </div>
+          <div class="flow__item" style="background:linear-gradient(140deg,rgba(47,169,140,.12),rgba(47,169,140,.04));border-color:rgba(47,169,140,.3)">
+            <span class="flow__num" style="background:var(--mint-500);color:#fff">۴</span>
+            <div><h4>پیشنهاد شخصی</h4><p>«قهوه‌ی همیشگیتون منتظرتونه ☕» — حول محصول محبوب همان مشتری، در ساعت محبوب همان مشتری.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" data-delay="120">
+        <div class="phone">
+          <div class="phone__screen">
+            <div class="phone__top">
+              <div class="row row--between">
+                <div class="row">
+                  <img src="assets/img/logo.svg" alt="" style="width:30px;height:30px">
+                  <div>
+                    <b>Cafe Noir</b>
+                    <div class="brand__sub">میز ۷ · تهران، جردن</div>
+                  </div>
+                </div>
+                <span class="pill pill--ghost-light tiny">دمو</span>
+              </div>
+            </div>
+
+            <div class="phone__body" id="phoneBody"></div>
+
+            <div class="phone__tabs" id="phoneTabs">
+              <button type="button" class="is-active" data-tab="menu"><i>☕</i>منو</button>
+              <button type="button" data-tab="loyalty"><i>⭐</i>امتیاز</button>
+              <button type="button" data-tab="offer"><i>🎁</i>پیشنهاد</button>
+              <button type="button" data-tab="profile"><i>🪪</i>پروفایل</button>
+            </div>
+          </div>
+        </div>
+        <p class="tiny faint center" style="margin-top:14px">داده و سفارش‌ها نمونه‌اند و در مرورگر تو ذخیره می‌شوند؛ چیزی به سرور فرستاده نمی‌شود.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QR SECTION -->
+  <section class="section section--soft">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">روی میز</span>
+        <h2 class="h2">QR فقط دروازه است، نه محصول</h2>
+        <p class="lead">
+          بابت QR پول نمی‌گیریم. اگر فردا تکنولوژی ورود عوض شود (NFC، دستیار صوتی، هر چیز دیگر)،
+          ارزش واقعی سرِ جایش می‌ماند: <b>لایه‌ی رابطه با مشتری</b>.
+        </p>
+        <ul class="stack" style="margin-top:18px">
+          <li class="row">🖨️ یک کارت روی میز — بدون سخت‌افزار</li>
+          <li class="row">🔗 لینک اختصاصی هر شعبه و هر میز برای تحلیل بهتر</li>
+          <li class="row">📱 در V2: NFC به‌عنوان نقطه‌ی ورود دوم</li>
+        </ul>
+      </div>
+
+      <div class="reveal" data-delay="120">
+        <div class="card center">
+          <div class="card" style="display:inline-block;padding:16px;background:#fff">
+            <canvas id="qrCanvas" width="220" height="220" style="width:200px;height:200px" aria-label="نمونه QR روی میز"></canvas>
+          </div>
+          <p class="small muted" style="margin-top:14px">
+            نمونه‌ی کارت QR روی میز — <span class="mono">cafeloop.ir/noir/t7</span>
+          </p>
+          <p class="tiny faint">QR نمایشی است؛ در محصول نهایی برای هر میز/شعبه ساخته می‌شود.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">Customer Journey</span>
+        <h2 class="h2">مسیر کامل مشتری، سیزده گام</h2>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:32px">
+        <div class="card reveal" style="background:linear-gradient(160deg,#2a1c17,#150d0a);color:#f7efe8;border-color:transparent">
+          <h3 style="color:#fff">از نگاه مشتری</h3>
+          <ol class="stack" style="margin-top:14px;font-size:.94rem;color:rgba(247,239,232,.82)">
+            <li>۱. می‌نشیند پشت میز</li>
+            <li>۲. QR را اسکن می‌کند</li>
+            <li>۳. منو را می‌بیند</li>
+            <li>۴. اختیاری: عضو CafeLoop می‌شود</li>
+            <li>۵. امتیاز می‌گیرد</li>
+            <li>۶. خرید می‌کند و می‌رود</li>
+            <li>۷. سیستم او را به یاد می‌آورد</li>
+            <li>۸. ۸ روز بعد… پیشنهاد شخصی می‌گیرد</li>
+            <li>۹. برمی‌گردد ← <b style="color:#e0b169">اینجا همه‌چیز اتفاق می‌افتد</b></li>
+          </ol>
+        </div>
+        <div class="card reveal" data-delay="90">
+          <h3>از نگاه کافه</h3>
+          <ol class="stack" style="margin-top:14px;font-size:.94rem;color:var(--ink-soft)">
+            <li>۱. مشتری وارد می‌شود</li>
+            <li>۲. خرید ثبت می‌شود</li>
+            <li>۳. مشتری «شناخته‌شده» می‌شود</li>
+            <li>۴. سیستم بازگشتش را پیش‌بینی می‌کند</li>
+            <li>۵. کمپین خودکار/تأییدی اجرا می‌شود</li>
+            <li>۶. مشتری برمی‌گردد</li>
+            <li>۷. درآمد در داشبورد ثبت می‌شود</li>
+            <li>۸. نرخ بازگشت بالا می‌رود ← <b>KPI ما</b></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJECTIONS -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">مقاومت‌های واقعی</span>
+        <h2 class="h2">مشتری می‌گوید «چرا شماره بدهم؟»</h2>
+      </div>
+      <div class="grid grid-3" style="margin-top:32px">
+        <div class="card reveal">
+          <div class="card__icon">🎁</div>
+          <h3>پاسخ: فوراً چیزی می‌گیرد</h3>
+          <p>امتیاز همین سفارش، نه وعده‌ی آینده. ارزش باید در همان لحظه دیده شود.</p>
+        </div>
+        <div class="card reveal" data-delay="80">
+          <div class="card__icon">⏱️</div>
+          <h3>پاسخ: مسیر کوتاه است</h3>
+          <p>یک شماره، یک کد تأیید. اگر بیشتر طول بکشد، نرخ عضویت سقوط می‌کند.</p>
+        </div>
+        <div class="card reveal" data-delay="160">
+          <div class="card__icon">🔒</div>
+          <h3>پاسخ: کنترل با خودش است</h3>
+          <p>می‌تواند هر زمان پروفایلش را حذف کند و پیام‌ها محدود و مرتبط هستند، نه انبوه.</p>
+        </div>
+      </div>
+      <p class="note mx-auto reveal" style="margin-top:26px;max-width:720px;text-align:center">
+        عضویت <b>اختیاری</b> است: مشتری بدون عضویت هم منو را می‌بیند و خرید می‌کند.
+        اما همه‌ی ارزش CafeLoop از همان لحظه‌ای شروع می‌شود که مشتری «شناخته‌شده» می‌شود.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="banner reveal">
+        <div>
+          <span class="eyebrow">بعدی</span>
+          <h2 style="margin-top:12px">سمت کافه را هم ببین</h2>
+          <p>داشبورد، لیست مشتریان در معرض ریزش، سازنده‌ی کمپین و دستیار درآمد AI — با داده‌ی نمونه.</p>
+        </div>
+        <div class="row">
+          <a class="btn btn--light btn--lg" href="demo.html">دموی پنل کافه</a>
+          <a class="btn btn--outline-light btn--lg" href="contact.html">درخواست دمو</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="assets/img/logo.svg" alt="">
+          <span>CafeLoop<span class="brand__sub" style="color:#a99689">Turn one-time visitors into regulars.</span></span>
+        </a>
+        <p class="small" style="margin-top:14px;color:#a99689;max-width:34ch">
+          سیستمی که کافه را قادر می‌کند مشتری‌های یک‌بار مصرف را به مشتری‌های تکراری تبدیل کند — و درآمدش را اندازه بگیرد.
+        </p>
+      </div>
+      <div>
+        <h5>محصول</h5>
+        <a href="how-it-works.html">چطور کار می‌کند</a>
+        <a href="demo.html">دموی پنل کافه</a>
+        <a href="customer.html">تجربه مشتری</a>
+        <a href="pricing.html">قیمت‌گذاری</a>
+      </div>
+      <div>
+        <h5>شروع</h5>
+        <a href="roadmap.html">نقشه ۷ روزه</a>
+        <a href="roadmap.html#icp">بازار هدف و ICP</a>
+        <a href="how-it-works.html#moat">Moat و داده</a>
+        <a href="contact.html">درخواست دمو</a>
+      </div>
+      <div>
+        <h5>یادداشت</h5>
+        <p class="small" style="color:#a99689">
+          داده‌های این صفحه نمونه است. CafeLoop هنوز در مرحله‌ی اعتبارسنجی است؛
+          اول بفروش، بعد بساز.
+        </p>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© <span data-year>2026</span> CafeLoop — کافه‌لوپ</span>
+      <span>ساخته‌شده با HTML و CSS و JavaScript خالص.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite"></div>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/customer.js"></script>
+<script>
+  document.querySelectorAll("[data-toast]").forEach(function (btn) {
+    btn.addEventListener("click", function () { window.cafeLoopToast(btn.dataset.toast); });
+  });
+</script>
+</body>
+</html>
