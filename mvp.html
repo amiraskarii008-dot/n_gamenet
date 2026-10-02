@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CafeLoop MVP — اپلیکیشن مشتری (منو، سفارش، امتیاز، پیشنهاد شخصی)</title>
+<meta name="description" content="نسخه‌ی قابل استفاده‌ی MVP کافه‌لوپ از نگاه مشتری: منوی دیجیتال، ثبت و پیگیری سفارش، سرویس میز، وفاداری و امتیاز، پیشنهاد شخصی Smart Return، پروفایل رفتاری و گزینه‌های پیشرفته با منوهای شیشه‌ای.">
+<meta name="theme-color" content="#150d0a">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="manifest" href="assets/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="assets/img/logo.svg">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/glass.css">
+</head>
+<body class="mvp">
+
+<a class="skip-link" href="#mvpMain">پرش به محتوای اصلی</a>
+
+<!-- ================= شیشه‌ای پس‌زمینه ================= -->
+<div class="mvp-bg" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<div class="mvp-shell">
+
+  <!-- ================= TOP BAR + GLASS MENUS ================= -->
+  <header class="mvp-bar glass glass--sheen" id="mvpBar">
+    <a class="mvp-bar__brand" href="index.html" aria-label="بازگشت به سایت CafeLoop">
+      <img src="assets/img/logo.svg" alt="">
+      <span>CafeLoop MVP<small>MVP · نسخه‌ی مشتری</small></span>
+    </a>
+    <span class="gpill gpill--gold" id="tablePill">میز ۷ · Cafe Noir</span>
+
+    <div class="mvp-bar__spacer"></div>
+
+    <div class="mvp-bar__status" title="اتصال زنده به تبلت بار">
+      <span class="mvp-bar__dot" aria-hidden="true"></span>
+      <span id="liveClock">—</span>
+    </div>
+    <span class="gpill gpill--mint" id="barPoints">۷۹۰ امتیاز · برنز</span>
+
+    <!-- منوهای شیشه‌ای با JS ساخته می‌شوند: دسته‌بندی، فیلتر، پیشرفته، سرویس، حساب -->
+    <div class="row" id="glassMenus" style="gap:6px"></div>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main class="mvp-main" id="mvpMain">
+
+    <!-- ۱. منوی دیجیتال -->
+    <section class="mvp-view" data-view="menu" aria-label="منوی دیجیتال">
+      <div class="mvp-title">
+        <h2>☕ منوی دیجیتال</h2>
+        <p>بدون نصب اپ — همان چیزی که مشتری بعد از اسکن QR می‌بیند</p>
+      </div>
+
+      <div class="gsearch" style="margin-bottom:10px">
+        <span class="gsearch__icon" aria-hidden="true">🔍</span>
+        <input class="ginput" id="searchField" type="search" placeholder="جست‌وجو در منو: لاتّه، کیک، بدون کافئین…" aria-label="جست‌وجو در منو" autocomplete="off">
+        <button class="gbtn gbtn--glass gbtn--sm" id="searchClear" type="button" style="position:absolute;inset-inline-end:8px;top:50%;transform:translateY(-50%);padding:6px 10px" aria-label="پاک کردن جست‌وجو">✕</button>
+      </div>
+
+      <div class="gchips" id="catChips" role="tablist" aria-label="دسته‌بندی منو"></div>
+      <div class="grow-flex grow-flex--between" style="margin-bottom:10px">
+        <span class="gtiny gfaint" id="menuCount"></span>
+        <span class="gtiny gfaint">کلیک روی هر آیتم = گزینه‌های سفارش (سایز، شیر، شکر، extras)</span>
+      </div>
+
+      <div class="gitems" id="menuList"></div>
+
+      <div class="gcard glass" data-adv style="margin-top:14px">
+        <div class="gcard__head"><div><h3>🌱 فیلترهای هوشمند و داده‌ی تغذیه‌ای</h3><p>گزینه‌های پیشرفته: کالری، کافئین، زمان آماده‌سازی، حساسیت‌ها و آلرژن‌ها.</p></div></div>
+        <div class="opt-grid" id="quickDiet">
+          <button class="opt" data-diet="vegan">🌱 گیاهی</button>
+          <button class="opt" data-diet="sugarfree">🚫 بدون شکر</button>
+          <button class="opt" data-diet="decaf">😴 بدون کافئین</button>
+          <button class="opt" data-diet="glutenfree">🌾 بدون گلوتن</button>
+        </div>
+        <p class="gtiny gfaint" style="margin-top:10px">این فیلترها همان‌ها هستند که در پنل کافه به‌عنوان «ترجیحات مشتری» ثبت می‌شوند و پایه‌ی پیشنهاد شخصی‌اند.</p>
+      </div>
+    </section>
+
+    <!-- ۲. سفارش‌ها -->
+    <section class="mvp-view" data-view="orders" aria-label="سفارش‌ها">
+      <div class="mvp-title">
+        <h2>🧾 سفارش من</h2>
+        <p>پیگیری زنده، سرویس میز، امتیاز به سفارش و سفارش مجدد</p>
+      </div>
+      <div id="ordersWrap"></div>
+    </section>
+
+    <!-- ۳. وفاداری -->
+    <section class="mvp-view" data-view="loyalty" aria-label="وفاداری">
+      <div class="mvp-title">
+        <h2>⭐ امتیاز و پاداش</h2>
+        <p>دلیل روشن برای مراجعه‌ی بعدی — با تراز، سطوح و دفتر امتیاز</p>
+      </div>
+      <div id="loyaltyWrap"></div>
+    </section>
+
+    <!-- ۴. پیشنهاد شخصی -->
+    <section class="mvp-view" data-view="offers" aria-label="پیشنهادها">
+      <div class="mvp-title">
+        <h2>🎁 پیشنهاد شخصی</h2>
+        <p>Smart Return: چه چیزی، چرا و در چه ساعتی به تو پیشنهاد می‌دهیم</p>
+      </div>
+      <div id="offersWrap"></div>
+    </section>
+
+    <!-- ۵. پروفایل -->
+    <section class="mvp-view" data-view="profile" aria-label="پروفایل">
+      <div class="mvp-title">
+        <h2>🪪 پروفایل و داده‌ی من</h2>
+        <p>Customer Passport، QR میز، حریم خصوصی و گزینه‌های پیشرفته</p>
+      </div>
+      <div id="profileWrap"></div>
+    </section>
+  </main>
+
+  <!-- ================= CART BAR ================= -->
+  <div class="gcartbar glass glass--sheen" id="cartBar" role="region" aria-label="سبد سفارش">
+    <span style="font-size:1.4rem" aria-hidden="true">🧺</span>
+    <div class="gcartbar__sum" id="cartBarText"></div>
+    <button class="gbtn gbtn--glass gbtn--sm" type="button" data-clearcart="1" aria-label="خالی کردن سبد" title="خالی کردن سبد">✕</button>
+    <button class="gbtn" type="button" data-opencart="1">سبد و ثبت سفارش ←</button>
+  </div>
+
+  <!-- ================= GLASS DOCK (منوی شیشه‌ای پایین) ================= -->
+  <nav class="gdock glass glass--sheen" id="gdock" aria-label="بخش‌های اپلیکیشن">
+    <button class="gdock__btn is-active" type="button" data-view="menu">
+      <i>☕</i>منو<span class="gdock__badge is-zero" id="badgeCart">0</span>
+    </button>
+    <button class="gdock__btn" type="button" data-view="orders">
+      <i>🧾</i>سفارش<span class="gdock__badge is-zero" id="badgeOrder">●</span>
+    </button>
+    <button class="gdock__btn" type="button" data-view="loyalty">
+      <i>⭐</i>امتیاز
+    </button>
+    <button class="gdock__btn" type="button" data-view="offers">
+      <i>🎁</i>پیشنهاد<span class="gdock__badge is-zero" id="badgeOffer">0</span>
+    </button>
+    <button class="gdock__btn" type="button" data-view="profile">
+      <i>🪪</i>پروفایل
+    </button>
+  </nav>
+
+  <!-- ================= SHEET / DIALOG ================= -->
+  <div class="goverlay" id="overlay" role="dialog" aria-modal="true" aria-label="جزئیات">
+    <div class="gsheet glass glass--strong glass--sheen" id="sheet"></div>
+  </div>
+</div>
+
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/mvp-data.js"></script>
+<script src="assets/js/mvp.js"></script>
+</body>
+</html>
