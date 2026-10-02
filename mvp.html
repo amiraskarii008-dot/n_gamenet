@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#120d0a">
 <title>MVP مشتری — CafeLoop</title>
-<meta name="description" content="تجربه‌ی تعاملی مشتری CafeLoop: منوی دیجیتال، سفارش آزمایشی، امتیاز وفاداری، پیشنهادهای شخصی و مدیریت پروفایل.">
+<meta name="description" content="MVP یک‌صفحه‌ای CafeLoop: فضای مشتری و داشبورد مدیریت برای منو، مشتری، پیشنهاد و سفارش‌های آزمایشی محلی.">
 <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
@@ -17,7 +17,7 @@
   <header class="mvp-topbar glass-panel">
     <a class="mvp-brand" href="index.html" aria-label="بازگشت به خانه CafeLoop">
       <img src="assets/img/logo.svg" alt="" width="38" height="38">
-      <span><b>CafeLoop</b><small>تجربه‌ی مشتری</small></span>
+      <span><b>CafeLoop</b><small id="headerSubtitle">تجربه‌ی مشتری</small></span>
     </a>
 
     <button class="branch-button" type="button" data-action="choose-location" aria-label="انتخاب شعبه">
@@ -28,19 +28,19 @@
 
     <div class="topbar-actions">
       <button class="icon-button" type="button" data-action="toggle-theme" aria-label="تغییر پوسته" title="تغییر پوسته"><span id="themeIcon">☼</span></button>
-      <button class="cart-button" type="button" data-action="open-cart" aria-label="باز کردن سبد سفارش">
+      <button class="cart-button" id="headerCartButton" type="button" data-action="open-cart" aria-label="باز کردن سبد سفارش">
         <span class="cart-icon" aria-hidden="true">🛍</span>
         <span class="cart-button-label">سبد سفارش</span>
         <span class="cart-count" id="cartCount">۰</span>
       </button>
-      <button class="topbar-avatar" type="button" data-view="profile" aria-label="رفتن به حساب کاربری"><span id="headerInitials">ا</span></button>
+      <button class="topbar-avatar" id="headerAvatarButton" type="button" data-view="profile" aria-label="رفتن به حساب کاربری"><span id="headerInitials">م</span></button>
     </div>
   </header>
 
   <div class="mvp-frame">
     <aside class="mvp-sidebar glass-panel" aria-label="ناوبری برنامه">
-      <div class="sidebar-label">فضای مشتری</div>
-      <nav class="side-nav">
+      <div class="sidebar-label" id="sidebarLabel">فضای مشتری</div>
+      <nav class="side-nav" id="sideNav">
         <button type="button" data-view="home"><span class="nav-icon" aria-hidden="true">⌂</span><span>خانه</span></button>
         <button type="button" data-view="menu"><span class="nav-icon" aria-hidden="true">☕</span><span>منوی کافه</span><span class="nav-arrow" aria-hidden="true">←</span></button>
         <button type="button" data-view="favorites"><span class="nav-icon" aria-hidden="true">♡</span><span>علاقه‌مندی‌ها</span></button>
@@ -50,27 +50,34 @@
         <button type="button" data-view="profile"><span class="nav-icon" aria-hidden="true">◎</span><span>پروفایل و تنظیمات</span></button>
       </nav>
 
-      <div class="sidebar-member">
-        <div class="member-top"><span class="member-star">✦</span><span>عضو کافه‌لوپ</span><b id="sidebarPoints">۷۴۰</b></div>
+      <div class="sidebar-member" id="sidebarMember">
+        <div class="member-top"><span class="member-star">✦</span><span id="sidebarMemberLabel">باشگاه مشتریان</span><b id="sidebarPoints">۰</b></div>
         <div class="sidebar-progress"><span id="sidebarProgress"></span></div>
-        <small id="sidebarProgressText">۲۶۰ امتیاز تا پاداش بعدی</small>
+        <small id="sidebarProgressText">ثبت‌نام کن و امتیاز بگیر</small>
         <button type="button" data-view="loyalty">دیدن امتیازها <span aria-hidden="true">←</span></button>
       </div>
       <div class="sidebar-foot"><span class="online-dot"></span> تجربه‌ی آزمایشی Cafe Noir</div>
     </aside>
 
     <main class="mvp-main">
+      <div class="workspace-toolbar">
+        <div class="mode-switcher" id="modeSwitcher" role="tablist" aria-label="انتخاب محیط برنامه">
+          <button type="button" data-mode="customer" role="tab" aria-selected="true">☕ فضای مشتری</button>
+          <button type="button" data-mode="admin" role="tab" aria-selected="false">⚙ داشبورد مدیریت</button>
+        </div>
+        <span class="workspace-status" id="workspaceStatus">محیط آزمایشی · اطلاعات تازه و محلی</span>
+      </div>
       <div class="demo-notice" role="note">
         <span class="notice-pulse" aria-hidden="true"></span>
-        <span><b>نسخه‌ی تعاملی MVP</b><span class="notice-separator">·</span> سفارش و اطلاعات این دمو فقط روی همین مرورگر ذخیره می‌شوند.</span>
-        <a href="customer.html">راهنمای تجربه مشتری <span aria-hidden="true">←</span></a>
+        <span><b>دموی مستقل و خالی</b><span class="notice-separator">·</span> مشتری، سفارش و پیشنهاد قدیمی وارد نشده؛ تغییرهای جدید فقط در همین مرورگر ثبت می‌شوند.</span>
+        <a href="customer.html">راهنما <span aria-hidden="true">←</span></a>
       </div>
       <div id="appView" class="mvp-view" tabindex="-1" aria-live="polite"></div>
       <footer class="mvp-footer"><span>© CafeLoop · تجربه‌ی نمونه‌ی کافه نوآر</span><a href="index.html">بازگشت به سایت <span aria-hidden="true">←</span></a></footer>
     </main>
   </div>
 
-  <nav class="mobile-nav glass-panel" aria-label="ناوبری موبایل">
+  <nav class="mobile-nav glass-panel" id="mobileNav" aria-label="ناوبری موبایل">
     <button type="button" data-view="home"><span>⌂</span><small>خانه</small></button>
     <button type="button" data-view="menu"><span>☕</span><small>منو</small></button>
     <button type="button" data-view="loyalty"><span>✦</span><small>امتیاز</small></button>

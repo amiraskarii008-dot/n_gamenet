@@ -6,9 +6,9 @@ html[data-mvp-theme="light"] { color-scheme: light; }
   --app-bg: #100c0a;
   --app-bg-2: #19110d;
   --app-ink: #faf4ed;
-  --app-muted: #baaa9d;
-  --app-faint: #8f7f74;
-  --app-border: rgba(255, 247, 238, .12);
+  --app-muted: #d4c5ba;
+  --app-faint: #b9a99d;
+  --app-border: rgba(255, 247, 238, .17);
   --app-glass: rgba(255, 248, 240, .075);
   --app-glass-strong: rgba(255, 248, 240, .12);
   --app-input: rgba(255, 248, 240, .075);
@@ -30,9 +30,9 @@ html[data-mvp-theme="light"] .mvp-page {
   --app-bg: #f5eee5;
   --app-bg-2: #fffaf4;
   --app-ink: #2a1c17;
-  --app-muted: #715f54;
-  --app-faint: #927f73;
-  --app-border: rgba(62, 43, 32, .12);
+  --app-muted: #55463e;
+  --app-faint: #68554a;
+  --app-border: rgba(62, 43, 32, .16);
   --app-glass: rgba(255,255,255,.62);
   --app-glass-strong: rgba(255,255,255,.82);
   --app-input: rgba(255,255,255,.74);
@@ -538,7 +538,193 @@ html[data-mvp-theme="light"] .modal-dialog { background: rgba(250,245,239,.98); 
   .mvp-page *, .mvp-page *::before, .mvp-page *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
 
-/* Small interaction states shared by overlays and the location shortcut. */
+/* Workspace switcher and management dashboard */
 .mvp-page.drawer-open, .mvp-page.modal-open { overflow: hidden; }
 .branch-home-button { max-width: 100%; cursor: pointer; font-family: var(--font); }
 .branch-home-button:hover { background: rgba(227,178,122,.16); }
+.workspace-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 12px; }
+.mode-switcher { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--app-border); border-radius: 15px; background: var(--app-glass); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+.mode-switcher button { min-height: 40px; padding: 8px 14px; border: 1px solid transparent; border-radius: 11px; color: var(--app-muted); font-size: .78rem; font-weight: 800; transition: color .2s ease, background .2s ease, border-color .2s ease; }
+.mode-switcher button:hover { color: var(--app-ink); }
+.mode-switcher button.is-active { color: #28170e; border-color: rgba(255,255,255,.18); background: linear-gradient(130deg,#efd0a4,#cf8c55); box-shadow: 0 5px 15px rgba(0,0,0,.15); }
+.workspace-status { color: var(--app-muted); font-size: .7rem; text-align: end; }
+#sidebarMember[hidden] { display: none !important; }
+#headerCartButton[hidden] { display: none !important; }
+.mvp-page .muted { color: var(--app-muted) !important; }
+.mvp-page .faint { color: var(--app-faint) !important; }
+.mvp-page .tiny, .mvp-page .small { color: inherit; }
+.mvp-page .privacy-note, .mvp-page .empty-mini, .mvp-page .admin-panel-description { color: var(--app-muted); }
+.mvp-page .select-control option, .mvp-page .form-control option { color: #24170f; background: #fffaf3; }
+.mvp-page .search-field input { color: var(--app-ink); }
+.mvp-page input::placeholder, .mvp-page textarea::placeholder { color: var(--app-faint); opacity: 1; }
+.mvp-page .filter-option { color: var(--app-muted); }
+.mvp-page .app-button--quiet { color: var(--app-ink) !important; }
+.mvp-page .admin-stat-label, .mvp-page .admin-product-card p, .mvp-page .admin-customer-head small, .mvp-page .admin-order-date { color: var(--app-muted); }
+
+.admin-stat-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 11px; margin: 2px 0 16px; }
+.admin-stat { position: relative; min-width: 0; padding: 15px; overflow: hidden; border: 1px solid var(--app-border); border-radius: 17px; background: var(--app-glass); box-shadow: 0 10px 28px rgba(0,0,0,.08); }
+.admin-stat::after { content: ""; position: absolute; inset-inline-end: -24px; bottom: -39px; width: 90px; height: 90px; border-radius: 50%; background: var(--stat-glow,rgba(227,178,122,.13)); }
+.admin-stat-icon { display: grid; place-items: center; width: 34px; height: 34px; margin-bottom: 11px; border-radius: 11px; color: var(--app-accent); background: rgba(227,178,122,.13); font-size: 1rem; }
+.admin-stat-label { display: block; font-size: .7rem; }
+.admin-stat b { position: relative; z-index: 1; display: block; margin-top: 4px; overflow-wrap: anywhere; color: var(--app-ink); font-size: clamp(1.02rem,2vw,1.37rem); line-height: 1.5; }
+.admin-stat small { position: relative; z-index: 1; display: block; margin-top: 3px; color: var(--app-muted); font-size: .62rem; }
+.admin-stat.is-green { --stat-glow: rgba(65,188,151,.14); }
+.admin-stat.is-green .admin-stat-icon { color: var(--app-green); }
+.admin-stat.is-violet { --stat-glow: rgba(143,126,232,.14); }
+.admin-stat.is-violet .admin-stat-icon { color: #c4b4ff; }
+.admin-stat.is-blue { --stat-glow: rgba(92,165,219,.14); }
+.admin-stat.is-blue .admin-stat-icon { color: #a5d7ff; }
+.admin-content-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 13px; }
+.admin-panel { min-width: 0; padding: 17px; border: 1px solid var(--app-border); border-radius: 18px; background: var(--app-glass); box-shadow: 0 10px 28px rgba(0,0,0,.08); }
+.admin-panel > h2 { margin-bottom: 13px; font-size: .96rem; }
+.admin-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 13px; }
+.admin-panel-head h2 { font-size: .92rem; }
+.admin-panel-head .view-eyebrow { margin: 0 0 3px; font-size: .65rem; }
+.admin-bars { display: grid; gap: 12px; }
+.admin-bar-row { display: grid; grid-template-columns: minmax(80px,1fr) minmax(50px,1.2fr) 32px; align-items: center; gap: 9px; color: var(--app-muted); font-size: .68rem; }
+.admin-bar-row > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.admin-bar-row b { color: var(--app-ink); direction: ltr; font-family: var(--font-mono); font-size: .68rem; }
+.admin-bar-track { height: 8px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.11); }
+.admin-bar-track i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg,#e9c28e,#bf7641); }
+.empty-mini { display: grid; min-height: 83px; align-content: center; color: var(--app-muted); font-size: .72rem; line-height: 1.8; }
+.empty-inline { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 3px 0 16px; padding: 14px 16px; border: 1px dashed var(--app-border); border-radius: 16px; color: var(--app-muted); background: rgba(255,255,255,.035); }
+.empty-inline > span { font-size: 1.4rem; }
+.empty-inline b { color: var(--app-ink); font-size: .8rem; }
+.empty-inline small { flex-basis: 100%; margin-inline-start: 37px; color: var(--app-muted); font-size: .67rem; }
+.admin-inline-actions { display: flex; gap: 7px; margin-inline-start: auto; }
+.admin-shortcut-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; }
+.admin-shortcut { display: grid; gap: 4px; justify-items: start; min-height: 115px; padding: 14px; border: 1px solid var(--app-border); border-radius: 15px; background: var(--app-glass); text-align: start; transition: transform .2s ease,border-color .2s ease,background .2s ease; }
+.admin-shortcut:hover { transform: translateY(-2px); border-color: rgba(227,178,122,.4); background: var(--app-glass-strong); }
+.admin-shortcut > span { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 11px; color: var(--app-accent); background: rgba(227,178,122,.13); font-size: 1.05rem; }
+.admin-shortcut b { margin-top: 4px; font-size: .76rem; }
+.admin-shortcut small { color: var(--app-muted); font-size: .64rem; }
+.admin-toolbar { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; }
+.admin-toolbar .search-field { flex: 1; }
+.admin-product-grid, .admin-customer-grid, .admin-offer-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 11px; }
+.admin-product-card, .admin-customer-card, .admin-offer-card { min-width: 0; padding: 14px; border: 1px solid var(--app-border); border-radius: 16px; background: var(--app-glass); box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+.admin-product-top, .admin-product-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.admin-product-emoji { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: rgba(227,178,122,.12); font-size: 1.2rem; }
+.admin-state-pill { display: inline-flex; align-items: center; padding: 5px 8px; border-radius: 99px; font-size: .61rem; font-weight: 800; }
+.admin-state-pill.is-on { color: var(--app-green); border: 1px solid rgba(121,210,174,.3); background: rgba(121,210,174,.09); }
+.admin-state-pill.is-off { color: var(--app-red); border: 1px solid rgba(240,143,132,.3); background: rgba(240,143,132,.08); }
+.admin-product-card h3, .admin-customer-card h3, .admin-offer-card h3 { margin-top: 10px; font-size: .84rem; }
+.admin-product-card p, .admin-offer-card p { min-height: 42px; margin-top: 4px; color: var(--app-muted); font-size: .68rem; line-height: 1.7; }
+.admin-product-meta { margin-top: 10px; padding: 9px 0; border-top: 1px solid var(--app-border); color: var(--app-muted); font-size: .65rem; }
+.admin-product-meta b { color: var(--app-ink); font-size: .71rem; }
+.admin-card-actions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.admin-card-actions .app-button { flex: 1 1 auto; min-width: 0; }
+.admin-order-list { display: grid; gap: 9px; }
+.admin-order-card { display: grid; grid-template-columns: minmax(0,1fr) minmax(145px,auto); align-items: center; gap: 14px; padding: 13px 15px; border: 1px solid var(--app-border); border-radius: 15px; background: var(--app-glass); }
+.admin-order-primary { min-width: 0; }
+.admin-order-id { direction: ltr; display: inline-block; color: var(--app-accent); font-family: var(--font-mono); font-size: .7rem; font-weight: 800; }
+.admin-order-date { margin-inline-start: 8px; color: var(--app-muted); font-size: .63rem; }
+.admin-order-primary h3 { margin-top: 4px; font-size: .78rem; }
+.admin-order-primary p { margin-top: 3px; color: var(--app-muted); font-size: .66rem; overflow-wrap: anywhere; }
+.admin-order-secondary { display: grid; gap: 7px; justify-items: end; }
+.admin-order-secondary > b { font-size: .75rem; }
+.admin-order-secondary label { display: grid; grid-template-columns: auto minmax(100px,1fr); align-items: center; gap: 6px; color: var(--app-muted); font-size: .62rem; }
+.admin-order-secondary .select-control { min-height: 34px; max-width: 170px; padding: 5px 8px; font-size: .66rem; }
+.admin-customer-head { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.admin-customer-head > div { min-width: 0; flex: 1; }
+.admin-customer-head h3 { overflow: hidden; margin: 0; text-overflow: ellipsis; white-space: nowrap; }
+.admin-customer-head small { display: block; margin-top: 2px; color: var(--app-muted); font-size: .65rem; direction: ltr; text-align: right; }
+.admin-customer-head .profile-avatar { width: 39px; height: 39px; flex: 0 0 auto; border-radius: 13px; font-size: .83rem; }
+.admin-customer-stats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 5px; margin-top: 13px; padding: 10px 0; border-top: 1px solid var(--app-border); border-bottom: 1px solid var(--app-border); color: var(--app-muted); text-align: center; font-size: .58rem; }
+.admin-customer-stats b { display: block; color: var(--app-ink); font-size: .67rem; }
+.admin-offer-code { display: inline-block; margin-top: 4px; padding: 5px 8px; border: 1px dashed var(--app-border); border-radius: 8px; background: rgba(255,255,255,.035); }
+.admin-settings-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 13px; align-items: start; }
+.admin-settings-grid .profile-form-grid { align-items: end; }
+.admin-settings-grid .settings-submit { grid-column: 1 / -1; }
+.admin-panel-description { margin: -6px 0 14px; color: var(--app-muted); font-size: .7rem; }
+.admin-settings-actions { display: grid; gap: 8px; }
+.admin-settings-actions .app-button { width: 100%; }
+.integration-list { display: grid; gap: 0; }
+.integration-list > div { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 11px 0; border-bottom: 1px solid var(--app-border); color: var(--app-muted); font-size: .69rem; }
+.integration-list > div:last-child { border-bottom: 0; }
+.integration-list b { color: var(--app-ink); font-size: .67rem; text-align: end; }
+.admin-check-grid { display: flex; flex-wrap: wrap; gap: 10px 17px; margin-top: 13px; padding: 12px; border: 1px solid var(--app-border); border-radius: 13px; background: rgba(255,255,255,.03); }
+.admin-check-grid input { accent-color: #a65f32; }
+.admin-modal-form .profile-form-grid { margin-top: 4px; }
+.admin-modal-form .modal-actions { padding-top: 9px; border-top: 1px solid var(--app-border); }
+.admin-modal-form .form-control, #cafeSettingsForm .form-control { min-width: 0; }
+
+@media (max-width: 1100px) {
+  .admin-product-grid, .admin-customer-grid, .admin-offer-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .admin-stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .admin-shortcut-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 860px) {
+  .workspace-toolbar { align-items: flex-start; flex-direction: column; gap: 6px; }
+  .workspace-status { text-align: start; }
+  .mode-switcher { width: 100%; }
+  .mode-switcher button { flex: 1; }
+  .admin-content-grid, .admin-settings-grid { grid-template-columns: 1fr; }
+  .admin-content-grid .admin-panel { min-width: 0; }
+}
+@media (max-width: 620px) {
+  /* Keep all controls legible and prevent iOS input zoom/horizontal overflow. */
+  html, body.mvp-page { max-width: 100%; overflow-x: hidden; }
+  .workspace-toolbar { margin-bottom: 9px; }
+  .mode-switcher { border-radius: 13px; }
+  .mode-switcher button { min-height: 43px; padding: 7px 5px; font-size: .72rem; }
+  .workspace-status { font-size: .66rem; }
+  .admin-stat-grid { gap: 7px; }
+  .admin-stat { padding: 11px; border-radius: 14px; }
+  .admin-stat-icon { width: 30px; height: 30px; margin-bottom: 7px; }
+  .admin-stat-label { font-size: .64rem; }
+  .admin-stat b { font-size: 1rem; }
+  .admin-stat small { font-size: .58rem; line-height: 1.6; }
+  .admin-content-grid { gap: 9px; }
+  .admin-panel { padding: 13px; border-radius: 15px; }
+  .admin-panel-head { align-items: flex-start; }
+  .admin-shortcut-grid { gap: 7px; }
+  .admin-shortcut { min-height: 103px; padding: 11px; }
+  .admin-shortcut b { font-size: .72rem; }
+  .admin-shortcut small { font-size: .6rem; line-height: 1.55; }
+  .admin-toolbar { align-items: stretch; flex-direction: column; gap: 8px; }
+  .admin-toolbar .welcome-tag { align-self: flex-start; }
+  .admin-product-grid, .admin-customer-grid, .admin-offer-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 7px; }
+  .admin-product-card, .admin-customer-card, .admin-offer-card { padding: 10px; border-radius: 13px; }
+  .admin-product-card h3, .admin-customer-card h3, .admin-offer-card h3 { font-size: .76rem; }
+  .admin-product-card p, .admin-offer-card p { min-height: 46px; font-size: .62rem; }
+  .admin-product-emoji { width: 34px; height: 34px; font-size: 1.05rem; }
+  .admin-state-pill { padding: 4px 6px; font-size: .55rem; }
+  .admin-product-meta { align-items: flex-start; flex-direction: column; gap: 3px; font-size: .6rem; }
+  .admin-card-actions { gap: 5px; }
+  .admin-card-actions .app-button { flex: 1 1 100%; min-height: 34px; padding: 6px; font-size: .65rem; }
+  .admin-customer-head { align-items: flex-start; flex-wrap: wrap; }
+  .admin-customer-head .profile-avatar { width: 32px; height: 32px; }
+  .admin-customer-head .admin-state-pill { margin-inline-start: auto; }
+  .admin-customer-head h3 { font-size: .72rem; }
+  .admin-customer-head small { font-size: .58rem; }
+  .admin-customer-stats { font-size: .53rem; }
+  .admin-customer-stats b { font-size: .6rem; }
+  .admin-order-card { grid-template-columns: minmax(0,1fr); gap: 9px; padding: 11px; }
+  .admin-order-secondary { grid-template-columns: 1fr minmax(150px,auto); align-items: center; justify-items: stretch; gap: 8px; }
+  .admin-order-secondary label { grid-template-columns: auto minmax(0,1fr); }
+  .admin-order-secondary .select-control { width: 100%; max-width: none; }
+  .admin-order-primary h3 { font-size: .76rem; }
+  .admin-order-primary p { line-height: 1.6; }
+  .admin-order-date { display: block; margin: 3px 0 0; }
+  .admin-settings-grid .profile-form-grid { grid-template-columns: 1fr; }
+  .admin-settings-grid .settings-submit { grid-column: auto; }
+  .admin-inline-actions { flex-basis: 100%; margin-inline-start: 37px; }
+  .admin-inline-actions .app-button { flex: 1; }
+  .empty-inline { align-items: flex-start; }
+  .empty-inline small { margin-inline-start: 0; }
+  .admin-modal-form .profile-form-grid { grid-template-columns: 1fr; }
+  .admin-modal-form .modal-actions { position: sticky; bottom: -16px; padding: 12px 0 5px; background: var(--app-bg-2); }
+  .modal-dialog { width: 100%; }
+  .modal-dialog, .drawer-panel { max-width: 100vw; }
+  .mvp-page input, .mvp-page select, .mvp-page textarea { font-size: 16px !important; }
+  .mvp-toast { font-size: .82rem; line-height: 1.6; }
+  .demo-notice { font-size: .64rem; }
+  .side-nav button, .mobile-nav button { -webkit-tap-highlight-color: transparent; }
+}
+@media (max-width: 370px) {
+  .admin-product-grid, .admin-customer-grid, .admin-offer-grid { grid-template-columns: 1fr; }
+  .admin-stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .admin-card-actions { flex-direction: row; }
+  .admin-card-actions .app-button { flex: 1 1 auto; min-height: 32px; font-size: .62rem; }
+  .admin-order-secondary { grid-template-columns: 1fr; }
+}
