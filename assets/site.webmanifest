@@ -1,0 +1,21 @@
+{
+  "name": "CafeLoop MVP — اپلیکیشن مشتری کافه",
+  "short_name": "CafeLoop MVP",
+  "description": "منوی دیجیتال، سفارش، امتیاز و پیشنهاد شخصی CafeLoop — نسخه‌ی نمایشی MVP",
+  "start_url": "./mvp.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#150d0a",
+  "theme_color": "#150d0a",
+  "dir": "rtl",
+  "lang": "fa",
+  "icons": [
+    {
+      "src": "assets/img/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
