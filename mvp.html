@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#120d0a">
+<title>MVP مشتری — CafeLoop</title>
+<meta name="description" content="تجربه‌ی تعاملی مشتری CafeLoop: منوی دیجیتال، سفارش آزمایشی، امتیاز وفاداری، پیشنهادهای شخصی و مدیریت پروفایل.">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/mvp.css">
+</head>
+<body class="mvp-page">
+<div class="mvp-app" id="mvpApp">
+  <header class="mvp-topbar glass-panel">
+    <a class="mvp-brand" href="index.html" aria-label="بازگشت به خانه CafeLoop">
+      <img src="assets/img/logo.svg" alt="" width="38" height="38">
+      <span><b>CafeLoop</b><small>تجربه‌ی مشتری</small></span>
+    </a>
+
+    <button class="branch-button" type="button" data-action="choose-location" aria-label="انتخاب شعبه">
+      <span class="branch-pin" aria-hidden="true">⌖</span>
+      <span class="branch-copy"><small>در حال سفارش از</small><b id="currentLocation">کافه نوآر · جردن</b></span>
+      <span class="branch-chevron" aria-hidden="true">⌄</span>
+    </button>
+
+    <div class="topbar-actions">
+      <button class="icon-button" type="button" data-action="toggle-theme" aria-label="تغییر پوسته" title="تغییر پوسته"><span id="themeIcon">☼</span></button>
+      <button class="cart-button" type="button" data-action="open-cart" aria-label="باز کردن سبد سفارش">
+        <span class="cart-icon" aria-hidden="true">🛍</span>
+        <span class="cart-button-label">سبد سفارش</span>
+        <span class="cart-count" id="cartCount">۰</span>
+      </button>
+      <button class="topbar-avatar" type="button" data-view="profile" aria-label="رفتن به حساب کاربری"><span id="headerInitials">ا</span></button>
+    </div>
+  </header>
+
+  <div class="mvp-frame">
+    <aside class="mvp-sidebar glass-panel" aria-label="ناوبری برنامه">
+      <div class="sidebar-label">فضای مشتری</div>
+      <nav class="side-nav">
+        <button type="button" data-view="home"><span class="nav-icon" aria-hidden="true">⌂</span><span>خانه</span></button>
+        <button type="button" data-view="menu"><span class="nav-icon" aria-hidden="true">☕</span><span>منوی کافه</span><span class="nav-arrow" aria-hidden="true">←</span></button>
+        <button type="button" data-view="favorites"><span class="nav-icon" aria-hidden="true">♡</span><span>علاقه‌مندی‌ها</span></button>
+        <button type="button" data-view="loyalty"><span class="nav-icon" aria-hidden="true">✦</span><span>باشگاه امتیاز</span></button>
+        <button type="button" data-view="offers"><span class="nav-icon" aria-hidden="true">♧</span><span>پیشنهادهای من</span><span class="nav-dot" aria-hidden="true"></span></button>
+        <button type="button" data-view="orders"><span class="nav-icon" aria-hidden="true">▤</span><span>سفارش‌های من</span></button>
+        <button type="button" data-view="profile"><span class="nav-icon" aria-hidden="true">◎</span><span>پروفایل و تنظیمات</span></button>
+      </nav>
+
+      <div class="sidebar-member">
+        <div class="member-top"><span class="member-star">✦</span><span>عضو کافه‌لوپ</span><b id="sidebarPoints">۷۴۰</b></div>
+        <div class="sidebar-progress"><span id="sidebarProgress"></span></div>
+        <small id="sidebarProgressText">۲۶۰ امتیاز تا پاداش بعدی</small>
+        <button type="button" data-view="loyalty">دیدن امتیازها <span aria-hidden="true">←</span></button>
+      </div>
+      <div class="sidebar-foot"><span class="online-dot"></span> تجربه‌ی آزمایشی Cafe Noir</div>
+    </aside>
+
+    <main class="mvp-main">
+      <div class="demo-notice" role="note">
+        <span class="notice-pulse" aria-hidden="true"></span>
+        <span><b>نسخه‌ی تعاملی MVP</b><span class="notice-separator">·</span> سفارش و اطلاعات این دمو فقط روی همین مرورگر ذخیره می‌شوند.</span>
+        <a href="customer.html">راهنمای تجربه مشتری <span aria-hidden="true">←</span></a>
+      </div>
+      <div id="appView" class="mvp-view" tabindex="-1" aria-live="polite"></div>
+      <footer class="mvp-footer"><span>© CafeLoop · تجربه‌ی نمونه‌ی کافه نوآر</span><a href="index.html">بازگشت به سایت <span aria-hidden="true">←</span></a></footer>
+    </main>
+  </div>
+
+  <nav class="mobile-nav glass-panel" aria-label="ناوبری موبایل">
+    <button type="button" data-view="home"><span>⌂</span><small>خانه</small></button>
+    <button type="button" data-view="menu"><span>☕</span><small>منو</small></button>
+    <button type="button" data-view="loyalty"><span>✦</span><small>امتیاز</small></button>
+    <button type="button" data-view="offers"><span>♧</span><small>آفرها</small></button>
+    <button type="button" data-view="orders"><span>▤</span><small>سفارش</small></button>
+    <button type="button" data-view="profile"><span>◎</span><small>حساب</small></button>
+  </nav>
+</div>
+
+<div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <button class="drawer-scrim" type="button" data-action="close-cart" aria-label="بستن سبد"></button>
+  <section class="drawer-panel glass-panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+    <div class="drawer-head">
+      <div><span class="drawer-eyebrow">Cafe Noir · میز ۷</span><h2 id="cartTitle">سبد سفارش</h2></div>
+      <button class="icon-button" type="button" data-action="close-cart" aria-label="بستن">×</button>
+    </div>
+    <div class="drawer-content" id="cartDrawerContent"></div>
+  </section>
+</div>
+
+<div class="modal-backdrop" id="modalRoot" hidden>
+  <section class="modal-dialog glass-panel" id="modalDialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div id="modalContent"></div>
+  </section>
+</div>
+<div class="toast mvp-toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/mvp.js"></script>
+</body>
+</html>
