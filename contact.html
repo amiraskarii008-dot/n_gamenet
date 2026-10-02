@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>درخواست دمو و پایلوت — CafeLoop</title>
+<meta name="description" content="درخواست دمو یا پایلوت CafeLoop: یک کافه، یک هفته، یک کمپین بازگشت مشتری با عدد و درآمد قابل اندازه‌گیری.">
+<meta name="theme-color" content="#150d0a">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="">
+      <span>CafeLoop<span class="brand__sub">مشتری رو برگردون</span></span>
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="index.html">خانه</a>
+      <a href="how-it-works.html">چطور کار می‌کند</a>
+      <a href="demo.html">دموی پنل</a>
+      <a href="customer.html">تجربه مشتری</a>
+      <a href="pricing.html">قیمت‌گذاری</a>
+      <a href="roadmap.html">نقشه ۷ روزه</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--sm btn--nav-cta" href="contact.html">درخواست دمو</a>
+      <button class="nav__toggle" aria-label="منو" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-bottom:clamp(24px,3vw,40px)">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">شروع پایلوت</span>
+        <h1 class="h1" style="margin-top:18px">یک کافه، یک هفته،<br><span class="grad">یک کمپین با عدد.</span></h1>
+        <p class="lead" style="margin-top:18px;max-width:64ch">
+          فرم را پر کن. ما با داده‌ی ۳۰ روز گذشته‌ی کافه‌ات، اولین لیست مشتریان در معرض ریزش را می‌سازیم
+          و یک کمپین بازگشت اجرا می‌کنیم. بعد با هم نگاه می‌کنیم نرخ بازگشت تکان خورد یا نه.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container grid grid-2" style="align-items:start">
+      <!-- FORM -->
+      <div class="panel reveal">
+        <form id="demoForm" novalidate>
+          <div class="stack" style="gap:16px">
+            <div class="field" id="field-cafe">
+              <label for="cafeName">نام کافه *</label>
+              <input id="cafeName" name="cafeName" type="text" placeholder="مثلاً Cafe Noir" autocomplete="organization">
+              <span class="err">نام کافه را وارد کن.</span>
+            </div>
+
+            <div class="grid grid-2" style="gap:16px">
+              <div class="field" id="field-name">
+                <label for="contactName">نام و نام خانوادگی *</label>
+                <input id="contactName" name="contactName" type="text" placeholder="مثلاً امیر رضایی" autocomplete="name">
+                <span class="err">نامت را وارد کن.</span>
+              </div>
+              <div class="field" id="field-phone">
+                <label for="phone">شماره موبایل *</label>
+                <input id="phone" name="phone" type="tel" placeholder="۰۹۱۲۳۴۵۶۷۸۹" inputmode="tel" dir="ltr">
+                <span class="err">شماره موبایل معتبر وارد کن (مثلاً ۰۹۱۲۳۴۵۶۷۸۹).</span>
+              </div>
+            </div>
+
+            <div class="grid grid-2" style="gap:16px">
+              <div class="field" id="field-city">
+                <label for="city">شهر *</label>
+                <input id="city" name="city" type="text" placeholder="تهران" autocomplete="address-level2">
+                <span class="err">شهر را وارد کن.</span>
+              </div>
+              <div class="field" id="field-branches">
+                <label for="branches">تعداد شعبه</label>
+                <select id="branches" name="branches">
+                  <option value="1">۱ شعبه</option>
+                  <option value="2-3">۲ تا ۳ شعبه</option>
+                  <option value="4+">۴ شعبه و بیشتر</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field" id="field-plan">
+              <label for="plan">پلن مورد نظر</label>
+              <select id="plan" name="plan">
+                <option value="">هنوز نمی‌دانم</option>
+                <option value="starter">Starter — منو، هویت مشتری، وفاداری</option>
+                <option value="growth">Growth — Smart Return، کمپین، AI</option>
+                <option value="pro">Pro — چندشعبه و اتوماسیون</option>
+              </select>
+            </div>
+
+            <div class="field" id="field-volume">
+              <label for="volume">تخمین تراکنش ماهانه</label>
+              <select id="volume" name="volume">
+                <option value="lt500">کمتر از ۵۰۰</option>
+                <option value="500-1000">۵۰۰ تا ۱۰۰۰</option>
+                <option value="1000-3000" selected>۱۰۰۰ تا ۳۰۰۰</option>
+                <option value="3000plus">بیش از ۳۰۰۰</option>
+              </select>
+            </div>
+
+            <div class="field" id="field-goal">
+              <label for="goal">مهم‌ترین چیزی که می‌خواهی حل شود</label>
+              <textarea id="goal" name="goal" rows="3" placeholder="مثلاً: مشتری‌های یک‌بار مصرف زیاد داریم ولی نمی‌دانیم چند نفر برمی‌گردند."></textarea>
+            </div>
+
+            <label class="row" style="gap:10px;align-items:flex-start;font-size:.9rem;color:var(--ink-soft)">
+              <input type="checkbox" id="consent" name="consent" style="margin-top:7px">
+              <span>موافقم برای هماهنگی دمو با من تماس گرفته شود. می‌دانم این فرم نمونه است و داده‌اش جایی ارسال نمی‌شود.</span>
+            </label>
+            <span class="err" id="consentErr" style="margin-top:-8px">برای ادامه باید این را تأیید کنی.</span>
+
+            <button class="btn btn--lg btn--block" type="submit" id="submitBtn">ارسال درخواست</button>
+            <p class="tiny faint center">
+              این فرم <b>نمایشی</b> است؛ به سروری وصل نیست و اطلاعات فقط در مرورگر خودت می‌ماند.
+            </p>
+          </div>
+        </form>
+
+        <div id="formSuccess" class="hidden">
+          <div class="center stack">
+            <div style="font-size:3rem">✅</div>
+            <h2 class="h3">درخواست ثبت شد</h2>
+            <p class="muted">
+              ممنون <b id="successName">—</b>. در نسخه‌ی واقعی، در کمتر از ۲۴ ساعت با تو تماس می‌گیریم
+              و یک دموی ۲۰ دقیقه‌ای با داده‌ی کافه‌ی خودت می‌سازیم.
+            </p>
+            <div class="card card--flat" style="text-align:start">
+              <div class="tiny muted">خلاصه‌ی درخواست</div>
+              <div class="stack small" style="margin-top:10px">
+                <div class="row row--between"><span class="muted">کافه</span><b id="successCafe">—</b></div>
+                <div class="row row--between"><span class="muted">شهر</span><b id="successCity">—</b></div>
+                <div class="row row--between"><span class="muted">پلن</span><b id="successPlan">—</b></div>
+              </div>
+            </div>
+            <div class="row" style="justify-content:center">
+              <a class="btn" href="demo.html">دیدن دموی پنل</a>
+              <button class="btn btn--ghost" type="button" id="resetForm">ارسال درخواست دیگر</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDE -->
+      <div class="stack reveal" data-delay="100">
+        <div class="card">
+          <h3>در پایلوت چه اتفاقی می‌افتد؟</h3>
+          <ol class="steps" style="margin-top:16px">
+            <li class="step"><h4>گفت‌وگوی ۲۰ دقیقه‌ای</h4><p>بدون معرفی محصول؛ فقط سؤال‌هایی که در نقشه‌ی ۷ روزه آمده است.</p></li>
+            <li class="step"><h4>ورود داده‌ی ۳۰ روز گذشته</h4><p>منو، محصولات و مشتریان. اگر داده‌ی صندوق نبود، از فاکتورها شروع می‌کنیم.</p></li>
+            <li class="step"><h4>اولین کمپین بازگشت</h4><p>یک گروه روشن، یک پیام شخصی، یک آفر منطقی.</p></li>
+            <li class="step"><h4>اندازه‌گیری و جلسه‌ی نتیجه</h4><p>چند نفر هدف‌گذاری شد، چند نفر برگشت، چند تومان فروش ساخته شد.</p></li>
+          </ol>
+        </div>
+
+        <div class="card">
+          <h3>قبل از فرم، دو سؤال را از خودت بپرس</h3>
+          <ul class="stack" style="margin-top:12px">
+            <li class="row"><b class="mono">۱.</b> می‌دانی ماه قبل چند درصد مشتری‌هایت دوباره برگشتند؟</li>
+            <li class="row"><b class="mono">۲.</b> اگر مشتری‌های در حال ریزش را بشناسی، آیا حاضری ماهانه برایش پول بدهی؟</li>
+          </ul>
+          <p class="note" style="margin-top:16px">
+            اگر جواب سؤال اول «نمی‌دانم» است و جواب دوم «بله»، تو دقیقاً همان کافه‌ای هستی که CafeLoop برایش ساخته شده.
+          </p>
+        </div>
+
+        <div class="card" style="background:linear-gradient(160deg,#2a1c17,#150d0a);color:#f7efe8;border-color:transparent">
+          <h3 style="color:#fff">مشتری اولیه (ICP)</h3>
+          <p class="small" style="color:rgba(247,239,232,.75);margin-top:10px">
+            کافه‌ی مستقل یا زنجیره‌ی کوچک، با حداقل حدود <b class="mono">1000</b> تراکنش ماهانه،
+            برند فعال و مشتری تکرارشونده. اگر کافه‌ی کوچک‌تری داری، صادقانه می‌گوییم «الان نه» —
+            وقت و پول تو را هدر نمی‌دهیم.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="banner reveal">
+        <div>
+          <span class="eyebrow">هنوز مطمئن نیستی؟</span>
+          <h2 style="margin-top:12px">اول دمو را ببین، بعد تصمیم بگیر</h2>
+          <p>داشبورد تعاملی با داده‌ی نمونه — از جمله سازنده‌ی کمپین که واقعاً کار می‌کند.</p>
+        </div>
+        <div class="row">
+          <a class="btn btn--light btn--lg" href="demo.html">دموی زنده پنل</a>
+          <a class="btn btn--outline-light btn--lg" href="pricing.html">قیمت‌گذاری</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="assets/img/logo.svg" alt="">
+          <span>CafeLoop<span class="brand__sub" style="color:#a99689">Turn one-time visitors into regulars.</span></span>
+        </a>
+        <p class="small" style="margin-top:14px;color:#a99689;max-width:34ch">
+          سیستمی که کافه را قادر می‌کند مشتری‌های یک‌بار مصرف را به مشتری‌های تکراری تبدیل کند — و درآمدش را اندازه بگیرد.
+        </p>
+      </div>
+      <div>
+        <h5>محصول</h5>
+        <a href="how-it-works.html">چطور کار می‌کند</a>
+        <a href="demo.html">دموی پنل کافه</a>
+        <a href="customer.html">تجربه مشتری</a>
+        <a href="pricing.html">قیمت‌گذاری</a>
+      </div>
+      <div>
+        <h5>شروع</h5>
+        <a href="roadmap.html">نقشه ۷ روزه</a>
+        <a href="roadmap.html#icp">بازار هدف و ICP</a>
+        <a href="how-it-works.html#moat">Moat و داده</a>
+        <a href="contact.html">درخواست دمو</a>
+      </div>
+      <div>
+        <h5>یادداشت</h5>
+        <p class="small" style="color:#a99689">
+          این سایت نمونه‌ی محصول و ابزار فروش است. هیچ داده‌ای از فرم‌ها ارسال نمی‌شود.
+        </p>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© <span data-year>2026</span> CafeLoop — کافه‌لوپ</span>
+      <span>ساخته‌شده با HTML و CSS و JavaScript خالص.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite"></div>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/contact.js"></script>
+</body>
+</html>
