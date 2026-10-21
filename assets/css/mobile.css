@@ -1,0 +1,123 @@
+/* ==========================================================================
+   CafeLoop v1.2 — Phone-first layer (loaded last on every page)
+   هدف: روی گوشی (۳۲۰ تا ۴۸۰ پیکسل) همه‌چیز خوانا، قابل لمس و بدون اسکرول افقی باشد.
+   روی دسکتاپ تقریباً هیچ اثری ندارد؛ فقط کنتراست متن‌های کم‌رنگ را بهتر می‌کند.
+   ========================================================================== */
+
+/* ---------- کنتراست سراسری (همه‌ی اندازه‌ها) ----------
+   متن خاکستریِ کم‌رنگ روی کرم قبلاً نزدیک مرز خوانایی بود؛ تیره‌تر شد. */
+:root {
+  --ink-soft: #554134;   /* ~8.5:1 روی --bg */
+  --ink-faint: #6d5747;  /* ~6:1 روی --bg (قبلاً #9c8b81 ≈ 3.2:1) */
+}
+.is-dark, .section--dark, .section--brand { --ink-faint: #b9a08f; }
+
+/* هدر سایت: یکدست به جای شیشه‌ایِ نیمه‌شفاف تا منو همیشه خوانا باشد */
+.site-header {
+  background: var(--cream-50, #fdfaf6);
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+  box-shadow: 0 1px 0 var(--line), 0 10px 30px rgba(24, 14, 9, .06);
+}
+
+/* هیچ‌چیز نباید صفحه را افقی پهن کند */
+html, body { overflow-x: clip; }
+img, video, iframe, canvas, svg { max-width: 100%; }
+pre, code { overflow-wrap: anywhere; }
+
+/* جدول‌ها روی گوشی داخل قاب اسکرول‌دار می‌روند، نه اینکه صفحه را بترکانند.
+   (wrapper در HTML است؛ این قانون برای جدول‌های بدون wrapper هم کار می‌کند) */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ---------- تبلت و پایین‌تر ---------- */
+@media (max-width: 900px) {
+  /* منوی همبرگری: پنل یکدست تمام‌عرض با ردیف‌های بزرگِ قابل لمس */
+  .nav__links {
+    max-height: min(72vh, 520px); overflow-y: auto;
+    background: var(--surface);
+  }
+  .nav__links a { min-height: 48px; display: flex; align-items: center; }
+  .nav__toggle { width: 48px; height: 48px; }
+  .site-header .nav { height: 64px; }
+  .nav__links { top: 64px; }
+
+  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+  .table-wrap table { display: table; white-space: normal; }
+}
+
+/* ---------- گوشی ---------- */
+@media (max-width: 640px) {
+  :root { --gutter: 16px; }
+  body { font-size: 15.5px; line-height: 1.8; }
+
+  .section { padding: 44px 0; }
+  .section--tight { padding: 30px 0; }
+  .h1 { font-size: clamp(1.7rem, 8.4vw, 2.2rem); line-height: 1.35; }
+  .h2 { font-size: clamp(1.35rem, 6.4vw, 1.7rem); }
+  .lead { font-size: 1rem; }
+
+  /* هیرو: دکمه‌ها تمام‌عرض و زیر هم — با شست راحت زده می‌شوند */
+  .hero { padding: 36px 0 40px; }
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .hero__actions .btn { width: 100%; padding: 15px 20px; }
+  .hero__proof { gap: 18px 22px; }
+  .hero__proof div strong { font-size: 1.25rem; }
+  .row .btn { flex: 1 1 auto; }
+
+  /* همه‌ی هدف‌های لمسی حداقل ۴۴×۴۴ */
+  .btn, .btn--sm { min-height: 44px; }
+  .btn { white-space: normal; text-align: center; line-height: 1.5; }
+  a.card, button.card { text-align: start; }
+
+  /* فرم‌ها: فونت ۱۶ یعنی iOS موقع فوکوس زوم نمی‌کند */
+  input, select, textarea { font-size: 16px !important; }
+  input, select, textarea { min-height: 46px; }
+
+  /* کارت‌ها و گریدها جمع‌وجورتر */
+  .card { padding: 18px; border-radius: 18px; }
+  .grid { gap: 14px; }
+  .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .proof-strip, .feature-grid, .demo-grid, .integration-grid, .addon-grid { grid-template-columns: 1fr; }
+  .site-footer__grid { grid-template-columns: 1fr; gap: 22px; }
+
+  /* برند در هدر: زیرنویس جا نمی‌شود */
+  .brand__sub { display: none; }
+  .brand { font-size: 1.05rem; }
+  .nav__actions .btn { padding: 9px 14px; font-size: .82rem; white-space: nowrap; }
+
+  /* breadcrumb و eyebrow جمع‌وجور */
+  .breadcrumb { font-size: .8rem; flex-wrap: wrap; }
+  .eyebrow { font-size: .74rem; padding: 5px 11px; }
+
+  /* فوتر و دکمه‌ی بازگشت به بالا از safe-area آیفون رد نشوند */
+  body { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .to-top, [data-to-top] { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* گوشی‌های کوچک (۳۲۰ تا ۳۶۰) */
+@media (max-width: 380px) {
+  .h1 { font-size: 1.55rem; }
+  .hero__proof div strong { font-size: 1.1rem; }
+  .kpi-grid { grid-template-columns: 1fr; }
+  .nav__actions .btn--nav-app { display: none; }  /* در منوی همبرگری هست */
+  .ginput { padding: 12px 14px; }
+}
+
+/* گوشی افقی: هدر چسبان ارتفاع را نمی‌خورد */
+@media (max-height: 520px) and (orientation: landscape) {
+  .site-header { position: static; }
+}
+
+/* کاربرانی که حرکت کمتر می‌خواهند */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* چاپ روی موبایل/دسکتاپ: فقط محتوا */
+@media print {
+  .site-header, .site-footer, .gdock, .gcartbar, .no-print { display: none !important; }
+}
+
+/* دموی گوشی (customer.html): عکس واقعی روی تامبنیل منو */
+.menu-item__thumb { position: relative; overflow: hidden; }
+.menu-item__thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
