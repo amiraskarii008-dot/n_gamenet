@@ -187,6 +187,92 @@
     });
   }
 
+
+  /* ---------- Sticky header state ---------- */
+  function initHeaderScroll() {
+    var header = document.querySelector(".site-header");
+    var progress = document.querySelector("[data-progress]");
+    if (!header && !progress) return;
+
+    var ticking = false;
+    var update = function () {
+      var y = window.scrollY || window.pageYOffset;
+      if (header) header.classList.toggle("is-scrolled", y > 8);
+      if (progress) {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = h > 0 ? Math.min(100, (y / h) * 100) : 0;
+        progress.style.width = pct.toFixed(2) + "%";
+      }
+      ticking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }, { passive: true });
+    update();
+  }
+
+  /* ---------- Back to top ---------- */
+  function initToTop() {
+    var btn = document.querySelector("[data-to-top]");
+    if (!btn) return;
+    var update = function () {
+      btn.classList.toggle("is-visible", (window.scrollY || window.pageYOffset) > 640);
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    btn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    update();
+  }
+
+  /* ---------- Newsletter (client-side only, nothing leaves the browser) ---------- */
+  function initNewsletter() {
+    document.querySelectorAll("[data-newsletter]").forEach(function (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var input = form.querySelector("input[type=email]");
+        if (!input || !input.value || input.value.indexOf("@") === -1) {
+          window.cafeLoopToast("یک ایمیل معتبر وارد کن.");
+          return;
+        }
+        var email = input.value;
+        try {
+          var list = JSON.parse(localStorage.getItem("cafeloop-newsletter") || "[]");
+          if (list.indexOf(email) === -1) list.push(email);
+          localStorage.setItem("cafeloop-newsletter", JSON.stringify(list));
+        } catch (err) {}
+        input.value = "";
+        window.cafeLoopToast("ثبت شد — ماه‌نامه‌ی بعدی برایت ارسال می‌شود.");
+      });
+    });
+  }
+
+  /* ---------- Newsletter form: reset state on submit ---------- */
+  function initSmoothAnchors() {
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        var id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        var target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, "", id);
+      });
+    });
+  }
+
+  /* ---------- Demo toast buttons ---------- */
+  function initToastButtons() {
+    document.querySelectorAll("[data-toast]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        window.cafeLoopToast(btn.dataset.toast);
+      });
+    });
+  }
+
   /* ---------- Set active demo tab style for button groups ---------- */
   document.addEventListener("DOMContentLoaded", function () {
     initNav();
@@ -197,5 +283,10 @@
     initFaq();
     initYear();
     initTabs();
+    initHeaderScroll();
+    initToTop();
+    initNewsletter();
+    initSmoothAnchors();
+    initToastButtons();
   });
 })();

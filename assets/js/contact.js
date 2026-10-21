@@ -1,31 +1,20 @@
 /* ==========================================================================
-   CafeLoop — demo contact form (no backend, everything stays in the browser)
+   CafeLoop — contact form
+   No backend: validates the request, then builds a ready-to-send email.
+   Nothing is stored on a server.
    ========================================================================== */
 (function () {
   "use strict";
 
   var PLAN_LABEL = {
+    "": "هنوز مشخص نیست",
     starter: "Starter",
     growth: "Growth",
-    pro: "Pro",
-    "": "هنوز مشخص نیست"
+    pro: "Pro"
   };
 
-  /* Prefill plan from ?plan=growth */
-  function prefill() {
-    var params = new URLSearchParams(location.search);
-    var plan = params.get("plan");
-    var select = document.getElementById("plan");
-    if (plan && select && PLAN_LABEL[plan] !== undefined) select.value = plan;
-  }
+  function $(id) { return document.getElementById(id); }
 
-  function setError(fieldId, on) {
-    var field = document.getElementById(fieldId);
-    if (field) field.classList.toggle("has-error", !!on);
-    return !on;
-  }
-
-  /* Accept both Persian and Latin digits. */
   function normalizeDigits(value) {
     var fa = "۰۱۲۳۴۵۶۷۸۹", ar = "٠١٢٣٤٥٦٧٨٩";
     return String(value).replace(/[۰-۹٠-٩]/g, function (ch) {
@@ -35,47 +24,101 @@
     });
   }
 
+  function prefillPlan() {
+    var plan = new URLSearchParams(location.search).get("plan");
+    var select = $("plan");
+    if (plan && select && PLAN_LABEL[plan] !== undefined) select.value = plan;
+  }
+
+  function setError(fieldId, on) {
+    var field = $(fieldId);
+    if (field) field.classList.toggle("has-error", !!on);
+    return !on;
+  }
+
   function validate() {
     var ok = true;
 
-    var cafe = document.getElementById("cafeName").value.trim();
+    var cafe = $("cafeName").value.trim();
     if (cafe.length < 2) ok = setError("field-cafe", true) && ok; else setError("field-cafe", false);
 
-    var name = document.getElementById("contactName").value.trim();
+    var name = $("contactName").value.trim();
     if (name.length < 3) ok = setError("field-name", true) && ok; else setError("field-name", false);
 
-    var phone = normalizeDigits(document.getElementById("phone").value).replace(/[\s-]/g, "");
+    var phone = normalizeDigits($("phone").value).replace(/[\s-]/g, "");
     var phoneOk = /^09\d{9}$/.test(phone) || /^9\d{9}$/.test(phone);
     if (!phoneOk) ok = setError("field-phone", true) && ok; else setError("field-phone", false);
 
-    var city = document.getElementById("city").value.trim();
+    var city = $("city").value.trim();
     if (city.length < 2) ok = setError("field-city", true) && ok; else setError("field-city", false);
 
-    var consent = document.getElementById("consent").checked;
-    var consentErr = document.getElementById("consentErr");
+    var consent = $("consent").checked;
+    var consentErr = $("consentErr");
     if (consentErr) consentErr.style.display = consent ? "none" : "block";
     if (!consent) ok = false;
 
     return ok;
   }
 
-  function fillSuccess() {
-    var planValue = document.getElementById("plan").value;
-    var planText = PLAN_LABEL[planValue] !== undefined ? PLAN_LABEL[planValue] : planValue;
+  function requestText() {
+    var planValue = $("plan").value;
+    var planText = PLAN_LABEL[planValue] || planValue;
+    var branches = $("branches") ? $("branches").value : "1";
+    var note = $("note") ? $("note").value.trim() : "";
 
-    document.getElementById("successName").textContent = document.getElementById("contactName").value.trim();
-    document.getElementById("successCafe").textContent = document.getElementById("cafeName").value.trim();
-    document.getElementById("successCity").textContent = document.getElementById("city").value.trim();
-    document.getElementById("successPlan").textContent = planText;
+    return [
+      "درخواست راه‌اندازی CafeLoop",
+      "",
+      "کافه: " + $("cafeName").value.trim(),
+      "نام: " + $("contactName").value.trim(),
+      "موبایل: " + $("phone").value.trim(),
+      "شهر: " + $("city").value.trim(),
+      "پلن: " + planText,
+      "تعداد شعبه: " + branches,
+      note ? "یادداشت: " + note : "یادداشت: —"
+    ].join("\n");
+  }
+
+  function fillSuccess() {
+    $("successName").textContent = $("contactName").value.trim();
+    $("successCafe").textContent = $("cafeName").value.trim();
+    $("successCity").textContent = $("city").value.trim();
+    $("successPlan").textContent = PLAN_LABEL[$("plan").value] || $("plan").value;
+
+    var text = requestText();
+    var link = $("sendMail");
+    if (link) {
+      link.href = "mailto:hello@cafeloop.ir" +
+        "?subject=" + encodeURIComponent("درخواست راه‌اندازی — " + $("cafeName").value.trim()) +
+        "&body=" + encodeURIComponent(text);
+    }
+    var copy = $("copyRequest");
+    if (copy) {
+      copy.onclick = function () {
+        var done = function () {
+          window.cafeLoopToast && window.cafeLoopToast("متن درخواست کپی شد.");
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, done);
+        } else {
+          var area = document.createElement("textarea");
+          area.value = text;
+          document.body.appendChild(area);
+          area.select();
+          try { document.execCommand("copy"); } catch (e) {}
+          document.body.removeChild(area);
+          done();
+        }
+      };
+    }
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    var form = document.getElementById("demoForm");
+    var form = $("demoForm");
     if (!form) return;
 
-    prefill();
-
-    var consentErr = document.getElementById("consentErr");
+    prefillPlan();
+    var consentErr = $("consentErr");
     if (consentErr) consentErr.style.display = "none";
 
     form.addEventListener("submit", function (e) {
@@ -83,40 +126,43 @@
       if (!validate()) {
         window.cafeLoopToast && window.cafeLoopToast("چند مورد را درست کن و دوباره امتحان کن.");
         var firstError = form.querySelector(".has-error input, .has-error select, .has-error textarea");
-        firstError && firstError.focus();
+        if (firstError) firstError.focus();
         return;
       }
 
-      var btn = document.getElementById("submitBtn");
-      btn.disabled = true;
-      btn.textContent = "در حال ارسال…";
+      var btn = $("submitBtn");
+      if (btn) { btn.disabled = true; btn.textContent = "در حال آماده‌سازی…"; }
 
       setTimeout(function () {
         fillSuccess();
         form.classList.add("hidden");
-        document.getElementById("formSuccess").classList.remove("hidden");
-        window.cafeLoopToast && window.cafeLoopToast("درخواست ثبت شد — در نسخه‌ی واقعی، همین‌جا تماس می‌گیریم.");
-      }, 700);
+        $("formSuccess").classList.remove("hidden");
+        window.cafeLoopToast && window.cafeLoopToast("درخواست آماده شد — با ایمیل بفرست.");
+        var panel = $("formSuccess");
+        panel && panel.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 600);
     });
 
-    /* live-clearing of errors */
     ["cafeName", "contactName", "phone", "city"].forEach(function (id) {
-      var el = document.getElementById(id);
-      el && el.addEventListener("input", function () {
+      var el = $(id);
+      if (!el) return;
+      el.addEventListener("input", function () {
         var field = el.closest(".field");
-        field && field.classList.remove("has-error");
+        if (field) field.classList.remove("has-error");
       });
     });
 
-    var reset = document.getElementById("resetForm");
-    reset && reset.addEventListener("click", function () {
-      document.getElementById("formSuccess").classList.add("hidden");
-      form.classList.remove("hidden");
-      form.reset();
-      var btn = document.getElementById("submitBtn");
-      btn.disabled = false;
-      btn.textContent = "ارسال درخواست";
-      prefill();
-    });
+    var reset = $("resetForm");
+    if (reset) {
+      reset.addEventListener("click", function () {
+        $("formSuccess").classList.add("hidden");
+        form.classList.remove("hidden");
+        form.reset();
+        var btn = $("submitBtn");
+        if (btn) { btn.disabled = false; btn.textContent = "ارسال درخواست"; }
+        prefillPlan();
+        consentErr && (consentErr.style.display = "none");
+      });
+    }
   });
 })();
