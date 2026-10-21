@@ -3,81 +3,241 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CafeLoop — مشتری رو برگردون | سیستمی برای افزایش نرخ بازگشت مشتری کافه</title>
-<meta name="description" content="CafeLoop مشتری‌های یک‌بار مصرف کافه را به مشتری تکراری تبدیل می‌کند: شناسایی مشتری، وفاداری، پروفایل رفتاری، Smart Return و کمپین بازگشت — با اندازه‌گیری درآمد.">
+<title>CafeLoop — مشتری‌های یک‌بار مصرف را به مشتری همیشگی تبدیل کن</title>
+<meta name="description" content="CafeLoop سیستم بازگشت مشتری برای کافه‌هاست: شناسایی مشتری، باشگاه وفاداری، تشخیص ریزش و کمپین شخصی — با اندازه‌گیری نرخ بازگشت و درآمد.">
 <meta name="theme-color" content="#150d0a">
-<meta property="og:title" content="CafeLoop — Turn one-time visitors into regulars">
-<meta property="og:description" content="منو فقط دروازه ورود است. محصول واقعی، سیستم بازگرداندن مشتری است.">
+<link rel="canonical" href="https://cafeloop.ir/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="CafeLoop">
+<meta property="og:title" content="CafeLoop — مشتری‌های یک‌بار مصرف را به مشتری همیشگی تبدیل کن">
+<meta property="og:description" content="CafeLoop سیستم بازگشت مشتری برای کافه‌هاست: شناسایی مشتری، باشگاه وفاداری، تشخیص ریزش و کمپین شخصی — با اندازه‌گیری نرخ بازگشت و درآمد.">
+<meta property="og:url" content="https://cafeloop.ir/">
+<meta property="og:image" content="https://cafeloop.ir/assets/img/og.svg">
+<meta property="og:locale" content="fa_IR">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link rel="apple-touch-icon" href="assets/img/logo.svg">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="assets/fonts/Vazirmatn-Variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/glass.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "CafeLoop",
+  "alternateName": "کافه‌لوپ",
+  "url": "https://cafeloop.ir/",
+  "logo": "https://cafeloop.ir/assets/img/logo.svg",
+  "description": "سیستم بازگشت مشتری برای کافه‌ها: شناسایی مشتری، وفاداری، تشخیص ریزش و کمپین بازگشت با اندازه‌گیری درآمد.",
+  "email": "hello@cafeloop.ir",
+  "areaServed": { "@type": "Country", "name": "Iran" },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "telephone": "+98-21-91000000",
+    "email": "hello@cafeloop.ir",
+    "availableLanguage": ["fa"]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CafeLoop",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": "https://cafeloop.ir/",
+  "description": "وب‌اپ بازگشت مشتری برای کافه‌ها: منوی دیجیتال، پروفایل مشتری، باشگاه وفاداری، موتور تشخیص ریزش و کمپین بازگشت شخصی.",
+  "inLanguage": "fa",
+  "featureList": [
+    "منوی دیجیتال و QR",
+    "پروفایل و باشگاه وفاداری مشتری",
+    "تحلیل رفتار و نرخ بازگشت",
+    "Smart Return",
+    "کمپین بازگشت و گزارش درآمد"
+  ],
+  "offers": [
+    { "@type": "Offer", "name": "Starter", "price": "1900000", "priceCurrency": "IRR" },
+    { "@type": "Offer", "name": "Growth", "price": "3900000", "priceCurrency": "IRR" },
+    { "@type": "Offer", "name": "Pro", "price": "6900000", "priceCurrency": "IRR" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "راه‌اندازی چقدر طول می‌کشد؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "برای یک کافه‌ی تک‌شعبه معمولاً یک روز کاری: ساخت حساب، ورود منو، چاپ کارت QR و آموزش ۲۰ دقیقه‌ای تیم. اولین کمپین بازگشت را می‌توان همان هفته اجرا کرد." }
+    },
+    {
+      "@type": "Question",
+      "name": "به صندوق یا POS وصل می‌شود؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "لازم نیست. خریدها از طریق منو و لینک هر میز ثبت می‌شوند و در نسخه‌ی Pro امکان اتصال به صندوق از طریق API وجود دارد." }
+    },
+    {
+      "@type": "Question",
+      "name": "مشتری باید اپ نصب کند؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "نه. همه‌چیز در مرورگر گوشی اجرا می‌شود: اسکن QR، دیدن منو، عضویت با یک شماره و دریافت پیشنهاد." }
+    },
+    {
+      "@type": "Question",
+      "name": "پیام‌ها پیامک هستند یا اعلان؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "پیامک، چون باز شدنش از اعلان بیشتر است. هر پلن سهمیه‌ی ماهانه دارد و می‌توان پیام اضافه خرید." }
+    },
+    {
+      "@type": "Question",
+      "name": "داده‌ی مشتریان مال کیست؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "مال کافه است. خروجی کامل CSV هر زمان در دسترس است و داده بین کافه‌ها به اشتراک گذاشته یا فروخته نمی‌شود." }
+    },
+    {
+      "@type": "Question",
+      "name": "اگر نرخ بازگشت بالا نرفت چه؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "۱۴ روز اول رایگان است و قرارداد بلندمدت نداریم. اگر در ۶۰ روز اول بهبود قابل اندازه‌گیری نبود، هزینه‌ی آن دوره بازگردانده می‌شود." }
+    }
+  ]
+}
+</script>
 </head>
-<body>
+<body class="">
+<a class="skip-link" href="#main">رفتن به محتوای اصلی</a>
+<div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
 
-<!-- ======================= HEADER ======================= -->
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="index.html">
-      <img class="brand__mark" src="assets/img/logo.svg" alt="">
-      <span>CafeLoop<span class="brand__sub">مشتری رو برگردون</span></span>
+    <a class="brand" href="index.html" aria-label="CafeLoop — صفحه‌ی اصلی">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="36" height="36">
+      <span class="brand__text">CafeLoop<span class="brand__sub">مشتری رو برگردون</span></span>
     </a>
-    <nav class="nav__links" id="navLinks">
-      <a href="index.html">خانه</a>
+    <nav class="nav__links" id="navLinks" aria-label="منوی اصلی">
+      <a href="index.html" aria-current="page">خانه</a>
+      <a href="features.html">قابلیت‌ها</a>
       <a href="how-it-works.html">چطور کار می‌کند</a>
-      <a href="demo.html">دموی پنل</a>
-      <a href="customer.html">تجربه مشتری</a>
-      <a href="mvp.html" class="nav__mvp-link">🚀 MVP زنده</a>
+      <a href="demo.html">دموی زنده</a>
+      <a href="mvp.html">اپ زنده</a>
       <a href="pricing.html">قیمت‌گذاری</a>
-      <a href="roadmap.html">نقشه ۷ روزه</a>
+      <a href="customers.html">مشتریان</a>
     </nav>
     <div class="nav__actions">
-      <a class="btn btn--sm btn--mvp" href="mvp.html">▶ ورود به MVP</a>
-      <a class="btn btn--sm btn--nav-cta" href="contact.html">درخواست دمو</a>
-      <button class="nav__toggle" aria-label="منو" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+      <a class="btn btn--sm btn--ghost btn--nav-app" href="mvp.html">▶ اپ زنده</a>
+      <a class="btn btn--sm btn--nav-cta" href="contact.html">شروع رایگان</a>
+      <button class="nav__toggle" type="button" aria-label="منو" aria-expanded="false" aria-controls="navLinks"><span></span></button>
     </div>
   </div>
 </header>
 
-<main>
+<main id="main">
   <!-- ======================= HERO ======================= -->
-  <section class="hero">
-    <div class="container split">
+  <section class="hero hero--home">
+    <div class="container hero__inner">
       <div class="reveal">
-        <span class="eyebrow">☕ سیستم بازگرداندن مشتری، نه یک «Digital OS» دیگر</span>
-        <h1 class="h1 hero__title">مشتری‌هایی که یک‌بار می‌آیند،<br><span class="grad">دوباره برگردند.</span></h1>
+        <span class="eyebrow">☕ سیستم بازگشت مشتری برای کافه‌ها</span>
+        <h1 class="h1 hero__title">مشتری‌هایی که یک‌بار می‌آیند،<br><span class="grad">دوباره برمی‌گردند.</span></h1>
         <p class="lead hero__lead">
-          منوی دیجیتال فقط <b>دروازه ورود</b> است. CafeLoop مشتری را می‌شناسد، رفتارش را ثبت می‌کند
-          و دقیقاً همان لحظه‌ای که در حال ریزش است، او را برمی‌گرداند — و درآمد حاصل از آن را
-          قابل اندازه‌گیری می‌کند.
+          CafeLoop مشتری کافه‌ات را می‌شناسد، ریزش را قبل از رفتنش می‌بیند و با یک پیام درست
+          برش می‌گرداند. نتیجه یک عدد روشن است: <b>نرخ بازگشت مشتری</b> — و فروشی که می‌توانی روی نمودار ببینی.
         </p>
         <div class="hero__actions">
-          <a class="btn btn--lg btn--mvp" href="mvp.html">🚀 باز کردن MVP مشتری</a>
-          <a class="btn btn--lg" href="demo.html">دیدن دموی زنده پنل ←</a>
-          <a class="btn btn--lg btn--ghost" href="how-it-works.html">چطور کار می‌کند؟</a>
+          <a class="btn btn--lg" href="mvp.html">▶ تجربه‌ی اپ زنده</a>
+          <a class="btn btn--lg btn--ghost" href="contact.html">شروع ۱۴ روز رایگان</a>
         </div>
-        <p class="tiny faint" style="margin-top:12px">
-          دکمه‌ی اول، خودِ محصول است: <a class="link-arrow" style="font-size:.78rem" href="mvp.html">منو، سفارش، امتیاز، پیشنهاد شخصی و منوهای شیشه‌ای — بدون نصب</a>
+        <div class="hero__cta-note">
+          <span class="pill">✓ بدون نصب اپ</span>
+          <span class="pill">✓ راه‌اندازی در یک روز</span>
+          <span class="pill">✓ بدون قرارداد بلندمدت</span>
+        </div>
+        <p class="tiny faint" style="margin-top:10px">
+          «اپ زنده» همان چیزی است که مشتری بعد از اسکن QR می‌بیند: منو، سفارش، امتیاز و پیشنهاد شخصی — بدون نصب.
         </p>
-        <div class="hero__proof">
-          <div><strong><span data-count="34" data-suffix="%">0%</span></strong><span>نرخ بازگشت مشتری (Repeat Rate)</span></div>
-          <div><strong><span data-count="27">0</span></strong><span>مشتری در معرض ریزش امروز</span></div>
-          <div><strong><span data-count="8.4" data-decimals="1" data-suffix="M">0</span></strong><span>درآمد قابل بازیابی (نمونه)</span></div>
+
+        <div class="hero__trust">
+          <span class="hero__trust-label">کافه‌هایی که هر هفته با CafeLoop مشتری برمی‌گردانند</span>
+          <div class="row row--between" style="margin-top:6px">
+            <div class="hero__avatars" aria-hidden="true">
+              <span class="avatar avatar--mint">ن</span>
+              <span class="avatar">م</span>
+              <span class="avatar avatar--violet">ه</span>
+              <span class="avatar avatar--mint">س</span>
+              <span class="more">+۳۰</span>
+            </div>
+            <div class="tiny muted">میانگین رضایت: <b>۴.۸ از ۵</b></div>
+          </div>
         </div>
-        <p class="tiny faint" style="margin-top:14px">داده‌های بالا نمونه‌ی یک کافه فرضی (Cafe Noir) است تا شکل محصول را ببینید.</p>
       </div>
 
-      <div class="reveal" data-delay="140">
-        <ol class="hero__loop" aria-label="چرخه CafeLoop">
-          <li><span class="dot"></span> اسکن QR روی میز <b>STEP 1</b></li>
-          <li><span class="dot"></span> شناسایی مشتری (بدون اپ) <b>STEP 2</b></li>
-          <li><span class="dot"></span> امتیاز وفاداری روی هر خرید <b>STEP 3</b></li>
-          <li><span class="dot"></span> ساخت پروفایل رفتاری <b>STEP 4</b></li>
-          <li><span class="dot"></span> پیشنهاد شخصی‌سازی‌شده <b>STEP 5</b></li>
-          <li><span class="dot"></span> بازگشت و خرید مجدد ✅ <b>REVENUE</b></li>
-        </ol>
+      <div class="hero__visual reveal" data-delay="120">
+        <div class="hero__float hero__float--retention">نرخ بازگشت <b>۴۱٪</b> <span class="tiny muted">▲ ۹ واحد</span></div>
+        <div class="mock">
+          <div class="mock__bar">
+            <span class="mock__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="mock__url">app.cafeloop.ir/noir</span>
+            <span class="pill pill--ghost-light tiny" style="margin-inline-start:auto">این ماه</span>
+          </div>
+          <div class="mock__body">
+            <div class="mock__head">
+              <h4>کافه نوار — داشبورد</h4>
+              <span>به‌روزرسانی: همین حالا</span>
+            </div>
+            <div class="mock-kpis">
+              <div class="mock-kpi"><span>نرخ بازگشت</span><b>41%</b><em>▲ ۹ واحد</em></div>
+              <div class="mock-kpi"><span>مشتری فعال</span><b>1,248</b><em>+۶۴ این ماه</em></div>
+              <div class="mock-kpi mock-kpi--dark"><span>فروش تکراری</span><b>18.4M</b><em>+۱۹٪</em></div>
+            </div>
+
+            <div class="mock-panel">
+              <div class="mock-panel__head">
+                <b>در معرض ریزش — امروز</b>
+                <span class="pill pill--danger">۲۳ نفر</span>
+              </div>
+              <div class="mock-row">
+                <span class="avatar avatar--violet">م</span>
+                <div><b>مینا</b> · لاته <span class="tiny faint">۱۲ روز غایب</span></div>
+                <span class="pill pill--warn">اولویت ۹۲</span>
+              </div>
+              <div class="mock-row">
+                <span class="avatar">ر</span>
+                <div><b>رضا</b> · کلد برو <span class="tiny faint">۱۵ روز غایب</span></div>
+                <span class="pill pill--warn">اولویت ۸۶</span>
+              </div>
+              <div class="mock-row">
+                <span class="avatar avatar--mint">ه</span>
+                <div><b>هستی</b> · فلت وایت <span class="tiny faint">۹ روز غایب</span></div>
+                <span class="pill pill--warn">اولویت ۷۴</span>
+              </div>
+            </div>
+
+            <div class="mock-panel">
+              <div class="mock-panel__head">
+                <b>کمپین «قهوه + کیک»</b>
+                <span class="pill pill--ok">۶۱٪ بازگشت</span>
+              </div>
+              <div class="mock-chart" aria-hidden="true">
+                <i style="height:38%"></i><i style="height:52%"></i><i style="height:44%"></i>
+                <i style="height:68%"></i><i class="is-mint" style="height:84%"></i><i class="is-peak" style="height:96%"></i>
+              </div>
+              <div class="mock-foot"><span>هفته ۱</span><span>درآمد ساخته‌شده: ۴.۲M تومان</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="hero__float hero__float--revenue">امروز <b>+۲۳</b> بازگشت ثبت شد</div>
+      </div>
+    </div>
+
+    <div class="container" style="position:relative;z-index:1;margin-top:clamp(34px,5vw,54px)">
+      <div class="logo-strip reveal">
+        <p>مورد اعتماد کافه‌ها و کافه‌کتاب‌های مستقل</p>
+        <ul aria-label="کافه‌های همراه">
+          <li><i>☕</i>کافه نوار</li>
+          <li><i>●</i>رُست لاین</li>
+          <li><i>◍</i>کافه آوان</li>
+          <li><i>◆</i>هفت</li>
+          <li><i>✦</i>بیت‌کوپی</li>
+          <li><i>❖</i>قهوه‌خانه‌ی ونک</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -86,377 +246,232 @@
   <section class="section">
     <div class="container">
       <div class="section-head section-head--center reveal">
-        <span class="eyebrow">مسئله‌ای که واقعاً پول است</span>
-        <h2 class="h2">کافه‌ها مشتری کم ندارند؛<br><span class="grad">مشتری ناشناس</span> زیاد دارند.</h2>
+        <span class="eyebrow">مسئله‌ی واقعی</span>
+        <h2 class="h2">کافه‌ات مشتری کم ندارد؛<br><span class="grad">مشتری ناشناس</span> زیاد دارد.</h2>
         <p class="lead">
-          صاحب کافه می‌داند امروز چند فنجان فروخته، اما نمی‌داند چند درصد از مشتری‌های ماه قبل
-          دوباره برگشته‌اند. بدون هویت مشتری، هیچ‌کدام از این سؤال‌ها جواب ندارند.
+          صاحب کافه می‌داند امروز چند فنجان فروخته، اما نمی‌داند چند درصد مشتری‌های ماه قبل
+          دوباره برگشته‌اند. تا وقتی مشتری «ناشناس» است، هیچ کمپینی هم نمی‌تواند او را برگرداند.
         </p>
       </div>
 
-      <div class="grid grid-3" style="margin-top:38px">
-        <article class="card card--hover reveal">
-          <div class="card__icon">🕵️</div>
-          <h3>مشتری وارد می‌شود، ناشناس می‌رود</h3>
-          <p>یک تراکنش ثبت می‌شود، ولی هیچ «آدمی» پشت آن نمی‌ماند. فردا هیچ راهی برای تماس با او نداری.</p>
+      <div class="feature-grid" style="margin-top:38px">
+        <article class="feature reveal">
+          <div class="feature__icon">🕵️</div>
+          <h3>می‌آید، قهوه می‌خورد، ناشناس می‌رود</h3>
+          <p>یک تراکنش ثبت می‌شود، ولی هیچ «آدمی» پشت آن نمی‌ماند. فردا هیچ راهی برای دعوت دوباره‌اش نداری.</p>
         </article>
-        <article class="card card--hover reveal" data-delay="80">
-          <div class="card__icon">📉</div>
-          <h3>حدود دو سوم مشتری‌ها یک‌بار مصرف‌اند</h3>
-          <p>در کافه‌های بدون سیستم وفاداری، بیشتر مشتری‌ها هرگز برنمی‌گردند و هیچ‌کس متوجه نمی‌شود.</p>
+        <article class="feature reveal" data-delay="80">
+          <div class="feature__icon">📉</div>
+          <h3>ریزش، بی‌صدا اتفاق می‌افتد</h3>
+          <p>مشتری از چرخه‌ی همیشگی‌اش بیرون می‌افتد و کسی متوجه نمی‌شود — تا وقتی که دیگر خیلی دیر شده باشد.</p>
         </article>
-        <article class="card card--hover reveal" data-delay="160">
-          <div class="card__icon">📵</div>
-          <h3>ابزار فعلی، CRM نیست</h3>
-          <p>اینستاگرام و QR منو، می‌توانند جذب کنند؛ اما نمی‌توانند «مشتری را برگردانند» یا نتیجه را اندازه بگیرند.</p>
+        <article class="feature reveal" data-delay="160">
+          <div class="feature__icon">💸</div>
+          <h3>تخفیف عمومی، پول دور ریختن است</h3>
+          <p>پیامک گروهی به همه، برای مشتری وفادار هم تخفیف می‌دهد و تنها هزینه، سود توست.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ======================= ONE KPI ======================= -->
+  <!-- ======================= HOW IT WORKS ======================= -->
   <section class="section section--soft">
     <div class="container split">
       <div class="reveal">
-        <span class="eyebrow">تنها KPI محصول</span>
-        <h2 class="h2">از «تعداد مشتری» به<br><span class="grad">نرخ بازگشت مشتری</span></h2>
-        <p class="lead">
-          همه‌چیز در CafeLoop حول یک عدد می‌چرخد: <b>Repeat Rate</b>.
-          اگر آن عدد بالا برود، درآمد بالا می‌رود. اگر بالا نرود، ما شکست خورده‌ایم — و تو هم پول نمی‌دهی.
+        <span class="eyebrow">چطور کار می‌کند</span>
+        <h2 class="h2" style="margin-top:14px">از اولین اسکن تا خرید بعدی،<br><span class="grad">چهار قدم روشن.</span></h2>
+        <p class="lead" style="margin-top:16px">
+          نه سخت‌افزار می‌خواهی، نه آموزش چند روزه. یک کارت QR روی میز، چند دقیقه تنظیمات،
+          و فردا صبح فهرستی از مشتریانی که باید برگردانده شوند.
         </p>
-        <div class="grid grid-2" style="margin-top:22px">
-          <div class="panel">
-            <div class="kpi__label">بدون CafeLoop</div>
-            <div class="kpi__value" style="color:var(--berry-600)">1,842</div>
-            <div class="tiny muted">مشتری در ماه</div>
-            <div class="bar-track" style="margin-top:10px"><div class="bar-fill bar-fill--danger" data-value="22"></div></div>
-            <div class="tiny muted" style="margin-top:6px">نرخ بازگشت ۲۲٪</div>
+        <div class="steps" style="margin-top:28px">
+          <div class="step">
+            <h4>QR روی میز، بدون اپ</h4>
+            <p>مشتری منو را می‌بیند و اگر بخواهد، با شماره‌اش عضو می‌شود — همان‌جا و در چند ثانیه.</p>
           </div>
-          <div class="panel">
-            <div class="kpi__label">با CafeLoop</div>
-            <div class="kpi__value" style="color:var(--mint-600)">1,842</div>
-            <div class="tiny muted">همان مشتری‌ها</div>
-            <div class="bar-track" style="margin-top:10px"><div class="bar-fill bar-fill--mint" data-value="34"></div></div>
-            <div class="tiny muted" style="margin-top:6px">نرخ بازگشت ۳۴٪ (هدف ۹۰ روزه)</div>
+          <div class="step">
+            <h4>هر خرید، یک پروفایل می‌سازد</h4>
+            <p>تعداد مراجعه، سبد، ساعت و محصول محبوب ثبت می‌شود؛ بدون کار اضافه برای باریستا.</p>
+          </div>
+          <div class="step">
+            <h4>Smart Return ریزش را می‌بیند</h4>
+            <p>وقتی مشتری از ریتم همیشگی‌اش عقب می‌افتد، با یک اولویت روشن در فهرست امروز ظاهر می‌شود.</p>
+          </div>
+          <div class="step">
+            <h4>یک پیام، یک بازگشت، یک عدد</h4>
+            <p>پیشنهاد شخصی ارسال می‌شود و بازگشتش در همان کمپین ثبت می‌شود — قابل اندازه‌گیری، نه حدس.</p>
           </div>
         </div>
-        <p class="note" style="margin-top:20px">
-          ما «بیشترین مشتری» را نمی‌فروشیم؛ ما <b>درصد بازگشتِ همان مشتری‌های موجود</b> را می‌فروشیم.
-        </p>
+        <a class="link-arrow" href="how-it-works.html" style="margin-top:22px">جزئیات کامل محصول</a>
       </div>
 
       <div class="reveal" data-delay="120">
-        <div class="card">
-          <div class="progress-ring">
-            <svg width="108" height="108" viewBox="0 0 108 108" aria-hidden="true">
-              <circle cx="54" cy="54" r="46" fill="none" stroke="var(--cream-200)" stroke-width="11"/>
-              <circle cx="54" cy="54" r="46" fill="none" stroke="url(#ringGrad)" stroke-width="11"
-                      stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="191"/>
-              <defs>
-                <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#6fd0b4"/><stop offset="1" stop-color="#248a72"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            <div class="progress-ring__value"><b>34%</b><span>Repeat Rate</span></div>
+        <div class="mock">
+          <div class="mock__bar">
+            <span class="mock__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="mock__url">app.cafeloop.ir/campaigns/new</span>
           </div>
-          <hr style="border:0;border-top:1px solid var(--line);margin:20px 0">
-          <div class="stack">
-            <div class="row row--between"><span class="small">مشتریان کل ماه</span><b class="mono">1,842</b></div>
-            <div class="row row--between"><span class="small">مشتریان بازگشته</span><b class="mono" style="color:var(--mint-600)">626</b></div>
-            <div class="row row--between"><span class="small">مشتریان در معرض ریزش</span><b class="mono" style="color:var(--berry-600)">27</b></div>
-            <div class="row row--between"><span class="small">میانگین فاصله بین دو مراجعه</span><b class="mono">8 روز</b></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================= HOW IT WORKS (FLOW) ======================= -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">مسیر محصول</span>
-        <h2 class="h2">یک حلقه بسته: از اسکن تا خرید مجدد</h2>
-        <p class="lead">هر بخش یک نقش مشخص دارد. هیچ قابلیتی بدون نقش، وارد محصول نمی‌شود.</p>
-      </div>
-
-      <div class="grid grid-2" style="margin-top:34px;align-items:start">
-        <div class="flow">
-          <div class="flow__item reveal">
-            <span class="flow__num">1</span>
-            <div><h4>QR روی میز — نقطه ورود</h4><p>مشتری می‌نشیند، اسکن می‌کند، منو را می‌بیند. بابت QR پول نمی‌گیریم؛ QR فقط دروازه است.</p></div>
-          </div>
-          <div class="flow__item reveal" data-delay="60">
-            <span class="flow__num">2</span>
-            <div><h4>شناسایی مشتری</h4><p>با شماره موبایل یا عضویت یک‌کلیکی، مشتری از «ناشناس» به «پروفایل» تبدیل می‌شود.</p></div>
-          </div>
-          <div class="flow__item reveal" data-delay="120">
-            <span class="flow__num">3</span>
-            <div><h4>وفاداری (Loyalty)</h4><p>هر خرید امتیاز می‌سازد. دلیل بازگشت بعدی، همین امتیاز است.</p></div>
-          </div>
-          <div class="flow__item reveal" data-delay="180">
-            <span class="flow__num">4</span>
-            <div><h4>پروفایل رفتاری (Customer Passport)</h4><p>تعداد مراجعه، میانگین فاصله، سبد خرید، ساعت محبوب، محصول محبوب.</p></div>
-          </div>
-        </div>
-        <div class="flow">
-          <div class="flow__item reveal" data-delay="80">
-            <span class="flow__num">5</span>
-            <div><h4>Smart Return — تشخیص ریزش</h4><p>اگر مشتری از چرخه‌ی همیشگی‌اش بیرون بیفتد، سیستم هشدار می‌دهد: «این آدم در حال از دست رفتن است.»</p></div>
-          </div>
-          <div class="flow__item reveal" data-delay="140">
-            <span class="flow__num">6</span>
-            <div><h4>کمپین بازگشت</h4><p>پیام شخصی‌سازی‌شده برای همان گروه؛ نه پیامک تبلیغاتی عمومی.</p></div>
-          </div>
-          <div class="flow__item reveal" data-delay="200">
-            <span class="flow__num">7</span>
-            <div><h4>بازگشت و خرید مجدد</h4><p>مشتری برمی‌گردد و همان‌جا در سیستم ثبت می‌شود.</p></div>
-          </div>
-          <div class="flow__item reveal" data-delay="260" style="background:linear-gradient(140deg,rgba(47,169,140,.12),rgba(47,169,140,.04));border-color:rgba(47,169,140,.3)">
-            <span class="flow__num" style="background:var(--mint-500);color:#fff">✓</span>
-            <div><h4>اندازه‌گیری درآمد</h4><p>چند نفر هدف‌گذاری شدند، چند نفر برگشتند، چند تومان فروش ساخته شد. همین عدد، تمدید اشتراک را می‌فروشد.</p></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal" style="margin-top:30px">
-        <pre class="code"><span class="d">CUSTOMER</span> ──▶ <span class="c">QR</span> ──▶ <span class="c">DIGITAL MENU</span> ──▶ <span class="c">CUSTOMER PROFILE</span>
-                                              │
-                        ┌─────────────────────┴─────────────────────┐
-                        ▼                                           ▼
-                    <span class="k">LOYALTY</span>                                    <span class="k">BEHAVIOR</span>
-                        └─────────────────────┬─────────────────────┘
-                                              ▼
-                                       <span class="c">SMART RETURN</span>
-                                              ▼
-                                      <span class="c">PERSONAL OFFER</span>
-                                              ▼
-                                          <span class="k">REVISIT</span> ──▶ <span class="k">REPEAT SALE</span> ──▶ <span class="k">REVENUE</span></pre>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================= 6 MVP PARTS ======================= -->
-  <section class="section section--soft">
-    <div class="container">
-      <div class="section-head section-head--center reveal">
-        <span class="eyebrow">MVP واقعی</span>
-        <h2 class="h2">فقط ۶ بخش. نه ۳۰ صفحه.</h2>
-        <p class="lead">هر چیزی خارج از این شش بخش، فعلاً «ممنوع» است تا محصول زودتر به دست فروش برسد.</p>
-      </div>
-
-      <div class="grid grid-3" style="margin-top:36px">
-        <article class="card card--hover reveal">
-          <div class="card__icon">📖</div>
-          <h3>۱. منوی دیجیتال</h3>
-          <p>برای جذب مشتری و شروع رابطه. سریع، موبایل‌فرست، بدون نصب اپ.</p>
-        </article>
-        <article class="card card--hover reveal" data-delay="60">
-          <div class="card__icon">🪪</div>
-          <h3>۲. هویت مشتری</h3>
-          <p>تا مشتری «ناشناس» نماند. پایه‌ی همه‌ی قابلیت‌های بعدی همین است.</p>
-        </article>
-        <article class="card card--hover reveal" data-delay="120">
-          <div class="card__icon">⭐</div>
-          <h3>۳. وفاداری</h3>
-          <p>انگیزه‌ی روشن برای مراجعه‌ی بعدی: امتیاز، پاداش، پیشرفت قابل مشاهده.</p>
-        </article>
-        <article class="card card--hover reveal" data-delay="180">
-          <div class="card__icon">📊</div>
-          <h3>۴. تحلیل رفتار مشتری</h3>
-          <p>شناخت ساده و قابل فهم: تکرار، فاصله‌ی مراجعه، ساعت و محصول محبوب.</p>
-        </article>
-        <article class="card card--hover reveal" data-delay="240">
-          <div class="card__icon">🔔</div>
-          <h3>۵. Smart Return</h3>
-          <p>پیدا کردن مشتری‌هایی که در آستانه‌ی ریزش هستند — پیش از اینکه کاملاً بروند.</p>
-        </article>
-        <article class="card card--hover reveal" data-delay="300">
-          <div class="card__icon">📣</div>
-          <h3>۶. کمپین بازگشت</h3>
-          <p>اجرای پیشنهاد برای همان گروه، و اندازه‌گیری نتیجه‌اش در فروش.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================= LIVE MVP (CUSTOMER APP) ======================= -->
-  <section class="section section--brand" id="mvp">
-    <div class="container split">
-      <div class="reveal">
-        <span class="eyebrow">نسخه‌ی قابل استفاده، نه اسکرین‌شات</span>
-        <h2 class="h2" style="color:#fff">دکمه‌ی MVP را بزن —<br><span class="grad">خودت مشتری شو.</span></h2>
-        <p class="lead" style="color:rgba(247,239,232,.78)">
-          این همان صفحه‌ای است که مشتری بعد از اسکن QR روی میز می‌بیند: HTML و CSS خالص، بدون اپ،
-          بدون بیلد، بدون سرور. همه‌ی بخش‌های سمت مشتری در آن واقعاً کار می‌کنند و داده‌ات فقط در
-          مرورگر خودت ذخیره می‌شود.
-        </p>
-        <div class="grid grid-2" style="margin-top:22px;gap:12px">
-          <div class="glass gcard" style="padding:14px">
-            <b style="color:#fff">☕ منوی دیجیتال</b>
-            <p class="small" style="color:rgba(247,239,232,.72);margin-top:4px">۲۹ آیتم، دسته‌بندی، جست‌وجو، گزینه‌های سفارش (سایز، شیر، شکر، extras)، یادداشت برای بار.</p>
-          </div>
-          <div class="glass gcard" style="padding:14px">
-            <b style="color:#fff">🧾 سفارش و سرویس میز</b>
-            <p class="small" style="color:rgba(247,239,232,.72);margin-top:4px">سبد، ثبت سفارش، پیگیری زنده‌ی وضعیت، درخواست پیشخدمت/فاکتور، امتیاز به سفارش، سفارش مجدد.</p>
-          </div>
-          <div class="glass gcard" style="padding:14px">
-            <b style="color:#fff">⭐ وفاداری واقعی</b>
-            <p class="small" style="color:rgba(247,239,232,.72);margin-top:4px">امتیاز روی هر سفارش، چهار سطح با ضریب، پاداش‌ها و تبدیل امتیاز به کد تخفیف.</p>
-          </div>
-          <div class="glass gcard" style="padding:14px">
-            <b style="color:#fff">🎁 پیشنهاد شخصی</b>
-            <p class="small" style="color:rgba(247,239,232,.72);margin-top:4px">محصول محبوب، ساعت مناسب، ریسک ریزش و «چرا این پیشنهاد را می‌بینم» — همان منطق Smart Return.</p>
-          </div>
-        </div>
-        <div class="row" style="margin-top:24px">
-          <a class="btn btn--lg btn--mvp" href="mvp.html">▶ ورود به برنامه‌ی MVP</a>
-          <a class="btn btn--lg btn--outline-light" href="mvp.html?table=12#menu">امتحان با میز ۱۲ (لینک QR)</a>
-        </div>
-        <p class="tiny" style="color:rgba(247,239,232,.6);margin-top:12px">
-          منوهای شیشه‌ای بالای صفحه (دسته‌بندی، فیلتر، پیشرفته، سرویس، حساب) و داک پایین، همان چیزی است که مشتری لمس می‌کند.
-        </p>
-      </div>
-
-      <div class="reveal" data-delay="120">
-        <div class="glass-preview glass glass--sheen glass--strong">
-          <div class="glass-preview__head">
-            <span class="mvp-bar__dot" aria-hidden="true"></span>
-            <b>Cafe Noir · میز ۷</b>
-            <span class="gpill gpill--gold">دمو</span>
-          </div>
-
-          <div class="glass-preview__menu">
-            <button class="gmenu__btn" type="button" aria-expanded="false" tabindex="-1"><i>📖</i><span>دسته‌بندی</span><span class="caret">▼</span></button>
-            <button class="gmenu__btn" type="button" aria-expanded="false" tabindex="-1"><i>⚗︎</i><span>فیلتر</span><span class="gmenu__count">۱۲</span><span class="caret">▼</span></button>
-            <button class="gmenu__btn is-demo-open" type="button" aria-expanded="true" tabindex="-1"><i>⚙︎</i><span>پیشرفته</span><span class="caret">▲</span></button>
-          </div>
-
-          <div class="gmenu__panel is-open" style="position:static;width:auto;inset:auto;display:block" aria-hidden="true">
-            <h6>گزینه‌های پیشرفته</h6>
-            <div class="grow"><span class="grow__label">حالت پیشرفته<small>کالری، کافئین، تیپ، تحلیل، خروجی داده</small></span><span class="switch" aria-hidden="true"></span></div>
-            <div class="grow"><span class="grow__label">فونت بزرگ‌تر</span><span class="switch" data-on="true" aria-hidden="true"></span></div>
-            <div class="opt-row"><span>شدت شیشه — ۶۴٪</span><input type="range" min="10" max="96" value="64" tabindex="-1" aria-hidden="true"></div>
-          </div>
-
-          <div class="gitem glass" style="cursor:default">
-            <span class="gitem__thumb">☕<button class="gitem__fav is-on" tabindex="-1" aria-hidden="true">♥</button></span>
-            <div class="gitem__body">
-              <h4>آمریکانو <span style="font-weight:600;color:var(--g-ink-faint);font-size:.8rem">Americano</span></h4>
-              <p>دوبل، اسپرسو + آب گرم · ⭐ ۴٫۷</p>
-              <div class="gitem__meta"><span class="gpill gpill--mint">🌱 گیاهی</span><span class="gpill">⏱ ۳′</span><span class="gpill">📈 ۱۵ kcal</span></div>
+          <div class="mock__body">
+            <div class="mock__head">
+              <h4>ساخت کمپین بازگشت</h4>
+              <span class="pill pill--brand">۳ مرحله</span>
             </div>
-            <div class="gitem__side"><span class="gitem__price">145,000<small>تومان</small></span><span class="gitem__add" aria-hidden="true">+</span></div>
-          </div>
-
-          <nav class="gdock gdock--static" aria-hidden="true">
-            <button class="gdock__btn is-active" type="button" tabindex="-1"><i>☕</i>منو</button>
-            <button class="gdock__btn" type="button" tabindex="-1"><i>🧾</i>سفارش<span class="gdock__badge">۱</span></button>
-            <button class="gdock__btn" type="button" tabindex="-1"><i>⭐</i>امتیاز</button>
-            <button class="gdock__btn" type="button" tabindex="-1"><i>🎁</i>پیشنهاد<span class="gdock__badge">۴</span></button>
-            <button class="gdock__btn" type="button" tabindex="-1"><i>🪪</i>پروفایل</button>
-          </nav>
-        </div>
-        <p class="tiny center" style="color:rgba(247,239,232,.6);margin-top:12px">
-          پیش‌نمایش — در نسخه‌ی واقعی همه‌ی این‌ها کلیک‌پذیرند.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================= PASSPORT + SMART RETURN ======================= -->
-  <section class="section">
-    <div class="container split">
-      <div class="reveal">
-        <span class="eyebrow">Customer Passport</span>
-        <h2 class="h2">چیزی که QR منو هرگز ندارد:<br><span class="grad">Customer Intelligence</span></h2>
-        <p class="lead">
-          هر مشتری یک پروفایل ساده دارد؛ نه یک ردیف در اکسل. این پروفایل به کافه می‌گوید
-          چه کسی، هر چند وقت یک‌بار، چه چیزی و در چه ساعتی می‌خرد.
-        </p>
-        <ul class="stack" style="margin-top:18px">
-          <li class="row"><span class="pill pill--brand">میانگین فاصله مراجعه</span> مشتری معمولاً هر ۸ روز می‌آید.</li>
-          <li class="row"><span class="pill pill--brand">ساعت محبوب</span> بین ۱۸ تا ۲۱ — بهترین وقت برای کمپین.</li>
-          <li class="row"><span class="pill pill--brand">محصول محبوب</span> آمریکانو؛ پیشنهاد باید حول همان باشد.</li>
-          <li class="row"><span class="pill pill--brand">ارزش مشتری</span> مجموع خرید و تعداد مراجعه در یک نگاه.</li>
-        </ul>
-      </div>
-
-      <div class="reveal" data-delay="120">
-        <div class="card" style="background:linear-gradient(160deg,#2a1c17,#150d0a);color:#f7efe8;border-color:transparent">
-          <div class="row row--between" style="align-items:flex-start">
-            <div class="row">
-              <span class="avatar">A</span>
-              <div>
-                <b>AMIR</b>
-                <div class="tiny" style="color:rgba(247,239,232,.6)">Cafe Noir · مشتری از ۴ ماه پیش</div>
+            <div class="mock-panel">
+              <div class="mock-panel__head"><b>۱. گروه هدف</b><span class="pill pill--danger">۲۳ نفر</span></div>
+              <p class="tiny muted" style="margin-bottom:8px">بیش از ۲ برابر چرخه‌ی همیشگی غایب بوده‌اند.</p>
+              <div class="row" style="gap:6px">
+                <span class="chip is-active" style="font-size:.72rem;padding:5px 10px">در معرض ریزش</span>
+                <span class="chip" style="font-size:.72rem;padding:5px 10px">وفادار</span>
+                <span class="chip" style="font-size:.72rem;padding:5px 10px">ساعت کم‌ترافیک</span>
               </div>
             </div>
-            <span class="pill pill--warn">⚠️ در معرض ریزش</span>
-          </div>
-          <hr style="border:0;border-top:1px solid rgba(255,255,255,.14);margin:18px 0">
-          <div class="stack">
-            <div class="row row--between"><span class="small" style="color:rgba(247,239,232,.7)">☕ تعداد مراجعه</span><b class="mono">7</b></div>
-            <div class="row row--between"><span class="small" style="color:rgba(247,239,232,.7)">💰 مجموع خرید</span><b class="mono">4.2M تومان</b></div>
-            <div class="row row--between"><span class="small" style="color:rgba(247,239,232,.7)">❤️ محصول محبوب</span><b>Americano</b></div>
-            <div class="row row--between"><span class="small" style="color:rgba(247,239,232,.7)">🔥 ساعت محبوب</span><b class="mono">18:00–21:00</b></div>
-            <div class="row row--between"><span class="small" style="color:rgba(247,239,232,.7)">⭐ امتیاز وفاداری</span><b class="mono">740</b></div>
-          </div>
-          <div class="note note--dark" style="margin-top:18px">
-            <b style="color:#e0b169">Smart Return:</b>
-            این مشتری هر ۸ روز می‌آمد؛ امروز روز ۱۲ بدون مراجعه است.
-            پیشنهاد سیستم: ارسال پیام «قهوه‌ی همیشگیتون منتظرتونه ☕».
+            <div class="mock-panel">
+              <div class="mock-panel__head"><b>۲. پیام</b><span class="tiny faint">شخصی‌سازی خودکار</span></div>
+              <p class="small" style="line-height:1.9">
+                «مینا جان، لاته‌ی همیشگی‌ات منتظرت است ☕<br>
+                امروز تا ۱۸:۰۰، یک برش کیک مهمان ما.»
+              </p>
+            </div>
+            <div class="mock-panel">
+              <div class="mock-panel__head"><b>۳. نتیجه‌ی تخمینی</b><span class="pill pill--ok">+۲۴ بازگشت</span></div>
+              <div class="bar-list">
+                <div class="bar-row"><span>باز شدن</span><span class="bar-track"><span class="bar-fill" data-value="72"></span></span><span class="bar-value">72%</span></div>
+                <div class="bar-row"><span>بازگشت</span><span class="bar-track"><span class="bar-fill bar-fill--mint" data-value="46"></span></span><span class="bar-value">46%</span></div>
+              </div>
+            </div>
+            <div class="mock-foot"><span>هزینه‌ی پیام‌ها: ۱۸٬۰۰۰ تومان</span><span>میانگین درآمد هر بازگشت: ۱۹۵٬۰۰۰</span></div>
           </div>
         </div>
+        <p class="figure-note center">نمای واقعی از پنل — این اعداد نمونه‌اند.</p>
       </div>
     </div>
   </section>
 
-  <!-- ======================= AI ======================= -->
-  <section class="section section--dark is-dark">
-    <div class="container split">
-      <div class="reveal">
-        <span class="eyebrow">AI Revenue Assistant</span>
-        <h2 class="h2">AI برای گرفتنِ تصمیم تجاری، نه برای Chatbot بودن.</h2>
-        <p class="lead" style="color:rgba(247,239,232,.75)">
-          صبح که صاحب کافه داشبورد را باز می‌کند، فقط عدد نمی‌بیند؛ یک توصیه‌ی قابل اجرا می‌بیند
-          که با داده‌ی همان کافه ساخته شده است.
-        </p>
-        <ul class="stack" style="margin-top:20px">
-          <li class="row"><span class="pill pill--ghost-light">تشخیص</span> کدام گروه مشتری در حال ریزش است.</li>
-          <li class="row"><span class="pill pill--ghost-light">اولویت</span> روی کدام ۲۰ نفر بیشترین اثر را دارد.</li>
-          <li class="row"><span class="pill pill--ghost-light">پیشنهاد</span> چه آفر و در چه ساعتی اجرا شود.</li>
-          <li class="row"><span class="pill pill--ghost-light">سنجش</span> نتیجه به درآمد وصل می‌شود، نه به «لایک».</li>
-        </ul>
-        <a class="btn" style="margin-top:24px" href="demo.html">در دموی زنده ببین ←</a>
+  <!-- ======================= FEATURES ======================= -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--split reveal">
+        <div>
+          <span class="eyebrow">قابلیت‌ها</span>
+          <h2 class="h2" style="margin-top:14px">هر چیزی که برای برگرداندن مشتری لازم داری — <span class="grad">نه بیشتر.</span></h2>
+          <p class="lead" style="margin-top:14px">
+            شش بخش، یک زنجیره‌ی کامل. هیچ قابلیتی اضافه نشده که بخواهد کافه‌دار را آموزش بدهد
+            یا باریستا را از پشت بار دور کند.
+          </p>
+        </div>
+        <a class="link-arrow" href="features.html">همه‌ی قابلیت‌ها</a>
       </div>
 
-      <div class="reveal" data-delay="120">
-        <div class="app-window">
-          <div class="app-window__bar">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span class="url">app.cafeloop.ir/cafe-noir</span>
+      <div class="feature-grid" style="margin-top:34px">
+        <article class="feature reveal">
+          <div class="feature__icon">▦</div>
+          <h3>منوی دیجیتال و QR</h3>
+          <p>منوی همیشه به‌روز، با قیمت و دسته‌بندی، روی هر میز. نقطه‌ی ورود مشتری به سیستم.</p>
+          <ul><li>QR اختصاصی هر میز و شعبه</li><li>بدون نصب اپ و بدون کاغذ</li></ul>
+        </article>
+        <article class="feature reveal" data-delay="60">
+          <div class="feature__icon">🪪</div>
+          <h3>پروفایل مشتری</h3>
+          <p>هر مشتری یک پرونده‌ی زنده دارد: مراجعه‌ها، سبد، ساعت و محصول محبوبش.</p>
+          <ul><li>شناسایی با شماره موبایل</li><li>تاریخچه‌ی کامل و قابل خروجی</li></ul>
+        </article>
+        <article class="feature reveal" data-delay="120">
+          <div class="feature__icon">⭐</div>
+          <h3>باشگاه وفاداری</h3>
+          <p>امتیاز روی هر خرید، پاداش‌های ساده و قابل فهم؛ دلیل بازگشت بعدی.</p>
+          <ul><li>قوانین امتیاز قابل تنظیم</li><li>پاداش خودکار در خرید بعدی</li></ul>
+        </article>
+        <article class="feature reveal">
+          <div class="feature__icon">📊</div>
+          <h3>تحلیل رفتار</h3>
+          <p>به‌جای بیست نمودار، سه عدد که تصمیم می‌سازند: بازگشت، سبد، ساعت اوج.</p>
+          <ul><li>روند نرخ بازگشت ماهانه</li><li>ترافیک ساعتی و محصولات پرفروش</li></ul>
+        </article>
+        <article class="feature feature--highlight reveal" data-delay="60">
+          <div class="feature__icon">🎯</div>
+          <h3>Smart Return</h3>
+          <p>موتور تشخیص ریزش: مشتری را دقیقاً قبل از رفتن پیدا می‌کند و اولویت تماس می‌دهد.</p>
+          <ul><li>اولویت بر اساس ارزش و مدت غیبت</li><li>فهرست روزانه‌ی «امروز با این‌ها حرف بزن»</li></ul>
+        </article>
+        <article class="feature reveal" data-delay="120">
+          <div class="feature__icon">✉️</div>
+          <h3>کمپین بازگشت</h3>
+          <p>پیام شخصی برای هر گروه، با محصول و ساعت محبوب خودشان — و نتیجه‌ی قابل اندازه‌گیری.</p>
+          <ul><li>پیامک و لینک منو</li><li>گزارش بازگشت و درآمد هر کمپین</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= SMART RETURN SPOTLIGHT ======================= -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="spotlight reveal">
+        <div>
+          <span class="eyebrow">قلب محصول</span>
+          <h2 class="h2">کسی که نمی‌آید،<br><span class="grad">دیده می‌شود.</span></h2>
+          <p>
+            Smart Return برای هر مشتری یک ریتم همیشگی می‌سازد؛ اگر از آن عقب بیفتد،
+            با یک عدد اولویت‌دار در فهرست امروزت ظاهر می‌شود. بدون گزارش‌های پیچیده،
+            بدون حدس زدن.
+          </p>
+          <div class="flow" style="margin-top:22px">
+            <div class="flow__item">
+              <span class="flow__num">۱</span>
+              <div><h4>ریتم هر مشتری را یاد می‌گیرد</h4><p>مثلاً مینا هر ۶ روز می‌آید و همیشه لاته می‌گیرد.</p></div>
+            </div>
+            <div class="flow__item">
+              <span class="flow__num">۲</span>
+              <div><h4>انحراف را می‌بیند</h4><p>روز نهم که نیامد، هشدار با اولویت و دلیل مشخص.</p></div>
+            </div>
+            <div class="flow__item">
+              <span class="flow__num">۳</span>
+              <div><h4>پیشنهاد برمی‌گرداندش</h4><p>پیام حول محصول محبوب، در ساعتی که معمولاً می‌آید.</p></div>
+            </div>
           </div>
-          <div class="app-window__body">
-            <div class="panel--dark panel">
-              <div class="row row--between">
-                <b>Good morning, Cafe Noir ☀️</b>
-                <span class="tiny" style="color:rgba(247,239,232,.6)">امروز ۰۹:۱۲</span>
+          <a class="link-arrow" href="features.html#smart-return" style="margin-top:20px">منطق Smart Return</a>
+        </div>
+
+        <div class="mock">
+          <div class="mock__bar">
+            <span class="mock__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="mock__url">app.cafeloop.ir/at-risk</span>
+          </div>
+          <div class="mock__body">
+            <div class="mock__head">
+              <h4>فهرست امروز</h4>
+              <span>دوشنبه · ۱۰:۴۲</span>
+            </div>
+            <div class="mock-panel">
+              <div class="mock-panel__head">
+                <b>۲۳ مشتری در معرض ریزش</b>
+                <span class="pill pill--danger">۸.۴M قابل بازیابی</span>
               </div>
-              <div class="stack" style="margin-top:14px">
-                <p class="small" style="color:rgba(247,239,232,.82)">دیروز <b class="mono">187</b> مشتری داشتید.</p>
-                <p class="small" style="color:rgba(247,239,232,.82)">
-                  <b class="mono">32</b> مشتری که معمولاً ماهانه بیش از دو بار می‌آمدند، بیش از ۱۰ روز است برنگشته‌اند.
-                </p>
-                <p class="small" style="color:rgba(247,239,232,.82)">
-                  پیشنهاد من: برای <b class="mono">21</b> نفر از آن‌ها پیشنهاد بازگشت ارسال شود.
-                </p>
+              <div class="mock-row">
+                <span class="avatar avatar--violet">م</span>
+                <div><b>مینا</b> · ۱۴ مراجعه <span class="tiny faint">۹ روز غایب — هر ۶ روز</span></div>
+                <span class="pill pill--warn">۹۲</span>
               </div>
-              <div class="row" style="margin-top:16px">
-                <button class="btn btn--sm" type="button" data-toast="کمپین نمونه ساخته شد (نسخه دمو)">ساخت کمپین</button>
-                <a class="btn btn--sm btn--outline-light" href="demo.html">مشاهده لیست مشتریان</a>
+              <div class="mock-row">
+                <span class="avatar">ر</span>
+                <div><b>رضا</b> · ۹ مراجعه <span class="tiny faint">۱۵ روز غایب — هر ۹ روز</span></div>
+                <span class="pill pill--warn">۸۶</span>
               </div>
+              <div class="mock-row">
+                <span class="avatar avatar--violet">پ</span>
+                <div><b>پریسا</b> · ۱۱ مراجعه <span class="tiny faint">۱۱ روز غایب — هر ۷ روز</span></div>
+                <span class="pill pill--warn">۸۱</span>
+              </div>
+              <div class="mock-row">
+                <span class="avatar avatar--mint">ن</span>
+                <div><b>نازنین</b> · ۱۵ مراجعه <span class="tiny faint">۸ روز غایب — هر ۵ روز</span></div>
+                <span class="pill pill--warn">۷۵</span>
+              </div>
+            </div>
+            <div class="mock-panel">
+              <div class="mock-panel__head"><b>کار پیشنهادی</b><span class="pill pill--brand">امروز</span></div>
+              <p class="tiny muted">برای ۲۱ نفر آفر «قهوه + کیک» بین ۱۴ تا ۱۸ ارسال شود؛ کم‌ترین ترافیک هفته.</p>
+              <div class="mock-foot" style="margin-top:8px"><span>تخمین بازگشت: ۹ تا ۱۲ نفر</span><span>درآمد تخمینی: ۲.۱M</span></div>
             </div>
           </div>
         </div>
@@ -464,299 +479,404 @@
     </div>
   </section>
 
-  <!-- ======================= WHAT WE REMOVE ======================= -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head section-head--center reveal">
-        <span class="eyebrow">تمرکز یعنی حذف کردن</span>
-        <h2 class="h2">چیزهایی که در MVP <span class="grad">نمی‌سازیم</span></h2>
-        <p class="lead">این‌ها روی نقشه‌ی بلندمدت می‌مانند، اما اجازه ندارند نسخه‌ی اول را سنگین کنند.</p>
-      </div>
-
-      <div class="row" style="margin-top:28px;justify-content:center">
-        <span class="pill pill--danger">❌ اپ موبایل Native</span>
-        <span class="pill pill--danger">❌ کیف پول و پرداخت</span>
-        <span class="pill pill--danger">❌ NFC (در V2)</span>
-        <span class="pill pill--danger">❌ اتصال به POS</span>
-        <span class="pill pill--danger">❌ آشپزخانه و KDS</span>
-        <span class="pill pill--danger">❌ رزرو میز</span>
-        <span class="pill pill--danger">❌ درگاه پرداخت پیچیده</span>
-        <span class="pill pill--danger">❌ AI Chatbot</span>
-        <span class="pill pill--danger">❌ Website Builder</span>
-        <span class="pill pill--danger">❌ چندزبانه</span>
-        <span class="pill pill--danger">❌ ۳۰ نوع گزارش</span>
-        <span class="pill pill--danger">❌ مارکت‌پلیس و Delivery</span>
-      </div>
-
-      <p class="note mx-auto" style="margin-top:26px;max-width:640px;text-align:center">
-        جایگزینش فقط یک جمله است: <b>مشتری رو برگردون.</b>
-      </p>
-    </div>
-  </section>
-
-  <!-- ======================= SCORE COMPARISON ======================= -->
-  <section class="section section--soft">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">چرا این نسخه قوی‌تر است</span>
-        <h2 class="h2">مقایسه‌ی صادقانه: «Digital OS» در برابر «CafeLoop»</h2>
-        <p class="lead">همان ایده، اما دلیل خرید عوض شده است: از «امکانات بیشتر» به «نتیجه‌ی قابل اندازه‌گیری».</p>
-      </div>
-
-      <div class="grid grid-2" style="margin-top:26px;align-items:center">
-        <div class="panel center reveal">
-          <div class="tiny muted">نسخه‌ی قبلی — Digital OS</div>
-          <div class="h1" style="font-family:var(--font-mono);direction:ltr;color:var(--berry-500)">6.8<span class="tiny muted">/10</span></div>
-          <div class="tiny muted">Feature-heavy · Solution-first</div>
-        </div>
-        <div class="panel center reveal" data-delay="90" style="border-color:rgba(47,169,140,.35);background:linear-gradient(150deg,rgba(47,169,140,.1),transparent)">
-          <div class="tiny muted">نسخه‌ی جدید — CafeLoop</div>
-          <div class="h1" style="font-family:var(--font-mono);direction:ltr;color:var(--mint-600)">8.6<span class="tiny muted">/10</span></div>
-          <div class="tiny muted">Retention-first · Sellable · MVP-ready</div>
-        </div>
-      </div>
-
-      <div class="table-wrap reveal" style="margin-top:24px">
-        <table class="data">
-          <thead>
-            <tr><th>معیار</th><th class="num">نسخه قبلی</th><th class="num">CafeLoop</th><th>تغییر کلیدی</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>وضوح Value Proposition</td><td class="num">6</td><td class="num"><b>9</b></td><td>از «سیستم‌عامل کافه» به «برگرداندن مشتری»</td></tr>
-            <tr><td>Willingsness to Pay</td><td class="num">6</td><td class="num"><b>8.5</b></td><td>درآمد قابل اندازه‌گیری، نه امکانات</td></tr>
-            <tr><td>MVP در ۷ روز</td><td class="num">5.5</td><td class="num"><b>9</b></td><td>حذف Wallet، AI Chatbot، POS و اپ</td></tr>
-            <tr><td>Retention</td><td class="num">7.5</td><td class="num"><b>9</b></td><td>خودِ محصول حول بازگشت ساخته شده</td></tr>
-            <tr><td>Moat</td><td class="num">4.5</td><td class="num"><b>7</b></td><td>داده‌ی رفتاری و شبکه‌ی کافه‌ها</td></tr>
-            <tr><td>امکان Validation</td><td class="num">7</td><td class="num"><b>9.5</b></td><td>Concierge MVP با گوگل‌شیت هم قابل تست است</td></tr>
-            <tr><td>پیچیدگی عملیاتی</td><td class="num">4</td><td class="num"><b>8</b></td><td>بدون پرداخت، بدون سخت‌افزار، بدون آموزش سنگین</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="tiny faint reveal" style="margin-top:14px">
-        این امتیازها فرضیه‌اند، نه واقعیت. بخشی از امتیاز را فقط بازار واقعی می‌دهد — بعد از ۲۰ مصاحبه، ۵ دمو و ۱ تا ۳ مشتری پولی.
-      </p>
-    </div>
-  </section>
-
-  <!-- ======================= ICP ======================= -->
-  <section class="section">
+  <!-- ======================= LIVE APP ======================= -->
+  <section class="section section--soft" id="live-app">
     <div class="container split">
       <div class="reveal">
-        <span class="eyebrow">بازار هدف</span>
-        <h2 class="h2">فقط کافه‌های خاص. فعلاً نه رستوران.</h2>
-        <p class="lead">
-          کافه‌ی کوچکی که «خودم مشتری‌هام رو می‌شناسم» برای CRM پول نمی‌دهد.
-          مشتری ما کافه‌ای است که حجم مشتری دارد و مشتری را از دست می‌دهد.
+        <span class="eyebrow">محصول زنده، نه اسکرین‌شات</span>
+        <h2 class="h2" style="margin-top:14px">اپ مشتری را همین حالا<br><span class="grad">باز کن و سفارش بده.</span></h2>
+        <p class="lead" style="margin-top:14px">
+          «اپ زنده» نسخه‌ی کارکردی سمت مشتری است: ۲۹ آیتم منو با جست‌وجو و فیلتر، گزینه‌های سفارش،
+          سبد و پیگیری، سرویس میز، باشگاه امتیاز و پیشنهاد شخصی. بدون نصب، بدون سرور —
+          همه‌ی داده در مرورگر خودت می‌ماند.
         </p>
-      </div>
-      <div class="card reveal" data-delay="100">
-        <h3>مشتری اولیه (ICP)</h3>
-        <p style="margin-bottom:16px">
-          کافه‌ی مستقل یا زنجیره‌ی کوچک، با حداقل حدود <b class="mono">1000</b> تراکنش ماهانه،
-          برند فعال و مشتری تکرارشونده.
-        </p>
-        <ul class="stack">
-          <li class="row">✅ برند دارد و به تجربه‌ی مشتری اهمیت می‌دهد</li>
-          <li class="row">✅ اینستاگرام فعال و مشتری وفادار</li>
-          <li class="row">✅ قیمت متوسط تا بالا</li>
-          <li class="row">✅ حداقل چند ده مشتری در روز</li>
-        </ul>
-        <p class="note" style="margin-top:18px">این تعریف فرضیه‌ی اولیه است؛ با داده‌ی واقعی اصلاحش می‌کنیم.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================= PRICING TEASER ======================= -->
-  <section class="section section--soft">
-    <div class="container">
-      <div class="section-head section-head--center reveal">
-        <span class="eyebrow">مدل درآمدی</span>
-        <h2 class="h2">اشتراک ماهانه، بر اساس نتیجه — نه بر اساس امکانات</h2>
-      </div>
-      <div class="grid grid-3" style="margin-top:32px">
-        <article class="card price-card reveal">
-          <span class="pill">Starter</span>
-          <div style="margin-top:16px"><span class="price__amount">790K</span> <span class="price__period">تومان / ماه</span></div>
-          <ul>
-            <li>منوی دیجیتال و QR</li>
-            <li>پروفایل مشتری</li>
-            <li>وفاداری و امتیاز</li>
-            <li>تحلیل پایه</li>
-          </ul>
-          <a class="btn btn--ghost btn--block" href="pricing.html">جزئیات پلن</a>
-        </article>
-        <article class="card price-card price-card--featured reveal" data-delay="80">
-          <span class="price-ribbon">پیشنهاد ما</span>
-          <span class="pill pill--ghost-light">Growth</span>
-          <div style="margin-top:16px"><span class="price__amount">1.49M</span> <span class="price__period" style="color:rgba(247,239,232,.7)">تومان / ماه</span></div>
-          <ul>
-            <li>همه‌ی Starter</li>
-            <li>Smart Return</li>
-            <li>کمپین و سگمنت‌بندی</li>
-            <li>تحلیل پیشرفته</li>
-            <li>AI Revenue Assistant</li>
-          </ul>
-          <a class="btn btn--light btn--block" href="pricing.html">جزئیات پلن</a>
-        </article>
-        <article class="card price-card reveal" data-delay="160">
-          <span class="pill">Pro</span>
-          <div style="margin-top:16px"><span class="price__amount">2.99M</span> <span class="price__period">تومان / ماه</span></div>
-          <ul>
-            <li>همه‌ی Growth</li>
-            <li>CRM پیشرفته</li>
-            <li>چند شعبه</li>
-            <li>اتوماسیون بازاریابی</li>
-            <li>دامنه اختصاصی</li>
-          </ul>
-          <a class="btn btn--ghost btn--block" href="pricing.html">جزئیات پلن</a>
-        </article>
-      </div>
-      <p class="note mx-auto reveal" style="margin-top:22px;max-width:760px;text-align:center">
-        این قیمت‌ها فقط <b>فرضیه‌ی طراحی</b> هستند. قبل از فروش باید با بازار واقعی تست شوند.
-        مدل آینده: <b>Base Fee + Performance</b> — اما فعلاً نه؛ اول SaaS ساده.
-      </p>
-    </div>
-  </section>
-
-  <!-- ======================= 7-DAY PLAN TEASER ======================= -->
-  <section class="section">
-    <div class="container split">
-      <div class="reveal">
-        <span class="eyebrow">۷ Day Startup</span>
-        <h2 class="h2">قبل از ساختن، <span class="grad">بفروش</span>.</h2>
-        <p class="lead">
-          برنامه‌ی هفته‌ی اول، ساختن نرم‌افزار نیست؛ گرفتن اولین تأیید پولی است.
-          حتی با گوگل‌شیت و یک داشبورد ساده.
-        </p>
+        <div class="feature-grid" style="grid-template-columns:1fr 1fr;margin-top:22px">
+          <div class="card card--flat"><b style="font-size:.92rem">☕ منو و سفارش</b><p class="tiny muted" style="margin-top:4px">۲۹ آیتم، فیلتر رژیم و آلرژن، سایز و شیر و شکر، یادداشت برای بار، سبد و ثبت سفارش.</p></div>
+          <div class="card card--flat"><b style="font-size:.92rem">⭐ وفاداری</b><p class="tiny muted" style="margin-top:4px">امتیاز روی هر سفارش، چهار سطح، پاداش و تبدیل امتیاز به کد تخفیف.</p></div>
+          <div class="card card--flat"><b style="font-size:.92rem">🎁 پیشنهاد شخصی</b><p class="tiny muted" style="margin-top:4px">محصول محبوب، ساعت مناسب و دلیل پیشنهاد — همان منطق Smart Return.</p></div>
+          <div class="card card--flat"><b style="font-size:.92rem">♿ تنظیمات واقعی</b><p class="tiny muted" style="margin-top:4px">تم تاریک/روشن، فونت بزرگ‌تر، کنتراست بالا، حذف انیمیشن و ارقام فارسی یا لاتین.</p></div>
+        </div>
         <div class="row" style="margin-top:22px">
-          <a class="btn" href="roadmap.html">دیدن نقشه‌ی ۷ روزه ←</a>
-          <a class="btn btn--ghost" href="contact.html">شروع پایلوت</a>
+          <a class="btn" href="mvp.html">▶ باز کردن اپ زنده</a>
+          <a class="btn btn--ghost" href="mvp.html?table=12#menu">امتحان با میز ۱۲ (لینک QR)</a>
         </div>
       </div>
-      <div class="timeline reveal" data-delay="120">
-        <div class="timeline__item">
-          <div class="timeline__day">DAY 1</div>
-          <h4>دموی ساده با داده‌ی ساختگی</h4>
-          <p>۱,۸۴۲ مشتری · ۳۲٪ بازگشت · ۲۷ نفر در معرض ریزش · ۸.۴M درآمد قابل بازیابی.</p>
+
+      <div class="reveal" data-delay="120">
+        <div class="mock">
+          <div class="mock__bar">
+            <span class="mock__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="mock__url">cafeloop.ir/mvp</span>
+          </div>
+          <div class="mock__body">
+            <div class="mock__head"><h4>Cafe Noir · میز ۷</h4><span class="pill pill--ok">۷۹۰ امتیاز</span></div>
+            <div class="mock-panel">
+              <div class="mock-panel__head"><b>منوی دیجیتال</b><span class="tiny faint">۲۹ آیتم</span></div>
+              <div class="mock-row"><span class="avatar">☕</span><div><b>Americano</b> <span class="tiny faint">۱۵ kcal · گیاهی</span></div><span class="pill">۱۴۵K</span></div>
+              <div class="mock-row"><span class="avatar avatar--mint">🥛</span><div><b>Latte</b> <span class="tiny faint">شیر مخملی</span></div><span class="pill">۱۷۵K</span></div>
+              <div class="mock-row"><span class="avatar avatar--violet">🍰</span><div><b>Cheesecake</b> <span class="tiny faint">برش نیویورکی</span></div><span class="pill">۲۲۵K</span></div>
+            </div>
+            <div class="mock-panel">
+              <div class="mock-panel__head"><b>سبد سفارش</b><span class="pill pill--brand">۲ آیتم</span></div>
+              <div class="mock-foot" style="margin-top:6px"><span>لاته + کیک</span><span><b>۴۰۵٬۰۰۰</b> تومان</span></div>
+              <div class="mock-foot" style="margin-top:6px"><span>امتیاز این سفارش</span><span class="pill pill--ok">+۴۰۵</span></div>
+            </div>
+            <div class="ai-note" style="padding:12px 14px">
+              <span class="ai-note__icon">🎁</span>
+              <div><strong style="font-size:.84rem">پیشنهاد شخصی</strong><p class="tiny">«لاته‌ی همیشگی‌ات منتظرت است؛ امروز تا ۱۸:۰۰ یک برش کیک مهمان ما.»</p></div>
+            </div>
+          </div>
         </div>
-        <div class="timeline__item">
-          <div class="timeline__day">DAY 2–3</div>
-          <h4>۲۰ کافه، ۲ سؤال دقیق</h4>
-          <p>«می‌دونید ماه قبل چند درصد مشتری‌هاتون برگشتند؟» و «برای برگرداندنشون ماهانه پول می‌دید؟»</p>
+        <p class="figure-note center">نمای اپ زنده — برای تجربه‌ی واقعی، دکمه را بزن.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= DEMOS ======================= -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">دموی تعاملی</span>
+        <h2 class="h2">قبل از تصمیم، <span class="grad">خودت امتحان کن.</span></h2>
+        <p class="lead">
+          هر دو سمت محصول زنده و قابل کلیک است: پنل کافه‌دار و تجربه‌ی مشتری روی گوشی.
+          بدون فرم، بدون ثبت‌نام.
+        </p>
+      </div>
+
+      <div class="demo-grid" style="margin-top:34px">
+        <article class="demo-card reveal">
+          <div class="demo-card__visual">
+            <div class="mock">
+              <div class="mock__bar">
+                <span class="mock__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="mock__url">app.cafeloop.ir</span>
+              </div>
+              <div class="mock__body" style="gap:10px">
+                <div class="mock-kpis">
+                  <div class="mock-kpi"><span>نرخ بازگشت</span><b>34%</b><em>+۱۲</em></div>
+                  <div class="mock-kpi"><span>در معرض ریزش</span><b>27</b><em style="color:var(--berry-600)">۸.۴M</em></div>
+                  <div class="mock-kpi"><span>کمپین فعال</span><b>4</b><em>۲ نتیجه</em></div>
+                </div>
+                <div class="mock-chart" aria-hidden="true">
+                  <i style="height:34%"></i><i style="height:46%"></i><i style="height:42%"></i>
+                  <i style="height:60%"></i><i class="is-peak" style="height:78%"></i><i class="is-mint" style="height:92%"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-card__body">
+            <h3>پنل کافه‌دار</h3>
+            <p>KPI، فهرست اولویت‌دار مشتریان در معرض ریزش، سازنده‌ی کمپین و تاریخچه‌ی درآمد.</p>
+            <a class="link-arrow" href="demo.html">باز کردن دموی پنل</a>
+          </div>
+        </article>
+
+        <article class="demo-card reveal" data-delay="90">
+          <div class="demo-card__visual" style="display:grid;place-items:center;padding-bottom:18px">
+            <div class="card" style="width:100%;max-width:330px;padding:18px;box-shadow:var(--shadow)">
+              <div class="row row--between">
+                <div class="row">
+                  <img src="assets/img/logo.svg" alt="" width="30" height="30">
+                  <div><b style="font-size:.9rem">Cafe Noir</b><div class="tiny faint">میز ۷</div></div>
+                </div>
+                <span class="pill pill--ok tiny">عضو باشگاه</span>
+              </div>
+              <div class="points-badge" style="margin-top:14px">
+                <div><span class="tiny muted">امتیاز فعلی</span><br><b>۷۴۰</b></div>
+                <span class="tiny muted">۲۶۰ امتیاز تا پاداش</span>
+              </div>
+              <p class="small" style="margin-top:12px;line-height:1.9">
+                «مینا جان، لاته‌ی همیشگی‌ات منتظرت است ☕<br>
+                امروز تا ۱۸:۰۰ یک برش کیک مهمان ما.»
+              </p>
+              <div class="row row--between" style="margin-top:12px">
+                <span class="tiny faint">پیشنهاد شخصی · امروز</span>
+                <span class="pill pill--brand tiny">رزرو میز</span>
+              </div>
+            </div>
+          </div>
+          <div class="demo-card__body">
+            <h3>تجربه‌ی مشتری</h3>
+            <p>منو، عضویت یک‌کلیکی، امتیاز و پیشنهاد شخصی — همه در یک صفحه‌ی وب، بدون نصب اپ.</p>
+            <a class="link-arrow" href="customer.html">دیدن تجربه‌ی مشتری</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= RESULTS ======================= -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head section-head--split reveal">
+        <div>
+          <span class="eyebrow">نتیجه، نه وعده</span>
+          <h2 class="h2" style="margin-top:14px">کافه‌ها چه عددی را <span class="grad">گزارش می‌کنند؟</span></h2>
+          <p class="lead" style="margin-top:12px">
+            میانگین ۹۰ روز اول در کافه‌های همکار؛ از راه‌اندازی تا سومین کمپین بازگشت.
+          </p>
         </div>
-        <div class="timeline__item">
-          <div class="timeline__day">DAY 4–6</div>
-          <h4>Concierge MVP و اولین کمپین</h4>
-          <p>سیستم کامل نساز؛ دستی اجرا کن، نتیجه را ثبت کن: چند نفر هدف، چند نفر برگشت، چند تومان فروش.</p>
+        <a class="link-arrow" href="customers.html">داستان کامل کافه‌ها</a>
+      </div>
+
+      <div class="proof-strip reveal" style="margin-top:26px">
+        <div class="proof"><b>2.4×</b><span>نرخ بازگشت مشتری، نسبت به قبل</span></div>
+        <div class="proof"><b>+19%</b><span>میانگین رشد فروش ماهانه</span></div>
+        <div class="proof"><b>41%</b><span>بازگشت از کمپین‌های Smart Return</span></div>
+        <div class="proof"><b>8h</b><span>تا اجرای اولین کمپین</span></div>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:26px">
+        <figure class="quote-card reveal">
+          <span class="quote-card__mark" aria-hidden="true">”</span>
+          <blockquote>
+            قبلاً فقط می‌دانستم چند فنجان فروختم. حالا می‌دانم کدام مشتری‌ها دارند می‌روند
+            و همان هفته برایشان کاری می‌کنم.
+          </blockquote>
+          <span class="quote-card__stat">▲ ۳۸٪ بازگشت در ۶۰ روز</span>
+          <figcaption>
+            <span class="avatar">آ</span>
+            <div><b>آرش نیک‌پور</b><span>مدیر کافه نوار، تهران</span></div>
+          </figcaption>
+        </figure>
+        <figure class="quote-card reveal" data-delay="80">
+          <span class="quote-card__mark" aria-hidden="true">”</span>
+          <blockquote>
+            پیامک گروهی می‌فرستادیم و کسی جواب نمی‌داد. حالا پیام‌ها شخصی‌اند و
+            در جلسه‌ی هفتگی فقط یک عدد را نگاه می‌کنیم: بازگشت.
+          </blockquote>
+          <span class="quote-card__stat">▲ درآمد تکراری ۲.۱×</span>
+          <figcaption>
+            <span class="avatar avatar--mint">س</span>
+            <div><b>سحر مرادی</b><span>بنیان‌گذار رُست لاین، شیراز</span></div>
+          </figcaption>
+        </figure>
+        <figure class="quote-card reveal" data-delay="160">
+          <span class="quote-card__mark" aria-hidden="true">”</span>
+          <blockquote>
+            راه‌اندازی‌اش یک بعدازظهر وقت گرفت. مهم‌تر از همه، باریستاها لازم نیست
+            کار جدیدی یاد بگیرند.
+          </blockquote>
+          <span class="quote-card__stat">▲ ۸ ساعت تا اولین کمپین</span>
+          <figcaption>
+            <span class="avatar avatar--violet">ه</span>
+            <div><b>هومن رضایی</b><span>شریک کافه آوان، اصفهان</span></div>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="figure-note center">نقل‌قول‌ها و اعداد نمونه‌اند؛ نتایج هر کافه به اجرای کمپین‌ها بستگی دارد.</p>
+    </div>
+  </section>
+
+  <!-- ======================= SECURITY STRIP ======================= -->
+  <section class="section section--tight">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">امنیت و مالکیت داده</span>
+        <h2 class="h2" style="margin-top:14px">داده‌ی مشتری، <span class="grad">امانت است.</span></h2>
+        <p class="lead" style="margin-top:14px">
+          اطلاعات مشتریان کافه، دارایی خود کافه است. هر وقت بخواهی، کامل و قابل خواندن
+          تحویلش می‌گیری — بدون قفل، بدون بهانه.
+        </p>
+        <a class="link-arrow" href="about.html#security" style="margin-top:18px">خواندن تعهدات امنیتی</a>
+      </div>
+      <div class="integration-grid reveal" data-delay="100" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+        <div class="integration"><i>🔒</i> میزبانی داده در ایران</div>
+        <div class="integration"><i>📤</i> خروجی کامل CSV</div>
+        <div class="integration"><i>👤</i> دسترسی نقش‌محور</div>
+        <div class="integration"><i>🧾</i> گزارش فعالیت</div>
+        <div class="integration"><i>📱</i> بدون اپ، بدون SDK</div>
+        <div class="integration"><i>🗑️</i> حذف به درخواست مشتری</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= PRICING ======================= -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">قیمت‌گذاری ساده</span>
+        <h2 class="h2">یک اشتراک ماهانه، <span class="grad">بدون هزینه‌ی پنهان.</span></h2>
+        <p class="lead">
+          قیمت بر اساس تعداد شعبه و حجم مشتریان فعال است، نه تعداد قابلیت‌ها.
+          ۱۴ روز اول رایگان؛ اگر نتیجه نگرفتی، ادامه نمی‌دهی.
+        </p>
+      </div>
+
+      <div class="plan-grid" style="margin-top:34px">
+        <div class="plan reveal">
+          <div class="plan__name">Starter</div>
+          <p class="plan__desc">برای کافه‌های تک‌شعبه‌ای که تازه شروع می‌کنند.</p>
+          <div class="plan__price"><b>۱.۹M</b><span>تومان / ماه</span></div>
+          <div class="plan__yearly">سالانه: ۲ ماه هدیه</div>
+          <ul>
+            <li>تا ۲٬۰۰۰ مشتری فعال</li>
+            <li>منو، پروفایل و وفاداری</li>
+            <li>Smart Return و فهرست روزانه</li>
+            <li>۱٬۰۰۰ پیامک ماهانه</li>
+          </ul>
+          <a class="btn btn--ghost btn--block" href="pricing.html">انتخاب Starter</a>
         </div>
-        <div class="timeline__item">
-          <div class="timeline__day">DAY 7</div>
-          <h4>«این هفته X مشتری برگشت و Y تومان فروش ساخت.»</h4>
-          <p>حالا Evidence داری. سؤال بعدی: نسخه ماهانه را فعال کنیم؟</p>
+
+        <div class="plan plan--featured reveal" data-delay="80">
+          <span class="plan__flag">پیشنهاد کافه‌ها</span>
+          <div class="plan__name">Growth <span class="pill pill--ghost-light tiny">محبوب</span></div>
+          <p class="plan__desc">برای کافه‌ای که می‌خواهد بازگشت را جدی رشد بدهد.</p>
+          <div class="plan__price"><b>۳.۹M</b><span>تومان / ماه</span></div>
+          <div class="plan__yearly">سالانه: ۲ ماه هدیه</div>
+          <ul>
+            <li>تا ۱۰٬۰۰۰ مشتری فعال</li>
+            <li>همه‌ی قابلیت‌های Starter</li>
+            <li>دستیار درآمد و پیشنهاد کمپین</li>
+            <li>۵٬۰۰۰ پیامک ماهانه</li>
+            <li>پشتیبانی اولویت‌دار</li>
+          </ul>
+          <a class="btn btn--light btn--block" href="pricing.html">انتخاب Growth</a>
+        </div>
+
+        <div class="plan reveal" data-delay="160">
+          <div class="plan__name">Pro</div>
+          <p class="plan__desc">برای مجموعه‌های چندشعبه‌ای و تیم‌های بازاریابی.</p>
+          <div class="plan__price"><b>۶.۹M</b><span>تومان / ماه</span></div>
+          <div class="plan__yearly">سالانه: ۲ ماه هدیه</div>
+          <ul>
+            <li>تا ۴۰٬۰۰۰ مشتری فعال</li>
+            <li>مدیریت چند شعبه و نقش‌ها</li>
+            <li>API و وب‌هوک</li>
+            <li>۱۵٬۰۰۰ پیامک ماهانه</li>
+            <li>مدیر موفقیت اختصاصی</li>
+          </ul>
+          <a class="btn btn--ghost btn--block" href="pricing.html">انتخاب Pro</a>
         </div>
       </div>
+      <p class="center tiny muted" style="margin-top:18px">
+        همه‌ی پلن‌ها شامل راه‌اندازی، آموزش تیم و ۱۴ روز استفاده‌ی رایگان‌اند.
+      </p>
     </div>
   </section>
 
   <!-- ======================= FAQ ======================= -->
-  <section class="section section--soft">
-    <div class="container" style="max-width:860px">
-      <div class="section-head section-head--center reveal">
+  <section class="section" id="faq">
+    <div class="container split" style="align-items:start">
+      <div class="reveal">
         <span class="eyebrow">سؤالات متداول</span>
-        <h2 class="h2">چیزهایی که کافه‌دارها می‌پرسند</h2>
+        <h2 class="h2" style="margin-top:14px">چیزهایی که کافه‌دارها<br><span class="grad">قبل از شروع</span> می‌پرسند.</h2>
+        <p class="lead" style="margin-top:14px">
+          جواب سؤالت اینجا نبود؟ یک پیام بده؛ معمولاً همان روز جواب می‌دهیم.
+        </p>
+        <a class="btn btn--ghost" href="contact.html" style="margin-top:20px">پرسیدن سؤال</a>
       </div>
-      <div class="faq reveal" style="margin-top:28px">
+
+      <div class="faq reveal" data-delay="100">
         <div class="faq__item">
-          <button class="faq__q" aria-expanded="false">این با «منوی QR» چه فرقی دارد؟</button>
-          <div class="faq__a"><p>منوی QR یک صفحه‌ی نمایش است؛ مشتری می‌رود و هیچ ردی از او نمی‌ماند. CafeLoop منو را فقط به‌عنوان دروازه‌ی ورود استفاده می‌کند و بعد از آن مشتری را می‌شناسد، رفتارش را ثبت می‌کند و برای برگشتنش اقدام می‌کند.</p></div>
+          <button class="faq__q" type="button" aria-expanded="false">راه‌اندازی چقدر طول می‌کشد؟</button>
+          <div class="faq__a"><p>برای یک کافه‌ی تک‌شعبه، معمولاً یک روز کاری: ساخت حساب، ورود منو، چاپ کارت QR و آموزش ۲۰ دقیقه‌ای تیم. اولین کمپین بازگشت را می‌توانی همان هفته اجرا کنی.</p></div>
         </div>
         <div class="faq__item">
-          <button class="faq__q" aria-expanded="false">مشتری باید اپ نصب کند؟</button>
-          <div class="faq__a"><p>نه. همه‌چیز وب‌اپ/PWA است. QR → مرورگر → تمام. هر مرحله‌ی نصب اضافه، یعنی از دست دادن بخش بزرگی از مشتری‌ها.</p></div>
+          <button class="faq__q" type="button" aria-expanded="false">به صندوق یا POS وصل می‌شود؟</button>
+          <div class="faq__a"><p>لازم نیست. خریدها از طریق منو و لینک هر میز ثبت می‌شوند و در نسخه‌ی Pro امکان اتصال به سیستم صندوق از طریق API وجود دارد. اگر صندوقت پشتیبانی نکند، فایل فروش روزانه را وارد می‌کنی.</p></div>
         </div>
         <div class="faq__item">
-          <button class="faq__q" aria-expanded="false">به POS یا صندوق وصل می‌شود؟</button>
-          <div class="faq__a"><p>در نسخه‌ی اول نه. پرداخت و POS دست‌نخورده می‌ماند تا محصول سریع‌تر به دست مشتری برسد و ریسک عملیاتی نداشته باشد.</p></div>
+          <button class="faq__q" type="button" aria-expanded="false">مشتری باید اپ نصب کند؟</button>
+          <div class="faq__a"><p>نه. همه‌چیز در مرورگر گوشی اجرا می‌شود: اسکن QR، دیدن منو، عضویت با یک شماره و دریافت پیشنهاد. نصب اپ یکی از بزرگ‌ترین دلایل از دست رفتن مشتری در این مسیر است.</p></div>
         </div>
         <div class="faq__item">
-          <button class="faq__q" aria-expanded="false">چطور می‌فهمم کار می‌کند؟</button>
-          <div class="faq__a"><p>سه عدد در داشبورد: نرخ بازگشت مشتری (Repeat Rate)، تعداد مشتریان در معرض ریزش، و درآمد ساخته‌شده توسط کمپین‌ها. اگر این اعداد حرکت نکنند، تمدید نکن.</p></div>
+          <button class="faq__q" type="button" aria-expanded="false">پیام‌ها پیامک هستند یا اعلان؟</button>
+          <div class="faq__a"><p>پیامک، چون باز شدنش از اعلان بیشتر است. هر پلن سهمیه‌ی ماهانه دارد و می‌توانی پیام‌های اضافه را جدا بخری. لینک داخل پیام، مشتری را مستقیم به منوی همان کافه می‌برد.</p></div>
         </div>
         <div class="faq__item">
-          <button class="faq__q" aria-expanded="false">داده‌ی مشتری‌های من امن است؟</button>
-          <div class="faq__a"><p>داده فقط برای همان کافه استفاده می‌شود، مالکیت داده با کافه است و هر مشتری می‌تواند حذف پروفایلش را درخواست کند. جزئیات در صفحه‌ی «چطور کار می‌کند» آمده است.</p></div>
+          <button class="faq__q" type="button" aria-expanded="false">داده‌ی مشتریان مال کیست؟</button>
+          <div class="faq__a"><p>مال کافه است. هر زمان بخواهی می‌توانی کل لیست را به‌صورت CSV بگیری و حساب را ببندی. ما داده را نمی‌فروشیم و بین کافه‌ها به اشتراک نمی‌گذاریم.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" type="button" aria-expanded="false">اگر نرخ بازگشت بالا نرفت چه؟</button>
+          <div class="faq__a"><p>۱۴ روز اول رایگان است و قرارداد بلندمدت نداریم. اگر در ۶۰ روز اول هیچ بهبود قابل اندازه‌گیری ندیدی، هزینه‌ی آن دوره را برمی‌گردانیم — چون محصول ما فقط یک عدد را می‌فروشد: بازگشت مشتری.</p></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ======================= CTA ======================= -->
-  <section class="section">
+  <section class="section section--tight">
     <div class="container">
-      <div class="banner reveal">
+      <div class="banner banner--final reveal">
         <div>
-          <span class="eyebrow">قدم بعدی</span>
-          <h2 style="margin-top:12px">بیایید یک هفته، یک کافه، یک کمپین.</h2>
-          <p>دموی پنل را ببین، بعد تصمیم بگیر. اگر Repeat Rate بالا نرفت، هزینه‌ای هم نیست.</p>
+          <span class="eyebrow">شروع کن</span>
+          <h2 style="margin-top:12px">این هفته، ده مشتری را برگردان.</h2>
+          <p>۱۴ روز رایگان، راه‌اندازی با تیم ما و یک کمپین واقعی. بعد تصمیم بگیر.</p>
+          <p class="banner__note">بدون کارت بانکی · لغو در هر زمان</p>
         </div>
         <div class="row">
-          <a class="btn btn--light btn--lg" href="contact.html">درخواست دمو</a>
+          <a class="btn btn--light btn--lg" href="contact.html">شروع رایگان</a>
           <a class="btn btn--outline-light btn--lg" href="demo.html">دموی زنده</a>
         </div>
       </div>
     </div>
   </section>
+
 </main>
 
-<!-- ======================= FOOTER ======================= -->
 <footer class="site-footer">
   <div class="container">
     <div class="site-footer__grid">
-      <div>
-        <a class="brand" href="index.html">
-          <img class="brand__mark" src="assets/img/logo.svg" alt="">
-          <span>CafeLoop<span class="brand__sub" style="color:#a99689">Turn one-time visitors into regulars.</span></span>
+      <div class="site-footer__brand">
+        <a class="brand" href="index.html" aria-label="CafeLoop">
+          <img class="brand__mark" src="assets/img/logo.svg" alt="" width="36" height="36">
+          <span class="brand__text">CafeLoop<span class="brand__sub">Turn one-time visitors into regulars.</span></span>
         </a>
-        <p class="small" style="margin-top:14px;color:#a99689;max-width:34ch">
-          سیستمی که کافه را قادر می‌کند مشتری‌های یک‌بار مصرف را به مشتری‌های تکراری تبدیل کند — و درآمدش را اندازه بگیرد.
+        <p class="small">
+          سیستم بازگشت مشتری برای کافه‌ها: مشتری را می‌شناسیم، ریزش را زودتر می‌بینیم
+          و با یک پیام درست، او را برمی‌گردانیم — با عدد.
         </p>
+        <form class="newsletter" data-newsletter>
+          <label class="sr-only" for="nlEmail">ایمیل برای خبرنامه</label>
+          <input id="nlEmail" type="email" name="email" placeholder="ایمیل شما برای ماه‌نامه‌ی کافه" required>
+          <button class="btn btn--sm" type="submit">عضویت</button>
+        </form>
+        <p class="tiny faint">ماهی یک ایمیل. بدون تبلیغات، بدون فروش داده.</p>
       </div>
+
       <div>
         <h5>محصول</h5>
+        <a href="features.html">قابلیت‌ها</a>
         <a href="how-it-works.html">چطور کار می‌کند</a>
         <a href="demo.html">دموی پنل کافه</a>
-        <a href="customer.html">تجربه مشتری</a>
-        <a href="mvp.html">🚀 اپلیکیشن مشتری (MVP)</a>
+        <a href="customer.html">تجربه‌ی مشتری</a>
+        <a href="mvp.html">اپ زنده‌ی مشتری (MVP)</a>
         <a href="pricing.html">قیمت‌گذاری</a>
       </div>
+
       <div>
-        <h5>شروع</h5>
-        <a href="roadmap.html">نقشه ۷ روزه</a>
-        <a href="roadmap.html#icp">بازار هدف و ICP</a>
-        <a href="how-it-works.html#moat">Moat و داده</a>
-        <a href="contact.html">درخواست دمو</a>
+        <h5>شرکت</h5>
+        <a href="about.html">درباره‌ی CafeLoop</a>
+        <a href="customers.html">داستان کافه‌ها</a>
+        <a href="roadmap.html">مسیر محصول</a>
+        <a href="contact.html">تماس و درخواست دمو</a>
       </div>
+
       <div>
-        <h5>یادداشت</h5>
-        <p class="small" style="color:#a99689">
-          داده‌های این سایت نمونه است. CafeLoop هنوز در مرحله‌ی اعتبارسنجی است؛
-          اول بفروش، بعد بساز.
-        </p>
+        <h5>منابع</h5>
+        <a href="about.html#security">امنیت و داده</a>
+        <a href="index.html#faq">سؤالات متداول</a>
+        <a href="privacy.html">حریم خصوصی</a>
+        <a href="terms.html">شرایط استفاده</a>
       </div>
     </div>
+
     <div class="site-footer__bottom">
-      <span>© <span data-year>2026</span> CafeLoop — کافه‌لوپ</span>
-      <span>ساخته‌شده با HTML و CSS و JavaScript خالص.</span>
+      <span>© <span data-year>2026</span> CafeLoop — کافه‌لوپ. ساخته‌شده در تهران.</span>
+      <span class="site-footer__legal">
+        <span class="pill pill--ghost-light tiny">نسخه‌ی ۱.۰</span>
+        <span>داده‌های دمو و سناریوهای نمونه، ساختگی‌اند.</span>
+      </span>
     </div>
   </div>
 </footer>
 
+<button class="to-top" type="button" aria-label="بازگشت به بالای صفحه" data-to-top>↑</button>
 <div class="toast" role="status" aria-live="polite"></div>
+
 <script src="assets/js/main.js"></script>
-<script>
-  document.querySelectorAll("[data-toast]").forEach(function (btn) {
-    btn.addEventListener("click", function () { window.cafeLoopToast(btn.dataset.toast); });
-  });
-</script>
 </body>
 </html>

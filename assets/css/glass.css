@@ -730,3 +730,37 @@ body.mvp ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .22); borde
 [data-theme="light"] .gnote { background: rgba(255, 255, 255, .6); color: var(--g-ink-soft); }
 [data-theme="light"] .gmenu__btn:hover { background: rgba(36, 24, 18, .07); }
 [data-theme="light"] .gsearch__icon { opacity: .45; }
+
+/* ==========================================================================
+   v1.0 polish — live app usability fixes
+   ========================================================================== */
+
+/* keep glass-menu labels readable on phones (icons alone are ambiguous) */
+@media (max-width: 760px) {
+  .mvp-bar .gmenu__btn { padding: 8px 11px; gap: 5px; font-size: .78rem; }
+  .mvp-bar .gmenu__btn .gmenu__label { display: inline; }
+  .mvp-bar .gmenu__btn .caret { display: none; }
+}
+
+/* mobile: one scrollable row of glass menus instead of a wrapping header */
+@media (max-width: 760px) {
+  .mvp-bar { flex-wrap: wrap; row-gap: 6px; padding-block: 8px; }
+  #glassMenus {
+    flex-wrap: nowrap; width: 100%; overflow-x: auto; padding-bottom: 2px;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  #glassMenus::-webkit-scrollbar { display: none; }
+  .mvp-bar .gmenu { flex: 0 0 auto; }
+  .mvp-bar .gmenu__btn { font-size: .76rem; padding: 7px 10px; }
+}
+
+/* long meta pills should never overlap the favourite button */
+.gitem__meta .gpill { white-space: nowrap; }
+.gitem__fav { z-index: 2; }
+
+/* keep the last row clear of the floating dock */
+.mvp-main { scroll-padding-bottom: 220px; }
+@media (max-width: 420px) {
+  .mvp-bar { border-radius: 0 0 18px 18px; }
+  .mvp-main { padding-bottom: 210px; }
+}

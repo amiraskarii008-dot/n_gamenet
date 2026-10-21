@@ -6,15 +6,21 @@
 <title>CafeLoop MVP — اپلیکیشن مشتری (منو، سفارش، امتیاز، پیشنهاد شخصی)</title>
 <meta name="description" content="نسخه‌ی قابل استفاده‌ی MVP کافه‌لوپ از نگاه مشتری: منوی دیجیتال، ثبت و پیگیری سفارش، سرویس میز، وفاداری و امتیاز، پیشنهاد شخصی Smart Return، پروفایل رفتاری و گزینه‌های پیشرفته با منوهای شیشه‌ای.">
 <meta name="theme-color" content="#150d0a">
-<meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
-<link rel="manifest" href="assets/site.webmanifest">
+<link rel="manifest" href="site.webmanifest">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="apple-touch-icon" href="assets/img/logo.svg">
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link rel="preload" href="assets/fonts/Vazirmatn-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="canonical" href="https://cafeloop.ir/mvp.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CafeLoop">
+<meta property="og:title" content="اپ زنده‌ی مشتری — CafeLoop">
+<meta property="og:description" content="منو، سفارش، امتیاز و پیشنهاد شخصی — همان چیزی که مشتری بعد از اسکن QR می‌بیند.">
+<meta property="og:url" content="https://cafeloop.ir/mvp.html">
+<meta property="og:image" content="https://cafeloop.ir/assets/img/og.svg">
+<meta property="og:locale" content="fa_IR">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/glass.css">
 </head>
@@ -74,10 +80,10 @@
       <div class="gcard glass" data-adv style="margin-top:14px">
         <div class="gcard__head"><div><h3>🌱 فیلترهای هوشمند و داده‌ی تغذیه‌ای</h3><p>گزینه‌های پیشرفته: کالری، کافئین، زمان آماده‌سازی، حساسیت‌ها و آلرژن‌ها.</p></div></div>
         <div class="opt-grid" id="quickDiet">
-          <button class="opt" data-diet="vegan">🌱 گیاهی</button>
-          <button class="opt" data-diet="sugarfree">🚫 بدون شکر</button>
-          <button class="opt" data-diet="decaf">😴 بدون کافئین</button>
-          <button class="opt" data-diet="glutenfree">🌾 بدون گلوتن</button>
+          <button class="opt" type="button" data-diet="vegan">🌱 گیاهی</button>
+          <button class="opt" type="button" data-diet="sugarfree">🚫 بدون شکر</button>
+          <button class="opt" type="button" data-diet="decaf">😴 بدون کافئین</button>
+          <button class="opt" type="button" data-diet="glutenfree">🌾 بدون گلوتن</button>
         </div>
         <p class="gtiny gfaint" style="margin-top:10px">این فیلترها همان‌ها هستند که در پنل کافه به‌عنوان «ترجیحات مشتری» ثبت می‌شوند و پایه‌ی پیشنهاد شخصی‌اند.</p>
       </div>
@@ -121,12 +127,12 @@
   </main>
 
   <!-- ================= CART BAR ================= -->
-  <div class="gcartbar glass glass--sheen" id="cartBar" role="region" aria-label="سبد سفارش">
+  <section class="gcartbar glass glass--sheen" id="cartBar" aria-label="سبد سفارش">
     <span style="font-size:1.4rem" aria-hidden="true">🧺</span>
     <div class="gcartbar__sum" id="cartBarText"></div>
     <button class="gbtn gbtn--glass gbtn--sm" type="button" data-clearcart="1" aria-label="خالی کردن سبد" title="خالی کردن سبد">✕</button>
     <button class="gbtn" type="button" data-opencart="1">سبد و ثبت سفارش ←</button>
-  </div>
+  </section>
 
   <!-- ================= GLASS DOCK (منوی شیشه‌ای پایین) ================= -->
   <nav class="gdock glass glass--sheen" id="gdock" aria-label="بخش‌های اپلیکیشن">
