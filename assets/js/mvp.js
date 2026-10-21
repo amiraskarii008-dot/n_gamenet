@@ -889,11 +889,16 @@
     return "";
   }
 
+  function panelOf(which) {
+    return document.querySelector(".gmenu__panel[data-panel='" + which + "']");
+  }
+
   function renderMenuPanels(openWhich) {
     all(".gmenu").forEach(function (m) {
       var which = m.dataset.menu;
-      var panel = m.querySelector(".gmenu__panel");
+      var panel = panelOf(which);
       var btn = m.querySelector(".gmenu__btn");
+      if (!panel) return;
       var open = panel.classList.contains("is-open");
       if (open || which === openWhich) {
         panel.innerHTML = menuContent(which);
@@ -920,16 +925,17 @@
   function closeMenus(except) {
     all(".gmenu").forEach(function (m) {
       if (m === except) return;
-      var p = m.querySelector(".gmenu__panel");
-      p.classList.remove("is-open");
+      var p = panelOf(m.dataset.menu);
+      if (p) p.classList.remove("is-open");
       m.querySelector(".gmenu__btn").setAttribute("aria-expanded", "false");
     });
   }
   function toggleMenu(which) {
     var m = document.querySelector(".gmenu[data-menu='" + which + "']");
     if (!m) return;
-    var p = m.querySelector(".gmenu__panel");
+    var p = panelOf(which);
     var btn = m.querySelector(".gmenu__btn");
+    if (!p) return;
     var willOpen = !p.classList.contains("is-open");
     closeMenus(m);
     p.classList.toggle("is-open", willOpen);
@@ -1023,7 +1029,7 @@
       html += "<div class='opt-row'><span>دما</span><div class='opt-grid'>" + D.temps.map(function (t) {
         return "<button class='opt" + (draft.opts.temp === t.id ? " is-on" : "") + "' data-opt='temp:" + t.id + "'>" + t.name + "</button>";
       }).join("") + "</div>";
-      html += "<div class='opt-row'><span>اضافه‌ها (extras)</span><div class='opt-grid'>" + D.extras.map(function (e) {
+      html += "<div class='opt-row'><span>افزودنی‌ها</span><div class='opt-grid'>" + D.extras.map(function (e) {
         var on = draft.opts.extras.indexOf(e.id) >= 0;
         return "<button class='opt" + (on ? " is-on" : "") + "' data-ex='" + e.id + "'>＋ " + e.name +
           (e.price ? "<small>+" + short(e.price) + "</small>" : "<small>رایگان</small>") + "</button>";
@@ -1676,6 +1682,7 @@
 
   /* ------------------------------------------------------------------ init */
   document.addEventListener("DOMContentLoaded", function () {
+    bindScrollHints();
     load();
 
     /* deep link: ?table=12  #menu */
@@ -1702,7 +1709,14 @@
     document.addEventListener("click", onClick);
     document.addEventListener("keydown", onKey);
     document.addEventListener("click", function (e) {
-      if (!e.target.closest(".gmenu")) closeMenus();
+      /* composedPath is fixed when the event fires, so a panel that re-renders
+         its own content (filter options) no longer counts as "outside". */
+      var path = e.composedPath ? e.composedPath() : [];
+      var inside = path.some(function (n) {
+        return n && n.nodeType === 1 && n.classList &&
+          (n.classList.contains("gmenu") || n.classList.contains("gmenu__panel"));
+      });
+      if (!inside && !(e.target.closest && e.target.closest(".gmenu, .gmenu__panel"))) closeMenus();
     });
     byId("overlay").addEventListener("click", function (e) { if (e.target === byId("overlay")) closeSheet(); });
     window.addEventListener("resize", function () { if (state.view === "loyalty") drawSpark(); if (state.view === "profile") drawQr(); });
@@ -1750,8 +1764,34 @@
         "<button class='gmenu__btn' type='button' aria-expanded='false' data-menu='" + m.id + "'>" +
         "<i>" + m.icon + "</i><span class='gmenu__label'>" + m.label + "</span>" +
         (m.count ? "<span class='gmenu__count'>0</span>" : "") +
-        "<span class='caret'>▼</span></button>" +
-        "<div class='gmenu__panel glass glass--strong glass--sheen'></div></div>";
+        "<span class='caret'>▼</span></button></div>";
     }).join("");
+    /* panels live outside the scrollable row, otherwise overflow-x clips them */
+    var host = byId("menuPanels");
+    if (host) {
+      host.innerHTML = menus.map(function (m) {
+        return "<div class='gmenu__panel glass glass--strong glass--sheen' data-panel='" + m.id + "'></div>";
+      }).join("");
+    }
   }
+
+  /* ------------------------------------------------------------------
+     Scroll affordance: hide the edge fade once a row reached its end
+     ------------------------------------------------------------------ */
+  function bindScrollHints() {
+    var rows = [document.getElementById("glassMenus"), document.querySelector(".gchips")];
+    rows.forEach(function (row) {
+      if (!row) return;
+      var update = function () {
+        var max = row.scrollWidth - row.clientWidth;
+        var pos = Math.abs(row.scrollLeft);
+        row.classList.toggle("is-end", max <= 2 || pos >= max - 6);
+      };
+      row.addEventListener("scroll", update, { passive: true });
+      window.addEventListener("resize", update);
+      update();
+      setTimeout(update, 400);
+    });
+  }
+
 })();
