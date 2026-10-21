@@ -67,7 +67,7 @@
     var items = MENU.map(function (m) {
       var qty = state.cart[m.id] || 0;
       return '<div class="menu-item' + (qty ? " is-selected" : "") + '" data-item="' + m.id + '">' +
-        '<span class="menu-item__thumb">' + m.icon + "</span>" +
+        '<span class="menu-item__thumb"><img src="assets/img/menu/' + m.id + '.jpg" alt="' + m.name + '" loading="lazy" onerror="this.remove()">' + m.icon + "</span>" +
         "<div style=\"flex:1\">" +
           "<h5>" + m.name + (qty ? ' <span class="tiny" style="color:var(--brand-600)">×' + qty + "</span>" : "") + "</h5>" +
           '<span>' + m.desc + "</span>" +

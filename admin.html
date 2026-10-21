@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>پنل مدیریت کافه — CafeLoop</title>
+<meta name="description" content="پنل مدیریت کافه در CafeLoop: سفارش‌های زنده، مدیریت منو با عکس و قیمت، مشتریان، کمپین بازگشت و تنظیمات کافه. تغییرات منو بلافاصله در اپ مشتری دیده می‌شود.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#241611">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/logo.svg">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="assets/fonts/Vazirmatn-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/mobile.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body class="admin">
+<a class="skip-link" href="#adminMain">پرش به محتوای اصلی</a>
+
+<!-- ================= ورود مدیر ================= -->
+<section class="admin-login" id="loginView">
+  <form class="admin-login__card" id="loginForm" autocomplete="off">
+    <a class="brand" href="index.html"><img class="brand__mark" src="assets/img/logo.svg" alt="" width="36" height="36"><span class="brand__text">CafeLoop</span></a>
+    <h1>🔐 ورود به پنل مدیریت کافه</h1>
+    <p class="muted small">این بخش مخصوص صاحب و تیم کافه است؛ مشتری‌ها آن را نمی‌بینند.</p>
+    <div class="field" style="margin-top:16px">
+      <label for="loginUser">نام کاربری</label>
+      <input id="loginUser" name="user" type="text" inputmode="text" placeholder="admin" required>
+    </div>
+    <div class="field">
+      <label for="loginPass">رمز عبور</label>
+      <input id="loginPass" name="pass" type="password" placeholder="••••••••" required>
+    </div>
+    <p class="admin-login__err" id="loginErr" role="alert"></p>
+    <button class="btn btn--block btn--lg" type="submit">ورود به پنل ←</button>
+    <div class="admin-login__hint">
+      <b>حساب دمو برای تست:</b><br>
+      نام کاربری <b class="mono">admin</b> · رمز <b class="mono">noir1234</b><br>
+      <span>این ورود در نسخه‌ی نمایشی سمت مرورگر است؛ در نسخه‌ی واقعی حتماً احراز هویت سمت سرور لازم است.</span>
+    </div>
+    <p class="center" style="margin-top:14px"><a class="link-arrow" href="mvp.html">رفتن به اپ مشتری</a> · <a class="link-arrow" href="index.html">سایت</a></p>
+  </form>
+</section>
+
+<!-- ================= پنل ================= -->
+<div class="admin-app hidden" id="adminApp">
+  <div class="admin-topbar">
+    <img src="assets/img/logo.svg" alt=""><span id="topCafeName">پنل کافه</span>
+    <a href="mvp.html">اپ مشتری ←</a>
+  </div>
+
+  <aside class="admin-side">
+    <div class="admin-side__brand">
+      <img src="assets/img/logo.svg" alt="">
+      <span><span id="sideCafeName">Cafe Noir</span><small>پنل مدیریت کافه</small></span>
+    </div>
+    <nav class="admin-nav" aria-label="بخش‌های پنل">
+      <button type="button" data-view="dashboard" class="is-active"><i>📊</i> داشبورد</button>
+      <button type="button" data-view="orders"><i>🧾</i> سفارش‌های زنده <span class="badge hidden" id="ordersBadge">۰</span></button>
+      <button type="button" data-view="menu"><i>📖</i> مدیریت منو</button>
+      <button type="button" data-view="customers"><i>👥</i> مشتریان</button>
+      <button type="button" data-view="campaigns"><i>🎁</i> کمپین‌ها</button>
+      <button type="button" data-view="settings"><i>⚙️</i> تنظیمات</button>
+    </nav>
+    <div class="admin-side__foot">
+      <nav class="admin-nav">
+        <a href="mvp.html"><i>📱</i> مشاهده‌ی اپ مشتری</a>
+        <a href="demo.html"><i>🧪</i> دموی قدیمی پنل</a>
+        <a href="index.html"><i>🌐</i> سایت CafeLoop</a>
+        <button type="button" id="logoutBtn"><i>🚪</i> خروج</button>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="admin-main" id="adminMain">
+    <!-- داشبورد -->
+    <section class="admin-view is-active" data-view="dashboard">
+      <div class="admin-head">
+        <div><h2>📊 داشبورد امروز</h2><p id="dashSub">—</p></div>
+        <a class="btn btn--sm" href="mvp.html">باز کردن اپ مشتری</a>
+      </div>
+      <div class="kpi-row" id="kpiRow"></div>
+      <div class="admin-card" id="aiCard" style="margin-bottom:14px"></div>
+      <div class="admin-2col">
+        <div class="admin-card">
+          <h3>🕐 فروش ساعت‌های روز</h3>
+          <canvas id="hourChart" width="640" height="260" style="width:100%;height:auto" aria-label="نمودار فروش ساعتی"></canvas>
+        </div>
+        <div class="admin-card">
+          <h3>🏆 پرفروش‌ترین‌های منو</h3>
+          <div id="topProducts"></div>
+        </div>
+      </div>
+      <div class="admin-card">
+        <h3>🧾 تازه‌ترین سفارش‌ها</h3>
+        <div id="dashOrders"></div>
+      </div>
+    </section>
+
+    <!-- سفارش‌های زنده -->
+    <section class="admin-view" data-view="orders">
+      <div class="admin-head">
+        <div><h2>🧾 سفارش‌های زنده</h2><p>سفارشی که مشتری در اپ ثبت کند، همان لحظه اینجا می‌آید. وضعیت را جلو ببر تا آشپزخانه و بار جلو بروند.</p></div>
+        <button class="btn btn--ghost btn--sm" type="button" id="clearDoneBtn">پاک کردن تحویل‌شده‌ها</button>
+      </div>
+      <div class="chips" id="orderChips"></div>
+      <div id="ordersList" style="display:grid;gap:12px"></div>
+    </section>
+
+    <!-- مدیریت منو -->
+    <section class="admin-view" data-view="menu">
+      <div class="admin-head">
+        <div><h2>📖 مدیریت منو</h2><p>قیمت، عکس، مواد تشکیل‌دهنده و موجودی هر آیتم. هر تغییری ذخیره شود، <b>بلافاصله در اپ مشتری</b> دیده می‌شود.</p></div>
+        <a class="btn btn--sm" href="mvp.html" target="_blank" rel="noopener">دیدن نتیجه در اپ مشتری ⧉</a>
+      </div>
+      <div class="menu-tools">
+        <input class="inp search" id="menuSearch" type="search" placeholder="جست‌وجو در منو…" aria-label="جست‌وجو در منو">
+        <select class="inp" id="menuCat" style="width:auto" aria-label="دسته‌بندی"></select>
+        <button class="btn btn--sm" type="button" id="newItemBtn">＋ آیتم جدید</button>
+        <button class="btn btn--ghost btn--sm" type="button" id="exportMenuBtn">خروجی JSON</button>
+        <label class="btn btn--ghost btn--sm" for="importMenuFile">ورودی JSON</label>
+        <input id="importMenuFile" type="file" accept="application/json" class="hidden">
+        <button class="btn btn--ghost btn--sm" type="button" id="resetMenuBtn">بازنشانی به پیش‌فرض</button>
+      </div>
+      <p class="small muted" id="menuCount"></p>
+      <div class="menu-grid" id="menuGrid" style="margin-top:10px"></div>
+    </section>
+
+    <!-- مشتریان -->
+    <section class="admin-view" data-view="customers">
+      <div class="admin-head">
+        <div><h2>👥 مشتریان</h2><p>داده‌ی نمونه‌ی باشگاه مشتریان؛ جست‌وجو، فیلتر وضعیت و خروجی CSV کار می‌کنند.</p></div>
+        <button class="btn btn--sm" type="button" id="exportCustomersBtn">خروجی CSV</button>
+      </div>
+      <div class="menu-tools">
+        <input class="inp search" id="custSearch" type="search" placeholder="جست‌وجوی نام، شماره یا نوشیدنی محبوب…" aria-label="جست‌وجوی مشتری">
+        <select class="inp" id="custStatus" style="width:auto" aria-label="وضعیت مشتری">
+          <option value="all">همه‌ی وضعیت‌ها</option><option value="active">فعال</option><option value="fading">کم‌رنگ</option><option value="risk">در معرض ریزش</option>
+        </select>
+      </div>
+      <div class="table-wrap"><table id="custTable" aria-label="فهرست مشتریان"></table></div>
+    </section>
+
+    <!-- کمپین‌ها -->
+    <section class="admin-view" data-view="campaigns">
+      <div class="admin-head">
+        <div><h2>🎁 کمپین‌های بازگشت</h2><p>برای مشتریانی که دیر کرده‌اند پیشنهاد درست بساز و نتیجه‌اش را ببین.</p></div>
+      </div>
+      <div class="admin-2col">
+        <div class="admin-card">
+          <h3>✏️ ساخت کمپین جدید</h3>
+          <form id="campaignForm">
+            <div class="field"><label for="campName">نام کمپین</label><input id="campName" required placeholder="مثلاً بازگشت عصرهای خلوت"></div>
+            <div class="form-2">
+              <div class="field"><label for="campSegment">مخاطب</label>
+                <select id="campSegment"><option value="risk">در معرض ریزش (۱۰+ روز غایب)</option><option value="fading">کم‌رنگ‌شده</option><option value="active">فعال‌های همیشگی</option><option value="points">نزدیک به پاداش (۶۰۰+ امتیاز)</option></select></div>
+              <div class="field"><label for="campOff">درصد تخفیف</label><input id="campOff" type="number" min="0" max="60" value="20"></div>
+            </div>
+            <div class="field"><label for="campMsg">متن پیامک</label><textarea id="campMsg" required>جای خالیت حس می‌شه! امروز ۱۶ تا ۱۸ با کد برگشت، نوشیدنی محبوبت ۲۰٪ مهمون ماست. Cafe Noir</textarea><span class="tiny faint" id="campCount"></span></div>
+            <button class="btn btn--block" type="submit">ثبت و فعال کردن کمپین</button>
+            <p class="tiny faint" style="margin-top:8px">در نسخه‌ی واقعی ارسال پیامک از همین‌جا با سهمیه‌ی پلن انجام می‌شود؛ اینجا کمپین ذخیره و در فهرست نمایش داده می‌شود.</p>
+          </form>
+        </div>
+        <div class="admin-card"><h3>📬 کمپین‌های قبلی و فعال</h3><div id="campaignList"></div></div>
+      </div>
+    </section>
+
+    <!-- تنظیمات -->
+    <section class="admin-view" data-view="settings">
+      <div class="admin-head"><div><h2>⚙️ تنظیمات کافه</h2><p>این اطلاعات روی اپ مشتری (نام کافه، ساعت کاری، وای‌فای) نمایش داده می‌شود.</p></div></div>
+      <div class="admin-card">
+        <form id="cafeForm">
+          <div class="form-2">
+            <div class="field"><label for="cafeName">نام کافه</label><input id="cafeName" required></div>
+            <div class="field"><label for="cafeCity">شهر و محله</label><input id="cafeCity"></div>
+            <div class="field"><label for="cafeOpen">ساعت کاری</label><input id="cafeOpen" placeholder="۰۸:۰۰ — ۲۳:۳۰"></div>
+            <div class="field"><label for="cafeWifi">رمز وای‌فای مهمان</label><input id="cafeWifi"></div>
+            <div class="field"><label for="cafeTables">تعداد میز</label><input id="cafeTables" type="number" min="1" max="200"></div>
+            <div class="field"><label for="cafePhone">تلفن کافه</label><input id="cafePhone" inputmode="tel" placeholder="۰۲۱-…"></div>
+          </div>
+          <button class="btn" type="submit">ذخیره‌ی تنظیمات</button>
+          <a class="btn btn--ghost" href="mvp.html" target="_blank" rel="noopener">دیدن در اپ مشتری</a>
+        </form>
+      </div>
+      <div class="admin-card">
+        <h3>🧹 داده‌های این دستگاه</h3>
+        <p class="small muted">منوی ویرایش‌شده، سفارش‌های زنده و کمپین‌های ساخته‌شده در همین مرورگر ذخیره می‌شوند (نسخه‌ی نمایشی بدون سرور).</p>
+        <div class="row" style="margin-top:12px">
+          <button class="btn btn--ghost btn--sm" type="button" id="wipeBtn">پاک کردن همه‌ی داده‌های پنل</button>
+          <button class="btn btn--ghost btn--sm" type="button" id="logoutBtn2">خروج از حساب</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ================= ویرایش آیتم منو ================= -->
+<div class="modal" id="itemModal" role="dialog" aria-modal="true" aria-label="ویرایش آیتم منو">
+  <div class="modal__card">
+    <div class="modal__head"><h3 id="itemModalTitle">ویرایش آیتم</h3><button class="modal__x" type="button" id="itemModalX" aria-label="بستن">✕</button></div>
+    <form id="itemForm">
+      <img class="img-preview" id="fImgPreview" alt="پیش‌نمایش عکس آیتم">
+      <div class="form-2" style="margin-top:12px">
+        <div class="field"><label for="fFa">نام فارسی *</label><input id="fFa" required></div>
+        <div class="field"><label for="fName">نام لاتین</label><input id="fName" dir="ltr"></div>
+        <div class="field"><label for="fCat">دسته‌بندی</label><select id="fCat"></select></div>
+        <div class="field"><label for="fPrice">قیمت (تومان) *</label><input id="fPrice" type="number" min="0" step="1000" required></div>
+      </div>
+      <div class="field"><label for="fDesc">توضیح (روی کارت منو)</label><textarea id="fDesc"></textarea></div>
+      <div class="form-2">
+        <div class="field"><label for="fIngredients">مواد تشکیل‌دهنده</label><input id="fIngredients" placeholder="اسپرسو، شیر، …"></div>
+        <div class="field"><label for="fAllergens">آلرژن‌ها</label><input id="fAllergens" placeholder="شیر، گلوتن… یا —"></div>
+        <div class="field"><label for="fKcal">کالری (kcal)</label><input id="fKcal" type="number" min="0"></div>
+        <div class="field"><label for="fCaf">کافئین (mg)</label><input id="fCaf" type="number" min="0"></div>
+        <div class="field"><label for="fPrep">زمان آماده‌سازی (دقیقه)</label><input id="fPrep" type="number" min="1"></div>
+        <div class="field"><label for="fIcon">ایموجی (اگر عکس لود نشد)</label><input id="fIcon" maxlength="4"></div>
+      </div>
+      <div class="field"><label>برچسب‌ها</label>
+        <div class="checks">
+          <label><input type="checkbox" value="vegan" class="fTag"> 🌱 گیاهی</label>
+          <label><input type="checkbox" value="sugarfree" class="fTag"> بدون شکر</label>
+          <label><input type="checkbox" value="decaf" class="fTag"> بدون کافئین</label>
+          <label><input type="checkbox" value="glutenfree" class="fTag"> بدون گلوتن</label>
+        </div>
+      </div>
+      <div class="field"><label for="fImg">آدرس عکس (مسیر فایل یا URL)</label><input id="fImg" dir="ltr" placeholder="assets/img/menu/latte.jpg"></div>
+      <div class="field"><label for="fImgFile">یا عکس واقعی کافه را آپلود کن (خودکار کوچک و فشرده می‌شود)</label><input id="fImgFile" type="file" accept="image/*"></div>
+      <div class="checks" style="margin-bottom:14px"><label><input type="checkbox" id="fAvailable" checked> موجود و قابل سفارش است</label></div>
+      <div class="row">
+        <button class="btn" type="submit" style="flex:1">ذخیره و نمایش در اپ مشتری</button>
+        <button class="btn btn--ghost" type="button" id="itemDeleteBtn">حذف آیتم</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/mvp-data.js"></script>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

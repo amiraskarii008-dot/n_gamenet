@@ -1061,3 +1061,134 @@ body.mvp .toast { pointer-events: none; }
   body.mvp:has(.goverlay.is-open) .toast { inset-block-end: auto; inset-block-start: 104px; transform: translateY(-170%); }
   body.mvp:has(.goverlay.is-open) .toast.is-visible { transform: none; }
 }
+
+/* ==========================================================================
+   v1.2 — Solid & readable (de-glass) + real photo menu + phone-first
+   درخواست: «زیاد از حد شیشه‌ای شده؛ کنتراست خوب باشد»
+   قانون جدید: هیچ سطح محتوایی شفاف نیست. بک‌دراپ‌بلر فقط روی هدر چسبان و
+   داک پایین می‌ماند (آن هم کم)، بقیه سطح‌ها رنگ یکدست با حاشیه‌ی واضح دارند.
+   ========================================================================== */
+
+/* --- توکن‌های کنتراست: متن کم‌رنگ هم باید روی کارت خوانا بماند (WCAG AA) --- */
+:root {
+  --glass-a: .18;
+  --glass-blur: 0px;
+  --glass-sat: 1;
+  --glass-line: rgba(255, 255, 255, .22);
+  --g-ink: #fffaf4;          /* ~15:1 روی --g-card */
+  --g-ink-soft: #e8d9c8;     /* ~10:1 */
+  --g-ink-faint: #cdb49d;    /* ~7:1 — قبلاً 5.4:1 بود */
+  --g-card: #251811;
+  --g-card-2: #1d120c;
+  --g-line: rgba(255, 255, 255, .2);
+  --g-surface: #2f2016;      /* یکدست، نه شفاف */
+  --g-surface-2: #3d2b1d;
+  --g-input: #170d08;
+}
+[data-theme="light"] {
+  --glass-a: .12;
+  --g-ink: #1a100a;          /* ~16:1 روی سفید */
+  --g-ink-soft: #403023;     /* ~10.5:1 */
+  --g-ink-faint: #5d4633;    /* ~7.5:1 — قبلاً 6.1:1 بود */
+  --g-card: #ffffff;
+  --g-card-2: #fffaf2;
+  --g-line: rgba(36, 24, 18, .2);
+  --g-surface: #f6ead9;
+  --g-surface-2: #eeddca;
+  --g-input: #ffffff;
+}
+
+/* --- حذف شیشه از سطح‌های محتوایی --- */
+.glass, .glass--flat, .glass--strong, .glass--dark,
+.gbtn--glass, .gchip, .gmenu__btn, .ginput,
+.glass-cta, .glass-card, .btn--mvp, .btn--mvp-glass {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+.glass, .glass--flat, .glass--strong {
+  background-image: none;
+  background-color: var(--g-card);
+  box-shadow: 0 10px 28px rgba(5, 3, 2, .32);
+}
+[data-theme="light"] .glass, [data-theme="light"] .glass--flat, [data-theme="light"] .glass--strong {
+  background-image: none; background-color: #ffffff;
+  box-shadow: 0 10px 26px rgba(90, 55, 30, .12);
+}
+.glass--sheen::after { display: none; }              /* برقِ روی شیشه حذف */
+.glass-cta::after, .btn--mvp::after { display: none; } /* موج نور متحرک حذف */
+.glass-cta { background: #ffffff; border-color: rgba(36, 24, 18, .16); }
+.glass-cta--dark { background: #241611; border-color: rgba(255, 255, 255, .2); }
+.glass-card { background: #ffffff; border-color: rgba(36, 24, 18, .14); }
+
+/* هدر و داک: فقط همین دو جا بلر خیلی کم می‌ماند تا روی محتوا شناور حس شوند */
+.mvp-bar, .gdock, .gcartbar {
+  background-color: var(--g-card);
+  -webkit-backdrop-filter: saturate(1.05); backdrop-filter: saturate(1.05);
+}
+.goverlay { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(6, 3, 2, .72); }
+
+/* پس‌زمینه: هاله‌های رنگی خیلی کم‌رنگ و ثابت — دیگر زیر متن حرکت نمی‌کنند */
+.mvp-bg i { opacity: .14; animation: none; filter: blur(90px); }
+[data-theme="light"] .mvp-bg i { opacity: .1; }
+
+/* دکمه‌ها و چیپ‌ها یکدست و پرکنتراست */
+.gchip, .gmenu__btn, .opt, .segmented { background: var(--g-surface); }
+.ginput { background: var(--g-input); }
+.ginput:focus { background: var(--g-input); }
+.gdock__btn.is-active { background: var(--g-accent); color: var(--g-on-accent); border-color: transparent; box-shadow: none; }
+.gchip.is-active { background: var(--g-accent); color: var(--g-on-accent); border-color: transparent; box-shadow: none; }
+[data-theme="light"] .gdock__btn.is-active, [data-theme="light"] .gchip.is-active { background: var(--g-accent); color: #fff; }
+
+/* --- عکس واقعی منو --- */
+.gitem__media { position: relative; flex: 0 0 auto; align-self: stretch; }
+.gitem__photo {
+  position: relative; display: grid; place-items: center; overflow: hidden;
+  width: 96px; height: 100%; min-height: 96px; border-radius: 16px;
+  background: var(--g-surface); border: 1px solid var(--g-line);
+}
+.gitem__photo img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+}
+.gitem__photo .gitem__emoji { font-size: 1.9rem; line-height: 1; }
+.gitem__photo--sm { width: 44px; height: 44px; min-height: 44px; border-radius: 12px; flex: 0 0 auto; }
+.gitem__photo--sm .gitem__emoji { font-size: 1.15rem; }
+.gitem__photo--wide { width: 100%; height: 190px; min-height: 190px; border-radius: 18px; }
+.gsheet__photo { margin: 2px 0 14px; }
+.gsheet__photo .gitem__photo { border: 0; }
+.gitem__fav { z-index: 3; background: var(--g-card); }
+.gitem__out {
+  position: absolute; inset-inline: 0; bottom: 0; z-index: 2; text-align: center;
+  padding: 4px 2px; font-size: .68rem; font-weight: 800;
+  background: #8f2d26; color: #fff;
+}
+.gitem.is-out .gitem__photo img { filter: grayscale(.85); opacity: .55; }
+.gitem.is-out .gitem__body { opacity: .72; }
+
+/* توضیح آیتم روی کارت: حداکثر دو خط تا کارت‌ها هم‌قد و اسکن‌پذیر بمانند */
+.gitem__body p {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+/* --- موبایل: عکس مربع جمع‌وجور، متن و قیمت خوانا --- */
+@media (max-width: 640px) {
+  .gitems { gap: 10px; }
+  .gitem { padding: 10px; gap: 12px; border-radius: 18px; }
+  .gitem__photo { width: 86px; min-height: 86px; border-radius: 14px; }
+  .gitem__photo--wide { width: 100%; height: 170px; min-height: 170px; }
+  .gitem__body h4 { font-size: .95rem; }
+  .gitem__body p { font-size: .78rem; }
+  .gitem__meta .gpill:nth-child(n+4) { display: none; } /* روی گوشی فقط مهم‌ترین برچسب‌ها */
+  .gitem__add, .gitem__qty button { min-width: 42px; min-height: 42px; }
+  .gitem__qty button { width: 34px; height: 34px; }
+  .gitem__fav { width: 32px; height: 32px; top: -8px; inset-inline-end: -8px; font-size: .85rem; }
+}
+@media (max-width: 380px) {
+  .gitem__photo { width: 72px; min-height: 72px; }
+  .gitem__meta .gpill:nth-child(n+3) { display: none; }
+}
+/* دسکتاپ: کارت عکسی کمی بزرگ‌تر */
+@media (min-width: 900px) {
+  .gitem__photo { width: 118px; min-height: 108px; }
+  .gsheet__photo .gitem__photo--wide { height: 230px; }
+}

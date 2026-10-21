@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>CafeLoop MVP — اپلیکیشن مشتری (منو، سفارش، امتیاز، پیشنهاد شخصی)</title>
-<meta name="description" content="نسخه‌ی قابل استفاده‌ی MVP کافه‌لوپ از نگاه مشتری: منوی دیجیتال، ثبت و پیگیری سفارش، سرویس میز، وفاداری و امتیاز، پیشنهاد شخصی Smart Return، پروفایل رفتاری و گزینه‌های پیشرفته با منوهای شیشه‌ای.">
+<meta name="description" content="نسخه‌ی قابل استفاده‌ی MVP کافه‌لوپ از نگاه مشتری: منوی دیجیتال، ثبت و پیگیری سفارش، سرویس میز، وفاداری و امتیاز، پیشنهاد شخصی Smart Return، پروفایل رفتاری و گزینه‌های پیشرفته با منوی عکسی و خوانا.">
 <meta name="theme-color" content="#150d0a">
 <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
 <link rel="manifest" href="site.webmanifest">
@@ -23,12 +23,13 @@
 <meta property="og:locale" content="fa_IR">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/glass.css">
+<link rel="stylesheet" href="assets/css/mobile.css">
 </head>
 <body class="mvp">
 
 <a class="skip-link" href="#mvpMain">پرش به محتوای اصلی</a>
 
-<!-- ================= شیشه‌ای پس‌زمینه ================= -->
+<!-- پس‌زمینه‌ی ثابت و کم‌رنگ (بدون شیشه) -->
 <div class="mvp-bg" aria-hidden="true"><i></i><i></i><i></i></div>
 
 <div class="mvp-shell">
@@ -48,8 +49,9 @@
       <span id="liveClock">—</span>
     </div>
     <span class="gpill gpill--mint" id="barPoints">۷۹۰ امتیاز · برنز</span>
+    <a class="gbtn gbtn--glass gbtn--sm" href="admin.html" title="ورود صاحب کافه به پنل مدیریت">🔐 پنل کافه</a>
 
-    <!-- منوهای شیشه‌ای با JS ساخته می‌شوند: دسته‌بندی، فیلتر، پیشرفته، سرویس، حساب -->
+    <!-- منوهای بازشونده با JS ساخته می‌شوند: دسته‌بندی، فیلتر، پیشرفته، سرویس، حساب -->
     <div class="row" id="glassMenus" style="gap:6px"></div>
     <!-- پنل‌های بازشو بیرون از ردیفِ اسکرول‌شونده‌اند تا بریده نشوند -->
     <div class="mvp-bar__panels" id="menuPanels"></div>
@@ -136,7 +138,7 @@
     <button class="gbtn" type="button" data-opencart="1">سبد و ثبت سفارش ←</button>
   </section>
 
-  <!-- ================= GLASS DOCK (منوی شیشه‌ای پایین) ================= -->
+  <!-- ================= ناوبری پایین ================= -->
   <nav class="gdock glass glass--sheen" id="gdock" aria-label="بخش‌های اپلیکیشن">
     <button class="gdock__btn is-active" type="button" data-view="menu">
       <i>☕</i>منو<span class="gdock__badge is-zero" id="badgeCart">0</span>

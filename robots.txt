@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /assets/js/
+Disallow: /admin.html
 
 Sitemap: https://cafeloop.ir/sitemap.xml

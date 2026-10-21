@@ -9,6 +9,51 @@
 
   var D = window.MVP_DATA;
   var KEY = "cafeloop-mvp-v1";
+
+  /* ---- اتصال به پنل مدیریت کافه (admin.html) ----
+     منو، تنظیمات کافه و سفارش‌های زنده از localStorage مشترک خوانده/نوشته می‌شوند:
+     مدیر در پنل منو را عوض کند، همین‌جا بدون رفرش دیده می‌شود (رویداد storage). */
+  var MENU_KEY = "cafeloop-admin-menu-v1";
+  var ORDERS_KEY = "cafeloop-admin-orders-v1";
+  var CAFE_KEY = "cafeloop-admin-cafe-v1";
+  function normItem(x) {
+    if (!x || !x.id || !x.fa) return null;
+    return {
+      id: String(x.id), name: String(x.name || x.fa), fa: String(x.fa), cat: x.cat || "hot",
+      desc: String(x.desc || ""), ingredients: String(x.ingredients || ""), allergens: String(x.allergens || "—"),
+      img: String(x.img || ""), price: Math.max(0, +x.price || 0), icon: x.icon || "☕",
+      rating: +x.rating || 4.5, sold: +x.sold || 0, kcal: +x.kcal || 0, caf: +x.caf || 0,
+      prep: +x.prep || 5, tags: Array.isArray(x.tags) ? x.tags : [], spicy: +x.spicy || 0,
+      available: x.available !== false
+    };
+  }
+  function applyShared() {
+    try {
+      var raw = localStorage.getItem(MENU_KEY);
+      if (raw) {
+        var arr = JSON.parse(raw).map(normItem).filter(Boolean);
+        if (arr.length) D.items = arr;
+      }
+    } catch (e) {}
+    try {
+      var c = JSON.parse(localStorage.getItem(CAFE_KEY) || "null");
+      if (c) ["name", "city", "open", "wifi"].forEach(function (k) { if (c[k]) D.cafe[k] = String(c[k]); });
+    } catch (e) {}
+  }
+  function pushLiveOrder(o) {
+    try {
+      var list = JSON.parse(localStorage.getItem(ORDERS_KEY) || "[]");
+      list.unshift({
+        id: o.id, code: o.code, table: o.table, total: o.total, status: 0, placedAt: o.placedAt,
+        items: o.items.map(function (l) { return { id: l.id, name: l.name, qty: l.qty, summary: l.summary || "" }; })
+      });
+      localStorage.setItem(ORDERS_KEY, JSON.stringify(list.slice(0, 60)));
+    } catch (e) {}
+  }
+  applyShared();
+  window.addEventListener("storage", function (e) {
+    if (e.key === MENU_KEY || e.key === CAFE_KEY) { applyShared(); try { render(); } catch (err) {} }
+  });
   var FA_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 
   /* ----------------------------------------------------------------- state */
@@ -45,7 +90,7 @@
     notify: true,
     settings: {
       theme: "dark",
-      glass: 58,
+      glass: 18,   /* پیش‌فرض جدید: کم‌شیشه، کنتراست بالا */
       big: false,
       hc: false,
       motion: true,
@@ -246,9 +291,11 @@
     document.body.classList.toggle("g-big", !!s.big);
     document.body.classList.toggle("g-hc", !!s.hc);
     document.body.classList.toggle("g-nomotion", !s.motion);
-    document.documentElement.style.setProperty("--glass-a", String(clamp(s.glass, 10, 96) / 100));
-    document.documentElement.style.setProperty("--glass-blur", Math.round(6 + clamp(s.glass, 10, 96) / 4) + "px");
-    document.documentElement.style.setProperty("--glass-sat", String(1 + clamp(s.glass, 10, 96) / 120));
+    /* v1.2: شدت شیشه سقف دارد تا متن همیشه خوانا بماند — بلر فقط تزئینیِ هدر است */
+    var gv = clamp(s.glass, 0, 40);
+    document.documentElement.style.setProperty("--glass-a", String(gv / 100));
+    document.documentElement.style.setProperty("--glass-blur", Math.round(gv / 8) + "px");
+    document.documentElement.style.setProperty("--glass-sat", String(1 + gv / 200));
   }
 
   function render() {
@@ -313,7 +360,7 @@
       var k;
       for (k in state.diet) if (state.diet[k] && i.tags.indexOf(k) < 0) return false;
       if (q) {
-        var hay = (i.name + " " + i.fa + " " + i.desc).toLowerCase();
+        var hay = (i.name + " " + i.fa + " " + i.desc + " " + (i.ingredients || "")).toLowerCase();
         if (hay.indexOf(q) < 0) return false;
       }
       return true;
@@ -340,6 +387,11 @@
     return cartLines().reduce(function (s, l) { return s + (l.id === id ? l.qty : 0); }, 0);
   }
 
+  function itemPhoto(it, cls) {
+    var img = it.img ? "<img src='" + esc(it.img) + "' alt='" + esc(it.fa) + "' loading='lazy' decoding='async' width='800' height='600' onerror='this.remove()'>" : "";
+    return "<span class='" + cls + "'>" + img + "<span class='gitem__emoji' aria-hidden='true'>" + (it.icon || "☕") + "</span></span>";
+  }
+
   function itemCard(it) {
     var qty = cartQtyOf(it.id);
     var isFav = state.favs.indexOf(it.id) >= 0;
@@ -352,9 +404,11 @@
         (it.caf ? "<span class='gpill'>⚡ " + digits(it.caf) + "mg</span>" : "") +
         (it.spicy ? "<span class='gpill gpill--berry'>🌶 " + digits(it.spicy) + "</span>" : "");
     }
-    return "<div class='gitem glass gcard" + (qty ? " is-in" : "") + "' data-open='" + it.id + "' role='button' tabindex='0'>" +
-      "<span class='gitem__thumb'>" + it.icon +
+    var out = it.available === false;
+    return "<div class='gitem glass gcard" + (qty ? " is-in" : "") + (out ? " is-out" : "") + "' data-open='" + it.id + "' role='button' tabindex='0'>" +
+      "<span class='gitem__media'>" + itemPhoto(it, "gitem__photo") +
         "<button class='gitem__fav" + (isFav ? " is-on" : "") + "' data-fav='" + it.id + "' aria-label='علاقه‌مندی'>" + (isFav ? "♥" : "♡") + "</button>" +
+        (out ? "<span class='gitem__out'>ناموجود</span>" : "") +
       "</span>" +
       "<div class='gitem__body'>" +
         "<h4>" + esc(it.fa) + " <span style='font-weight:600;color:var(--g-ink-faint);font-size:.8rem'>" + esc(it.name) + "</span></h4>" +
@@ -363,7 +417,9 @@
       "</div>" +
       "<div class='gitem__side'>" +
         "<span class='gitem__price'>" + money(it.price) + "<small>تومان</small></span>" +
-        (qty
+        (out
+          ? "<span class='gpill gpill--berry'>تمام شد</span>"
+          : qty
           ? "<span class='gitem__qty'><button data-dec='" + it.id + "' aria-label='کم کردن'>−</button><b>" + digits(qty) + "</b><button data-inc='" + it.id + "' aria-label='اضافه کردن'>+</button></span>"
           : "<span class='gitem__add' data-add='" + it.id + "' aria-label='افزودن به سفارش'>+</span>") +
       "</div>" +
@@ -432,7 +488,7 @@
 
     html += "<div class='gsub'>" + o.items.map(function (l) {
       var it = find(l.id) || { fa: l.name, icon: "🍽" };
-      return "<div class='gsub__row'><span>" + it.icon + "</span><div style='min-width:0'>" + esc(l.name) +
+      return "<div class='gsub__row'>" + itemPhoto(it, "gitem__photo gitem__photo--sm") + "<div style='min-width:0'>" + esc(l.name) +
         " <span class='gfaint gtiny'>×" + digits(l.qty) + (l.summary ? " · " + esc(l.summary) : "") + "</span></div>" +
         "<b>" + money(linePrice(l) * l.qty) + "</b></div>";
     }).join("") + "</div>";
@@ -733,7 +789,7 @@
 
     /* advanced settings, mirrored from top menu */
     html += "<div class='gcard glass' style='margin-top:12px'>" +
-      "<div class='gcard__head'><div><h3>⚙️ گزینه‌های پیشرفته</h3><p>تم، شیشه، دسترس‌پذیری، داده‌ی شخصی.</p></div></div>" +
+      "<div class='gcard__head'><div><h3>⚙️ گزینه‌های پیشرفته</h3><p>تم، ظاهر، دسترس‌پذیری، داده‌ی شخصی.</p></div></div>" +
       settingsHtml() +
       "<div class='gmenu__sep'></div>" +
       "<div class='opt-row'><span>پیش‌فرض سفارش‌ها (روی همه‌ی آیتم‌های بعدی اعمال می‌شود)</span>" +
@@ -774,13 +830,13 @@
             return "<button class='" + (s.theme === k ? "is-active" : "") + "' data-theme-set='" + k + "'>" +
               (k === "dark" ? "🌙 تاریک" : k === "light" ? "☀︎ روشن" : "🖥 خودکار") + "</button>";
           }).join("") + "</div></div>" +
-      "<div class='opt-row'><span>شدت شیشه — " + digits(s.glass) + "% <span class='gfaint gtiny'>(محو و شفافیت منوهای شیشه‌ای)</span></span>" +
-        "<input type='range' min='10' max='96' step='2' value='" + s.glass + "' data-glass='1' aria-label='شدت شیشه'></div>" +
+      "<div class='opt-row'><span>شفافیت جزئی هدر — " + digits(s.glass) + "% <span class='gfaint gtiny'>(کارت‌ها همیشه یکدست و خوانا می‌مانند)</span></span>" +
+        "<input type='range' min='0' max='40' step='2' value='" + s.glass + "' data-glass='1' aria-label='شفافیت جزئی هدر'></div>" +
       "<div class='grow'><span class='grow__label'>حالت پیشرفته<small>کالری، کافئین، زمان آماده‌سازی، تیپ، تحلیل و خروجی داده</small></span>" +
         "<button class='switch' role='switch' aria-checked='" + (s.advanced ? "true" : "false") + "' data-toggle='advanced' aria-label='حالت پیشرفته'></button></div>" +
       "<div class='grow'><span class='grow__label'>فونت بزرگ‌تر<small>برای خوانایی روی گوشی در نور زیاد</small></span>" +
         "<button class='switch' role='switch' aria-checked='" + (s.big ? "true" : "false") + "' data-toggle='big' aria-label='فونت بزرگ'></button></div>" +
-      "<div class='grow'><span class='grow__label'>کنتراست بالا<small>حاشیه‌های پررنگ‌تر و شیشه‌ی کدرتر</small></span>" +
+      "<div class='grow'><span class='grow__label'>کنتراست بالا<small>حاشیه‌های پررنگ‌تر و سطوح یکدست‌تر</small></span>" +
         "<button class='switch' role='switch' aria-checked='" + (s.hc ? "true" : "false") + "' data-toggle='hc' aria-label='کنتراست بالا'></button></div>" +
       "<div class='grow'><span class='grow__label'>حذف انیمیشن<small>برای حساسیت به حرکت</small></span>" +
         "<button class='switch' role='switch' aria-checked='" + (!s.motion ? "true" : "false") + "' data-toggle='motion-off' aria-label='حذف انیمیشن'></button></div>" +
@@ -800,7 +856,7 @@
         state.settings.glass = +rng.value;
         applySettings();
         var lbl = rng.closest(".opt-row").querySelector("span");
-        if (lbl) lbl.innerHTML = "شدت شیشه — " + digits(state.settings.glass) + "% <span class='gfaint gtiny'>(محو و شفافیت منوهای شیشه‌ای)</span>";
+        if (lbl) lbl.innerHTML = "شفافیت جزئی هدر — " + digits(state.settings.glass) + "% <span class='gfaint gtiny'>(کارت‌ها همیشه یکدست و خوانا می‌مانند)</span>";
       });
       rng.addEventListener("change", save);
     }
@@ -820,7 +876,7 @@
         D.tiers.map(function (t) {
           return "<button class='gmenu__item' data-goto='loyalty'>" + t.icon + " سطح " + t.name + "<span class='k'>" + digits(t.need) + "</span></button>";
         }).join("") +
-        "</div><p class='gmenu__hint'>دسته‌بندی‌ها همان‌جا که هستی عوض می‌شوند — منو شیشه‌ای، سریع، بدون ریلود.</p>";
+        "</div><p class='gmenu__hint'>دسته‌بندی‌ها همان‌جا که هستی عوض می‌شوند — منوی عکسی و خوانا، سریع، بدون ریلود.</p>";
     }
 
     if (which === "filters") {
@@ -999,7 +1055,9 @@
     var drink = it.cat === "hot" || it.cat === "cold" || it.cat === "tea";
     var priceEach = linePrice({ id: it.id, qty: 1, opts: draft.opts });
     var isFav = state.favs.indexOf(it.id) >= 0;
-    var html = "<span class='gsheet__grab'></span><div class='gsheet__head'>" +
+    var html = "<span class='gsheet__grab'></span>" +
+      (it.img ? "<div class='gsheet__photo'>" + itemPhoto(it, "gitem__photo gitem__photo--wide") + "</div>" : "") +
+      "<div class='gsheet__head'>" +
       "<span class='gitem__thumb' style='width:62px;height:62px;font-size:1.9rem'>" + it.icon + "</span>" +
       "<div><h3>" + esc(it.fa) + " <span class='gfaint' style='font-size:.8rem;font-weight:600'>" + esc(it.name) + "</span></h3>" +
       "<p>" + esc(it.desc) + " · " + catName(it.cat) + "</p></div>" +
@@ -1013,6 +1071,14 @@
         ? "<span class='gpill'>⏱ " + digits(it.prep) + " دقیقه</span><span class='gpill'>📈 " + digits(it.kcal) + " kcal</span>" +
           (it.caf ? "<span class='gpill'>⚡ " + digits(it.caf) + "mg کافئین</span>" : "")
         : "") + "</div>";
+
+    if (it.ingredients || it.allergens) {
+      html += "<div class='gsub' style='margin-bottom:14px'>" +
+        (it.ingredients ? "<div class='gsub__row'><span>🧺 مواد تشکیل‌دهنده</span><div style='text-align:end'>" + esc(it.ingredients) + "</div></div>" : "") +
+        "<div class='gsub__row'><span>⚠️ آلرژن‌ها</span><div style='text-align:end'>" + esc(it.allergens || "—") + "</div></div>" +
+        "<div class='gsub__row'><span>موجودی</span><div>" + (it.available === false ? "<b style='color:var(--g-berry)'>ناموجود — تمام شده</b>" : "<b style='color:var(--g-mint)'>موجود و آماده‌ی سفارش</b>") + "</div></div>" +
+      "</div>";
+    }
 
     if (drink) {
       html += "<div class='opt-row'><span>سایز</span><div class='opt-grid'>" + D.sizes.map(function (s) {
@@ -1052,7 +1118,9 @@
     }
 
     html += "<div class='grow-flex' style='margin-top:16px'>" +
-      "<button class='gbtn' style='flex:1' data-dadd='1'>افزودن به سفارش · " + money(priceEach * draft.qty) + "</button>" +
+      (it.available === false
+        ? "<button class='gbtn' style='flex:1' disabled>ناموجود است</button>"
+        : "<button class='gbtn' style='flex:1' data-dadd='1'>افزودن به سفارش · " + money(priceEach * draft.qty) + "</button>") +
       "<button class='gbtn gbtn--glass' data-fav='" + it.id + "'>" + (isFav ? "♥" : "♡") + "</button>" +
       "<button class='gbtn gbtn--glass' data-def-save='1' title='این گزینه‌ها پیش‌فرض همه‌ی سفارش‌های بعدی شود'>📌 پیش‌فرض کن</button>" +
       "</div>" +
@@ -1076,7 +1144,7 @@
       var it = find(l.id) || { fa: l.name, icon: "🍽" };
       var key = sig(l);
       return "<div class='gcard glass' style='padding:12px;border-radius:18px;box-shadow:none'>" +
-        "<div class='grow-flex' style='align-items:center'><span style='font-size:1.4rem'>" + it.icon + "</span>" +
+        "<div class='grow-flex' style='align-items:center'>" + itemPhoto(it, "gitem__photo gitem__photo--sm") +
         "<div style='flex:1;min-width:0'><b>" + esc(it.fa) + "</b>" +
         "<div class='gtiny gfaint'>" + esc(l.summary || "") + "</div></div>" +
         "<div style='text-align:end'><b class='gmono'>" + money(linePrice(l) * l.qty) + "</b></div></div>" +
@@ -1169,6 +1237,7 @@
   function addToCart(id, opts) {
     var it = find(id);
     if (!it) return;
+    if (it.available === false) { toast("«" + it.fa + "» فعلاً تمام شده — از پنل مدیریت موجودش کن یا یکی دیگه انتخاب کن"); return; }
     var o = opts || {
       size: state.defaults2.size, milk: it.cat === "cake" || it.cat === "food" ? "none" : state.defaults2.milk,
       sugar: it.cat === "cake" || it.cat === "food" ? "0" : state.defaults2.sugar,
@@ -1214,6 +1283,7 @@
       rating: 0
     };
     state.orders.push(o);
+    pushLiveOrder(o);   /* سفارش زنده در پنل مدیریت کافه */
     state.cart = {};
     state.tip = 0;
     state.when = "now";
