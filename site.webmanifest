@@ -1,15 +1,21 @@
 {
-  "name": "CafeLoop — سیستم بازگشت مشتری برای کافه‌ها",
-  "short_name": "CafeLoop",
-  "description": "مشتری‌های یک‌بار مصرف را به مشتری همیشگی تبدیل کن — و درآمدش را اندازه بگیر.",
-  "lang": "fa",
-  "dir": "rtl",
-  "start_url": "./index.html",
+  "name": "CafeLoop MVP — اپلیکیشن مشتری کافه",
+  "short_name": "CafeLoop MVP",
+  "description": "منوی دیجیتال، سفارش، امتیاز و پیشنهاد شخصی CafeLoop — نسخه‌ی نمایشی MVP",
+  "start_url": "./mvp.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#fdfaf6",
+  "orientation": "portrait",
+  "background_color": "#150d0a",
   "theme_color": "#150d0a",
+  "dir": "rtl",
+  "lang": "fa",
   "icons": [
-    { "src": "assets/img/logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+    {
+      "src": "assets/img/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
   ]
 }

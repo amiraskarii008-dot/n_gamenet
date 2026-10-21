@@ -1255,3 +1255,12 @@ h1, h2, h3, .h1, .h2 { text-wrap: balance; }
 .plan-grid { padding-top: 14px; }
 .plan-grid { padding-top: 20px; }
 .plan__flag { inset-block-start: -10px; }
+
+/* ---------- 42. Live app links ---------- */
+.nav__links a[href="mvp.html"] { color: var(--brand-600); font-weight: 700; }
+@media (max-width: 900px) {
+  .nav__actions .btn--nav-app { display: inline-flex; }
+}
+@media (max-width: 480px) {
+  .nav__actions .btn--nav-app { display: none; }
+}
